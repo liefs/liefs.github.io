@@ -72,8 +72,25 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This is a doc comment for a dynamic module.</p>
+						<h5 id="-handler-class-description-static-instance-"><strong>Handler - Class Description: STATIC/INSTANCE</strong></h5>
+						<p>Please take note that Handler (caps) Refers to the Static Object Class Handler
+						(instance of Handler) refers to an Instance of Handler Class</p>
 					</div>
+					<p>In essence, liefs-layout-manager.Handler manages the layouts, and handles resize event correctly.</p>
+					<p>Once I() is called even once, (after a small while) A master Handler Instance will
+					be created. (If you didn&#39;t make one)</p>
+					<p>On resizeEvent, Handler loops though all (instance of Handler)s,
+					For each (instance of Handler):</p>
+					<ul>
+						<li>Loops through (Handler Instance).layouts (Array<Layout>)
+								...checking (Handler Instance).layouts[index].conditionalFunction to see if
+								(Handler Instance).layouts[index].container should be the one used for (Handler Instance)
+						... which means it find the layout you wanted to use for this screen resize.</li>
+						<li>Then it calculates the (Item Instance).size (Coord) for each visible Item,</li>
+						<li>Then sets all visible items to visible, and Hidden to [Hidden AND (left, top, width and height set to 1px)]</li>
+						<li>Then waits for next resizeEvent.</li>
+					</ul>
+					<p>I know the excitement is overwhelming you... lets read on for more details</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -142,9 +159,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:21</li>
+									<li>Defined in liefs-layout-manager.ts:119</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-constructor-"><strong>Handler  - constructor </strong></h5>
+									<p>This Class:</p>
+									<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> something = <span class="hljs-keyword">new</span> Handler(); <span class="hljs-comment">// do not do this! - Done by H()</span>
+<span class="hljs-keyword">var</span> something = H();           <span class="hljs-comment">// Ok much better -</span>
+<span class="hljs-comment">// both above lines return a (instance of Handler);</span>
+</code></pre>
+									<p>See Handler.H()</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -164,9 +192,15 @@
 					<div class="tsd-signature tsd-kind-icon">active<wbr>Container<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:20</li>
+							<li>Defined in liefs-layout-manager.ts:114</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-activecontainer-container-class-instance-"><strong>(instance of Handler).activeContainer - Container Class Instance </strong></h5>
+							<p>This is the last/active container that the (instance of Handler) deceiced to use.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="el" class="tsd-anchor"></a>
@@ -174,9 +208,16 @@
 					<div class="tsd-signature tsd-kind-icon">el<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:17</li>
+							<li>Defined in liefs-layout-manager.ts:97</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-el-"><strong>(instance of Handler).el </strong></h5>
+							<p>This is the parent element of the Handler.
+							More often than not, this is undefined, and outer screen size is used.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="isactive" class="tsd-anchor"></a>
@@ -184,9 +225,15 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:18</li>
+							<li>Defined in liefs-layout-manager.ts:102</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-isactive-boolean-set-true-if-active-"><strong>(instance of Handler).isActive - boolean - set true if active </strong></h5>
+							<p>Ha Ha, I haven&#39;t programed this in yet - you&#39;re stuck on.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="label" class="tsd-anchor"></a>
@@ -194,9 +241,15 @@
 					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:13</li>
+							<li>Defined in liefs-layout-manager.ts:74</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-label-string-"><strong>(instance of Handler).label - string </strong></h5>
+							<p>Label string for differenciating Handler instances</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="layouts" class="tsd-anchor"></a>
@@ -204,9 +257,17 @@
 					<div class="tsd-signature tsd-kind-icon">layouts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_liefs_layout_manager_.layout.html" class="tsd-signature-type">Layout</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:19</li>
+							<li>Defined in liefs-layout-manager.ts:109</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-layouts-array-layout-"><strong>(instance of Handler).layouts - Array<Layout> </strong></h5>
+							<p>This is the array of layouts that is looped though on resize event looking
+								for a matching conditionalFunction to be true.
+							internal use only</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="myargsobj" class="tsd-anchor"></a>
@@ -214,9 +275,16 @@
 					<div class="tsd-signature tsd-kind-icon">my<wbr>Args<wbr>Obj<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:14</li>
+							<li>Defined in liefs-layout-manager.ts:80</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-myargsobj-"><strong>(instance of Handler).myArgsObj </strong></h5>
+							<p>See liefs-layout-manager.lib.argsObj and
+							See liefs-layout-manager.lib.setArgsObj</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="position" class="tsd-anchor"></a>
@@ -224,9 +292,15 @@
 					<div class="tsd-signature tsd-kind-icon">position<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.coord.html" class="tsd-signature-type">Coord</a><span class="tsd-signature-symbol"> =&nbsp;new Coord()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:16</li>
+							<li>Defined in liefs-layout-manager.ts:91</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-position-"><strong>(instance of Handler).position </strong></h5>
+							<p>This is the Coord Object for the (instance of Handler)</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="setargsobj" class="tsd-anchor"></a>
@@ -234,9 +308,16 @@
 					<div class="tsd-signature tsd-kind-icon">set<wbr>Args<wbr>Obj<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol"> =&nbsp;setArgsObj</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:15</li>
+							<li>Defined in liefs-layout-manager.ts:86</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-handler-setargsobj-"><strong>(instance of Handler).setArgsObj </strong></h5>
+							<p>See liefs-layout-manager.lib.argsObj and
+							See liefs-layout-manager.lib.setArgsObj</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="callbackthrottleid" class="tsd-anchor"></a>
@@ -244,9 +325,15 @@
 					<div class="tsd-signature tsd-kind-icon">callback<wbr>Throttle<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:9</li>
+							<li>Defined in liefs-layout-manager.ts:40</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-handler-callbackthrottleid-ref-for-handler-resizecallbackthrottle-static-"><strong>Handler.callbackThrottleId - ref for Handler.resizeCallbackThrottle STATIC </strong></h5>
+							<p>See Handler.resizeCallbackThrottle</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="delayuntilstart" class="tsd-anchor"></a>
@@ -254,9 +341,21 @@
 					<div class="tsd-signature tsd-kind-icon">delay<wbr>Until<wbr>Start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;200</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:11</li>
+							<li>Defined in liefs-layout-manager.ts:63</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-handler-delayuntilstart-number-default-200-miliseconds-static-"><strong>Handler.delayUntilStart - number - Default 200 (miliseconds) STATIC </strong></h5>
+							<p>Once the page loads, there are often &quot;expensive loads&quot; that are required
+								before the Handler should start.  For example, it is possible that your
+							javascript creates elements that liefs-layout-manager should find.</p>
+						</div>
+						<p>To avoid this &quot;I got here first&quot; conflict, there is a delay before
+						liefs-layout-manager starts - this value - default 200 miliseconds.</p>
+						<p>feel free to try 0 or something else to suit your needs. Maybe the waiting
+						is completely unnecessary for you.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="handlers" class="tsd-anchor"></a>
@@ -264,9 +363,15 @@
 					<div class="tsd-signature tsd-kind-icon">handlers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_liefs_layout_manager_.handler.html" class="tsd-signature-type">Handler</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:7</li>
+							<li>Defined in liefs-layout-manager.ts:30</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-handler-handlers-array-handler-static-"><strong>Handler.handlers - Array<Handler> STATIC </strong></h5>
+							<p>internal use - this is where Handler stores it list OF (instance of Handler)</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="isactive-1" class="tsd-anchor"></a>
@@ -274,9 +379,15 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:8</li>
+							<li>Defined in liefs-layout-manager.ts:35</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-handler-isactive-boolean-set-true-if-active-static-"><strong>Handler.isActive - boolean - set true if active STATIC </strong></h5>
+							<p>Ha Ha, I haven&#39;t programed this in yet - you&#39;re stuck on.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="resizecallbackthrottle" class="tsd-anchor"></a>
@@ -284,9 +395,20 @@
 					<div class="tsd-signature tsd-kind-icon">resize<wbr>Callback<wbr>Throttle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:10</li>
+							<li>Defined in liefs-layout-manager.ts:50</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-handler-resizecallbackthrottle-number-default-0-static-"><strong>Handler.resizeCallbackThrottle - number - Default 0 STATIC </strong></h5>
+							<p>This is the amount in milisecond before a resize event is triggered.
+								Sometimes, the refresh of a page is expensive, and in these cases,
+								Dragging a resize will NOT produce pleasant results.
+								By setting <code>Handler.resizeCallbackThrottle = 1000;</code> for example,
+								would allow a full second of static view - no matter how much the user is
+							resize crazy - before refreshing the page to reflect new resize dimensions.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="showobj" class="tsd-anchor"></a>
@@ -294,9 +416,16 @@
 					<div class="tsd-signature tsd-kind-icon">show<wbr>Obj<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:12</li>
+							<li>Defined in liefs-layout-manager.ts:69</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-handler-showobj-object-of-key-label-value-show-boolean-el-element-static-"><strong>Handler.showObj Object of Key label value {show: boolean; el: Element} STATIC </strong></h5>
+							<p>This is where all the elements are flagged as hidden or visible.
+							Internal Use Only.</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -327,9 +456,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:93</li>
+									<li>Defined in liefs-layout-manager.ts:289</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-handler-choosecontainer-function-"><strong>(instance of Handler).chooseContainer()  - function </strong></h5>
+									<p>This is part of the refresh script.
+									It loops through the layout options, and sets (instance of Handler).activeContainer to correct value.</p>
+								</div>
+								<p>This is an internal function - no reason to call</p>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -344,9 +481,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:21</li>
+									<li>Defined in liefs-layout-manager.ts:119</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-handler-selector-string-"><strong>(instance of Handler).selector - string </strong></h5>
+									<p>This is explained in detail at (Item Instance).selector</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -361,9 +504,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:79</li>
+									<li>Defined in liefs-layout-manager.ts:268</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-handler-update-function-"><strong>(instance of Handler).update()  - function </strong></h5>
+									<p>This is part of the refresh script.
+										It calles the active Contianer.update (See that)
+									and applies the results to set all element style properties to make the page render correctly.</p>
+								</div>
+								<p>This is an internal function - no reason to call</p>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -378,9 +530,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:78</li>
+									<li>Defined in liefs-layout-manager.ts:259</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-hide-function-static-"><strong>Handler.Hide()  - function STATIC </strong></h5>
+									<p>This is part of the refresh script. this small piece simple hides the elements that need to be hidden</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -395,9 +553,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:43</li>
+									<li>Defined in liefs-layout-manager.ts:170</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-activate-function-static-"><strong>Handler.activate()  - function STATIC </strong></h5>
+									<p>basically using ANY of liefs-layout-manager functions triggers this function</p>
+								</div>
+								<p>When called (by liefs-layout-manager - no need for you to do so....)
+									Handler knows - OK you used a function of mine, so start up soon,
+								and since I know I&#39;m starting, ignore further calls here.</p>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -412,9 +579,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:49</li>
+									<li>Defined in liefs-layout-manager.ts:183</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-createdivlist-function-static-"><strong>Handler.createDivList()  - function STATIC </strong></h5>
+									<p>This function is called after all Defining is done.
+										it loops though all Items, Containers, and Handlers, looking for matching
+										elements, which it adds to the hide/show list
+									Internal use only - no need to ever call it</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -429,9 +605,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:65</li>
+									<li>Defined in liefs-layout-manager.ts:242</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-resizeevent-function-static-"><strong>Handler.resizeEvent()  - function STATIC </strong></h5>
+									<p>This has a slightly misleading name. It should really be called
+									&quot;refresh&quot; - because it does that - refreshes all output from current input</p>
+								</div>
+								<p>True, this is called on an actual resize event, but it is also called
+									when you drag a dragbar, or trigger anything else that requires a
+								page refresh.</p>
+								<p>Shoud you need to force a page refresh:</p>
+								<pre><code class="lang-javascript">Handler.resizeEvent();  <span class="hljs-comment">// this will trigger a page refresh</span>
+<span class="hljs-comment">// so if you make a button to change layouts, and bypass internal methods</span>
+<span class="hljs-comment">// to acheive this, you will have to call this after to refresh the page.</span>
+</code></pre>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -452,9 +643,35 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:57</li>
+									<li>Defined in liefs-layout-manager.ts:218</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-starthandler-function-static-"><strong>Handler.startHandler()  - function STATIC </strong></h5>
+									<p>after Handler.delayUntilStart (See its description)
+									First it sees if you are lacking multiple Layouts, and a handler:</p>
+									<pre><code class="lang-javascript">h(<span class="hljs-string">"SomeGroupName"</span>, <span class="hljs-string">"100%"</span>,
+  I(<span class="hljs-string">"LeftSideid"</span>, <span class="hljs-string">"50%"</span>), I(<span class="hljs-string">"LeftSideid"</span>, <span class="hljs-string">"50%"</span>)
+);
+</code></pre>
+									<p>Since there is no Layout and Handler, one will be automatic appointed using the following</p>
+									<pre><code class="lang-javascript">H(<span class="hljs-string">"defaultHandler"</span>,  <span class="hljs-comment">// this line is created behind the scenes because you left it out</span>
+  L(<span class="hljs-string">"defaultLayout"</span>,  <span class="hljs-comment">// this line is created behind the scenes because you left it out</span>
+    h(<span class="hljs-string">"SomeGroupName"</span>, <span class="hljs-string">"100%"</span>,
+      I(<span class="hljs-string">"LeftSideid"</span>, <span class="hljs-string">"50%"</span>), I(<span class="hljs-string">"LeftSideid"</span>, <span class="hljs-string">"50%"</span>)
+    ),
+(x, y) =&gt; { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; }  <span class="hljs-comment">// this line is created behind the scenes because you left it out</span>
+) <span class="hljs-comment">// this line is created behind the scenes because you left it out</span>
+);
+</code></pre>
+									<p>this is the start up script.  It calls:</p>
+									<pre><code class="lang-javascript">Handler.createDivList();
+Handler.watchForResizeEvent();
+Handler.resizeEvent();
+</code></pre>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -469,9 +686,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:37</li>
+									<li>Defined in liefs-layout-manager.ts:155</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-handler-watchforresizeevent-function-static-"><strong>Handler.watchForResizeEvent()  - function STATIC </strong></h5>
+									<p>When called (by liefs-layout-manager - no need for you to do so....)
+									it sets <code>window.onresize</code> Event</p>
+								</div>
+								<p>at this point, the only way to turn it off, that will actualy WORK, is:</p>
+								<pre><code class="lang-javascript"><span class="hljs-built_in">window</span>.onresize = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {}; <span class="hljs-comment">// this will stop liefs-layout-manager in its tracks</span>
+</code></pre>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>

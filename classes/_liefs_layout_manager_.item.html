@@ -89,7 +89,7 @@
 							the default uses the &quot;id&quot; therefore, the default is:</p>
 							<pre><code class="lang-javascript">Item.selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.label; }  <span class="hljs-comment">// where lable in this case is "SomeItemName"</span>
 </code></pre>
-							<p>-&gt; default -&gt;
+							<p>(see <a href="./_liefs_layout_manager_.item.html#selector">Item.selector</a>)
 								so.... default is id.... which I will assume is static for the rest of this documentation.
 								and returns the document.querySelector( Item.selector(&quot;SomeItemName&quot;) );
 								... which means there has to be EXACTLY ONE element with id=&quot;SomeItemName&quot;
@@ -129,32 +129,36 @@ onclick=<span class="hljs-string">'Item.nextPage("FirstPage", true);'</span>    
 onclick=<span class="hljs-string">'Item.backPage("FirstPage");'</span>             <span class="hljs-comment">// cycle reverse, to end if back first Page</span>
 onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>       <span class="hljs-comment">// cycle reverse, There is "nothing" before first page</span>
 </code></pre>
-					<p>An Item DIRECTIONAL INDICATOR tells liefs-layout-manager that this item is to be the parent (grouping)
-						of a container.  This means that (Item Instance).container will point to a liefs-layout-manager.Container
-					That inner container will be assigned the DIRECTIONAL INDICATOR.</p>
-					<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> other = I(<span class="hljs-string">"ChildOfSomeItemName"</span>,<span class="hljs-string">"100%"</span>); <span class="hljs-comment">// this will be the only child in the parent (Item instance).container</span>
-
-&gt; I(<span class="hljs-string">"SomeItemName"</span>, <span class="hljs-string">"200px"</span>, <span class="hljs-string">"hor"</span>, other); <span class="hljs-comment">// putting "hor" as an argument is a horizontal DIRECTIONAL INDICATOR</span>
-&gt; I(<span class="hljs-string">"-SomeItemName"</span>, other, <span class="hljs-string">"200px"</span>);       <span class="hljs-comment">// putting "-" as a pre/post fix to the label name, will have</span>
-&gt; I(other, <span class="hljs-string">"SomeItemName-"</span>, <span class="hljs-string">"200px"</span>);       <span class="hljs-comment">// it removed from label name and is a horizontal DIRECTIONAL INDICATOR</span>
-&gt; h(<span class="hljs-string">"SomeItemName-"</span>, <span class="hljs-string">"200px"</span>, other);       <span class="hljs-comment">// new function name, but all four here return (new Item() Class) same horizontal DIRECTIONAL INDICATOR</span>
-<span class="hljs-comment">// personally, I like h() and v() as indicators, but I made it a personal choice.</span>
-
-&gt; I(other, <span class="hljs-string">"SomeItemName"</span>, <span class="hljs-string">"200px"</span>, <span class="hljs-string">"ver"</span>); <span class="hljs-comment">// putting "ver" as an argument is a vertical DIRECTIONAL INDICATOR</span>
-&gt; I(<span class="hljs-string">"|SomeItemName"</span>, other, <span class="hljs-string">"200px"</span>);       <span class="hljs-comment">// putting "|" as a pre/post fix to the label name, will have</span>
-&gt; I(<span class="hljs-string">"SomeItemName|"</span>, <span class="hljs-string">"200px"</span>, other);       <span class="hljs-comment">// it removed from label name and is a vertical DIRECTIONAL INDICATOR</span>
-&gt; v(<span class="hljs-string">"SomeItemName-"</span>, other, <span class="hljs-string">"200px"</span>);       <span class="hljs-comment">// new function name, but all four here return (new Item() Class) same vertical DIRECTIONAL INDICATOR</span>
-<span class="hljs-comment">/// fyi h() and v() really is the same function! it just adds the "ver" way for you</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">v</span>(<span class="hljs-params">...Arguments: any[]</span>) </span>{ Arguments.push(<span class="hljs-string">"ver"</span>); <span class="hljs-keyword">return</span> I(...Arguments);}
-</code></pre>
-					<p>I am over-stressing the point the the argument ORDER is by TypoOf.  The means that &#39;start&#39; &#39;min&#39; &#39;max&#39;
-						must be in the correct order, because they are the same TypeOf.
-						Similarily, Items as arguments maintains the order they are listed.
-					having Items preceed, or follow &#39;start&#39; &#39;min&#39; &#39;max&#39; - does not matter.</p>
+					<ol>
+						<li>B)
+							An Item DIRECTIONAL INDICATOR tells liefs-layout-manager that this item is to be the parent (grouping)
+							of a container.  This means that (Item Instance).container will point to a liefs-layout-manager.Container
+							That inner container will be assigned the DIRECTIONAL INDICATOR.
+							```javascript
+						var other = I(&quot;ChildOfSomeItemName&quot;,&quot;100%&quot;); // this will be the only child in the parent (Item instance).container</li>
+					</ol>
+					<blockquote>
+						<p>I(&quot;SomeItemName&quot;, &quot;200px&quot;, &quot;hor&quot;, other); // putting &quot;hor&quot; as an argument is a horizontal DIRECTIONAL INDICATOR
+							I(&quot;-SomeItemName&quot;, other, &quot;200px&quot;);       // putting &quot;-&quot; as a pre/post fix to the label name, will have
+							I(other, &quot;SomeItemName-&quot;, &quot;200px&quot;);       // it removed from label name and is a horizontal DIRECTIONAL INDICATOR
+							h(&quot;SomeItemName-&quot;, &quot;200px&quot;, other);       // new function name, but all four here return (new Item() Class) same horizontal DIRECTIONAL INDICATOR
+						// personally, I like h() and v() as indicators, but I made it a personal choice.</p>
+						<p>I(other, &quot;SomeItemName&quot;, &quot;200px&quot;, &quot;ver&quot;); // putting &quot;ver&quot; as an argument is a vertical DIRECTIONAL INDICATOR
+							I(&quot;|SomeItemName&quot;, other, &quot;200px&quot;);       // putting &quot;|&quot; as a pre/post fix to the label name, will have
+							I(&quot;SomeItemName|&quot;, &quot;200px&quot;, other);       // it removed from label name and is a vertical DIRECTIONAL INDICATOR
+							v(&quot;SomeItemName-&quot;, other, &quot;200px&quot;);       // new function name, but all four here return (new Item() Class) same vertical DIRECTIONAL INDICATOR
+							/// fyi h() and v() really is the same function! it just adds the &quot;ver&quot; way for you
+							function v(...Arguments: any[]) { Arguments.push(&quot;ver&quot;); return I(...Arguments);}
+							```
+							I am over-stressing the point the the argument ORDER is by TypoOf.  The means that &#39;start&#39; &#39;min&#39; &#39;max&#39;
+							must be in the correct order, because they are the same TypeOf.
+							Similarily, Items as arguments maintains the order they are listed.
+						having Items preceed, or follow &#39;start&#39; &#39;min&#39; &#39;max&#39; - does not matter.</p>
+					</blockquote>
 					<p>with a DIRECTIONAL INDICATOR set, all Items in arguments WILL NOT be pages, but will instead be a row/column
 						of items, defined within that container.  The sum of all &quot;start&quot; %&#39;s MUST total 100%, or an error is thrown.
 					values for &#39;px&#39; are basically unchecked.</p>
-					<pre><code class="lang-javascript">h(<span class="hljs-string">"-MainContainer"</span>, I(<span class="hljs-string">"left"</span>, <span class="hljs-string">"30%"</span>), I(<span class="hljs-string">"tinymid"</span>, <span class="hljs-string">"100px"</span>), I(<span class="hljs-string">"right"</span>, <span class="hljs-string">"70%"</span>));
+					<pre><code class="lang-javascript">h(<span class="hljs-string">"-MainContainer"</span>, I(<span class="hljs-string">"left"</span>, <span class="hljs-string">"30%"</span>), I(<span class="hljs-string">"tinymid"</span>, <span class="hljs-string">"100px"</span>), I(<span class="hljs-string">"right"</span>, <span class="hljs-string">"70%"</span>), <span class="hljs-number">10</span>);
 </code></pre>
 					<p>the above line indicates the following:</p>
 					<p>the h() function in front of MainContainer makes this Item Instance a horizontal container (not a page set)
@@ -165,6 +169,7 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<p>after the width of parent is calculated, all the &#39;px&#39; values are assigned... in this case 100px</p>
 					<p>the remaining pixels are assigned 30% of them to id=&quot;left&quot; element, and 70% to id=&quot;right&quot; element.</p>
 					<p>This one line alone is a &quot;complete startup program&quot; for liefs-layout-manager (See Handler for more details)</p>
+					<p>the space between the Items is set to a margin of 10 pixels.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -237,9 +242,20 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1086</li>
+									<li>Defined in liefs-layout-manager.ts:1492</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-new-item-class-constructor-for-item-object-"><strong>new Item() - Class constructor for Item Object :</strong></h5>
+								</div>
+								<p>There is no reason on the planet to make a <code>new Item()</code>
+								intead of:</p>
+								<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> something = <span class="hljs-keyword">new</span> Item();  <span class="hljs-comment">// dont' do this! even the Author doesn't!</span>
+<span class="hljs-keyword">var</span> something = I()          <span class="hljs-comment">// Ah - this does things correctly</span>
+<span class="hljs-comment">// both above return a new Item Object.</span>
+</code></pre>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -271,9 +287,17 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1080</li>
+							<li>Defined in liefs-layout-manager.ts:1403</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-container-class-container-object-"><strong>(instance of Item).container - Class Container Object:</strong></h5>
+						</div>
+						<p>Items can be optionally extended to be a container of other Items.
+						If this option is used (See Item) This container holds this information.</p>
+						<p>Only defined if extended</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="current" class="tsd-anchor"></a>
@@ -281,9 +305,18 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">current<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1075</li>
+							<li>Defined in liefs-layout-manager.ts:1362</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-current-string-"><strong>(instance of Item).current - String:</strong></h5>
+						</div>
+						<p>this is either var Item.start =  (Intiger pixelsize).toString() + &quot;px&quot;;
+							this is either var Item.start =  (Intiger percent).toString() + &quot;%&quot;;
+						this format structure is refered to as &#39;TypeOf start&#39;</p>
+						<p>Defines current state</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="currentpage" class="tsd-anchor"></a>
@@ -291,9 +324,17 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Page<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1083</li>
+							<li>Defined in liefs-layout-manager.ts:1427</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-currentpage-number-"><strong>(instance of Item).currentPage - Number :</strong></h5>
+						</div>
+						<p>Items can be optionally extended to be root of Pages (Other Items).
+						If this option is used (See Item) This is where the current page array index is stored</p>
+						<p>Only defined if extended</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="dragbar" class="tsd-anchor"></a>
@@ -301,9 +342,16 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">drag<wbr>Bar<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.dragbar.html" class="tsd-signature-type">Dragbar</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1086</li>
+							<li>Defined in liefs-layout-manager.ts:1492</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-dragbar-class-dragbar-object-"><strong>(instance of Item).dragBar - Class Dragbar Object :</strong></h5>
+						</div>
+						<p>If an Item has a &#39;min&#39; value set, a dragBar instance is automatically
+						created and stored here.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="el" class="tsd-anchor"></a>
@@ -311,9 +359,17 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">el<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1084</li>
+							<li>Defined in liefs-layout-manager.ts:1436</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-el-htmlelement-"><strong>(instance of Item).el - HTMLElement :</strong></h5>
+						</div>
+						<p>This points to the (possible) html element accociated with this Item.</p>
+						<p>Note: Items can be defined to be a group of items.  In such a case, this value
+						is usually (but not always) not pointing to anything at all.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="instance" class="tsd-anchor"></a>
@@ -321,9 +377,15 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">instance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1073</li>
+							<li>Defined in liefs-layout-manager.ts:1342</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-instance-number-"><strong>(instance of Item).instance - Number:</strong></h5>
+						</div>
+						<p>this location will be dropped (and stored elsewhere) next version</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="label" class="tsd-anchor"></a>
@@ -331,7 +393,7 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1072</li>
+							<li>Defined in liefs-layout-manager.ts:1336</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -347,9 +409,15 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Direction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1076</li>
+							<li>Defined in liefs-layout-manager.ts:1368</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-lastdirection-boolean-"><strong>(instance of Item).lastDirection - Boolean:</strong></h5>
+						</div>
+						<p>This is ignored, and will be removed</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="max" class="tsd-anchor"></a>
@@ -357,9 +425,18 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1079</li>
+							<li>Defined in liefs-layout-manager.ts:1394</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-max-string-"><strong>(instance of Item).max - String:</strong></h5>
+						</div>
+						<p>this is either var Item.start =  (Intiger pixelsize).toString() + &quot;px&quot;;
+							this is either var Item.start =  (Intiger percent).toString() + &quot;%&quot;;
+						this format structure is refered to as &#39;TypeOf start&#39;</p>
+						<p>Defines maximum value of &#39;start&#39; / &#39;current&#39; state</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="min" class="tsd-anchor"></a>
@@ -367,9 +444,18 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1078</li>
+							<li>Defined in liefs-layout-manager.ts:1384</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-min-string-"><strong>(instance of Item).min - String:</strong></h5>
+						</div>
+						<p>this is either var Item.start =  (Intiger pixelsize).toString() + &quot;px&quot;;
+							this is either var Item.start =  (Intiger percent).toString() + &quot;%&quot;;
+						this format structure is refered to as &#39;TypeOf start&#39;</p>
+						<p>Defines minimum value of &#39;start&#39; / &#39;current&#39; state</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="pagetitle" class="tsd-anchor"></a>
@@ -377,9 +463,15 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">page<wbr>Title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1082</li>
+							<li>Defined in liefs-layout-manager.ts:1418</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-pagetitle-string-"><strong>(instance of Item).pageTitle - String :</strong></h5>
+						</div>
+						<p>This is not being used - reminder to self</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="pages" class="tsd-anchor"></a>
@@ -387,9 +479,17 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">pages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_liefs_layout_manager_.item.html" class="tsd-signature-type">Item</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1081</li>
+							<li>Defined in liefs-layout-manager.ts:1412</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-pages-array-item-"><strong>(instance of Item).pages - Array<Item> :</strong></h5>
+						</div>
+						<p>Items can be optionally extended to be root of Pages (Other Items).
+						If this option is used (See Item) This is where the array of pages is stored</p>
+						<p>Only defined if extended</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="size" class="tsd-anchor"></a>
@@ -397,9 +497,15 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.coord.html" class="tsd-signature-type">Coord</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1077</li>
+							<li>Defined in liefs-layout-manager.ts:1374</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-size-class-coord-object-"><strong>(instance of Item).size - Class Coord Object:</strong></h5>
+						</div>
+						<p>This is where the current (x, y, width, height) of the Item is stored</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="start" class="tsd-anchor"></a>
@@ -407,9 +513,18 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1074</li>
+							<li>Defined in liefs-layout-manager.ts:1352</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-item-start-string-"><strong>(instance of Item).start - String:</strong></h5>
+						</div>
+						<p>this is either var Item.start =  (Intiger pixelsize).toString() + &quot;px&quot;
+							this is either var Item.start =  (Intiger percent).toString() + &quot;%&quot;
+						this format structure is refered to as &#39;TypeOf start&#39;</p>
+						<p>Defines initial state</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="debug" class="tsd-anchor"></a>
@@ -417,7 +532,7 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1057</li>
+							<li>Defined in liefs-layout-manager.ts:1320</li>
 						</ul>
 					</aside>
 				</section>
@@ -427,18 +542,18 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1067</li>
+							<li>Defined in liefs-layout-manager.ts:1331</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-item-items-object-of-string-keys-and-array-item-values-"><strong>Item.items - Object of string keys, and Array<Item> values:</strong></h5>
-							<p>This is where all the items are &#39;stored&#39;
-							note: it is an object (key-id) (value list of Items) NOT (value Item)</p>
-							<pre><code class="lang-javascript">Item.items[<span class="hljs-string">"SomeItemName"</span>][<span class="hljs-number">0</span>]; <span class="hljs-comment">// points to the first "SomeItemName" Item Created</span>
-</code></pre>
-							<p>probably better to use Item.get()</p>
 						</div>
+						<p>This is where all the items are &#39;stored&#39;
+						note: it is an object (key-id) (value list of Items) NOT (value Item)</p>
+						<pre><code class="lang-javascript">Item.items[<span class="hljs-string">"SomeItemName"</span>][<span class="hljs-number">0</span>]; <span class="hljs-comment">// points to the first "SomeItemName" Item Created</span>
+</code></pre>
+						<p>probably better to use Item.get()</p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -462,9 +577,55 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1085</li>
+									<li>Defined in liefs-layout-manager.ts:1485</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-item-selector-anonymous-function-no-arguments-"><strong>(instance of Item).selector - Anonymous Function No Arguments :</strong></h5>
+								</div>
+								<p>liefs-layout-manager defaults to Item name = id of element.</p>
+								<p>There is no reason to hold this to be true.  All calls to find elements from
+								the dom go through Item.selector... the default being:</p>
+								<pre><code class="lang-javascript">selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.label; }; <span class="hljs-comment">// so "Something" calls Document.querySelect("#" + "Something")</span>
+<span class="hljs-comment">// which of course finds id - but this can be changed.</span>
+</code></pre>
+								<p>Note: should you do this change, Since this method accesses &quot;this&quot; -&gt; you must change in on EVERY INSTANCE
+								so something like</p>
+								<pre><code class="lang-javascript">Item.prototype.selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-string">"["</span> + <span class="hljs-keyword">this</span>.label + <span class="hljs-string">"]"</span>; };
+I(<span class="hljs-string">"Something"</span>, <span class="hljs-string">"250px"</span>);  <span class="hljs-comment">// ok now looking for &lt;tagName id="unused" Something&gt;</span>
+<span class="hljs-comment">// note we have changed global scope of Item selector (from then on....)</span>
+<span class="hljs-comment">// note in this case, 'Item' referers to the Item Static Class</span>
+
+Item.prototype.selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-string">"[liefs="</span> + <span class="hljs-keyword">this</span>.label + <span class="hljs-string">"]"</span>; };
+I(<span class="hljs-string">"Something"</span>, <span class="hljs-string">"250px"</span>);  <span class="hljs-comment">// ok now looking for &lt;tagName id="unused" liefs="Something"&gt;</span>
+<span class="hljs-comment">// note we have changed global scope of Item selector (from then on....)</span>
+<span class="hljs-comment">// note in this case, 'Item' referers to the Item Static Class</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">i</span>(<span class="hljs-params">item</span>) </span>{ item.selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-string">"["</span> + <span class="hljs-keyword">this</span>.label + <span class="hljs-string">"]"</span>; }; <span class="hljs-keyword">return</span> item; }
+i(I(<span class="hljs-string">"Something"</span>, <span class="hljs-string">"200px"</span>));  <span class="hljs-comment">// This should do the trick for "outliers"</span>
+<span class="hljs-comment">// note we have not touched global scope of Item selector (at all..)</span>
+<span class="hljs-comment">// note in this last case, 'item' referers to an instance</span>
+
+Item.defineProperty(Subclass.prototype, <span class="hljs-string">"byClass"</span>, {
+    <span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">byClass</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">this</span>.selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-string">"[class="</span> + <span class="hljs-keyword">this</span>.label + <span class="hljs-string">"]"</span>; };
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+});
+Item.defineProperty(Subclass.prototype, <span class="hljs-string">"byTagName"</span>, {
+    <span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">byTagName</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">this</span>.selector = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.label; };
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+});
+I(<span class="hljs-string">"Something"</span>, <span class="hljs-string">"200px"</span>); <span class="hljs-comment">// byId is default // could keep defaut</span>
+I(<span class="hljs-string">"Something"</span>, <span class="hljs-string">"200px"</span>).byClass;            <span class="hljs-comment">// and add all the types</span>
+I(<span class="hljs-string">"Something"</span>, <span class="hljs-string">"200px"</span>).byTagName;          <span class="hljs-comment">// you desire</span>
+
+to implement liefs-layout-manager at all - just understand how to use selectors to find it.
+</code></pre>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -479,14 +640,14 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:913</li>
+									<li>Defined in liefs-layout-manager.ts:1170</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-i-static-method-"><strong>Item.I - Static Method:</strong></h5>
-									<p>see Item Class explanation</p>
 								</div>
+								<p>see Item Class explanation</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -508,14 +669,14 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1000</li>
+									<li>Defined in liefs-layout-manager.ts:1259</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-backpage-static-method-"><strong>Item.backPage() - Static Method:</strong></h5>
-									<p>see Item Class explanation</p>
 								</div>
+								<p>see Item Class explanation</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -546,7 +707,7 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:889</li>
+									<li>Defined in liefs-layout-manager.ts:1143</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -597,14 +758,14 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:897</li>
+									<li>Defined in liefs-layout-manager.ts:1152</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-h-static-method-"><strong>Item.h - Static Method:</strong></h5>
-									<p>... is really Item.I() - see Item Class explanation.</p>
 								</div>
+								<p>... is really Item.I() - see Item Class explanation.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -626,14 +787,14 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:989</li>
+									<li>Defined in liefs-layout-manager.ts:1247</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-nextpage-static-method-"><strong>Item.nextPage() - Static Method:</strong></h5>
-									<p>see Item Class explanation</p>
 								</div>
+								<p>see Item Class explanation</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -664,7 +825,7 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1056</li>
+									<li>Defined in liefs-layout-manager.ts:1319</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -696,7 +857,7 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1041</li>
+									<li>Defined in liefs-layout-manager.ts:1303</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -728,15 +889,15 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1020</li>
+									<li>Defined in liefs-layout-manager.ts:1281</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-setpageparsevalue-static-method-"><strong>Item.setPageparseValue() - Static Method:</strong></h5>
-									<p>internal use only
-									is a sub-function of Item.setPage()</p>
 								</div>
+								<p>internal use only
+								is a sub-function of Item.setPage()</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -761,14 +922,14 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1011</li>
+									<li>Defined in liefs-layout-manager.ts:1271</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-setpage-static-method-"><strong>Item.setPage() - Static Method:</strong></h5>
-									<p>see Item Class explanation</p>
 								</div>
+								<p> see Item Class explanation</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -799,14 +960,14 @@ onclick=<span class="hljs-string">'Item.backPage("FirstPage", true);'</span>    
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:905</li>
+									<li>Defined in liefs-layout-manager.ts:1161</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-item-v-static-method-"><strong>Item.v - Static Method:</strong></h5>
-									<p>... is really Item.I() - see Item Class explanation</p>
 								</div>
+								<p>... is really Item.I() - see Item Class explanation</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">

@@ -73,15 +73,14 @@
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<h5 id="-dragbar-class-description-"><strong>Dragbar - Class Description:</strong></h5>
-						<p>Dragbar is a Class that stores all properties relating to Dragbars.
-							For each Dragbar, there is an instance of this class created under item(instance).Dragbar
-						It is &quot;automatically&quot; created - There is no need to create an instance of this ever.</p>
 					</div>
-					<p>It is extremly unlikely that there will be any reason to change anything here, noting two possible
-					exceptions: Dragbar.width, and Dragbar.Selector</p>
+					<p>Dragbar is a Class that stores all properties relating to Dragbars.
+						For each Dragbar, there is an instance of this class created under
+						(instance of <a href="./_liefs_layout_manager_.item.html">Item</a>).Dragbar
+					It is &quot;automatically&quot; created - There is no need to create an instance of this ever.</p>
 					<p>All visible properties of Dragbars are controlled with css .Hdragbar and .Vdragbar</p>
-					<p>This class can be reached
-					by Items.get(&quot;ItemName&quot;).Dragbar</p>
+					<p>This class can be reached</p>
+					<p>by <a href="_liefs_layout_manager_.item.html#get">Items.get</a>(&quot;ItemName&quot;).Dragbar</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -143,15 +142,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:706</li>
+									<li>Defined in liefs-layout-manager.ts:954</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<h5 id="-dragbar-constructor-"><strong>Dragbar.constructor</strong></h5>
-									<p>internal use only - no reason to call/use
-									this class is created by Item automatically - no reason to create an instance manually.</p>
+									<h5 id="-dragbar-constructor-"><strong>Dragbar.constructor()</strong></h5>
 								</div>
+								<p>internal use only - no reason to call/use
+								this class is created by Item automatically - no reason to create an instance manually.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -178,14 +177,14 @@
 					<div class="tsd-signature tsd-kind-icon">el<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:676</li>
+							<li>Defined in liefs-layout-manager.ts:918</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-instance-el-pointer-to-dragbar-element-on-page-"><strong>(Dragbar Instance).el - pointer to dragbar element on page:</strong></h5>
-							<p>internal use only - no reason to call/use</p>
 						</div>
+						<p>internal use only - no reason to call/use</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -194,14 +193,16 @@
 					<div class="tsd-signature tsd-kind-icon">front<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:689</li>
+							<li>Defined in liefs-layout-manager.ts:935</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<h5 id="-dragbar-instance-front-boolean-showing-if-dragbar-is-at-front-of-item-true-default-or-back-of-item-false-"><strong>(Dragbar Instance).front - boolean showing if dragbar is at front of Item (true - default) or back of Item - false;</strong></h5>
+							<h5 id="-dragbar-instance-front-boolean-showing-if-dragbar-is-at-front-of-item">**(Dragbar Instance).front - boolean showing if dragbar is at front of Item</h5>
+							<p><code>(Instance of Dragbar).front = true;</code> (true - default) or back of Item:
+							<code>(Instance of Dragbar).front = false;</code> (used when Item is &quot;last&quot; in Array)</p>
 						</div>
-						<p>Note this parameter is set when defining and item, not here. See Item.I()</p>
+						<p>Note this parameter is set when defining and item, not here. See <a href="./_liefs_layout_manager_.item.html">Item</a></p>
 						<p>internal use only - no reason to call/use</p>
 					</div>
 				</section>
@@ -211,14 +212,14 @@
 					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.item.html" class="tsd-signature-type">Item</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:694</li>
+							<li>Defined in liefs-layout-manager.ts:941</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-instance-parent-parent-class-item-that-controls-this-dragbar-"><strong>(Dragbar Instance).parent - Parent Class Item that controls this Dragbar</strong></h5>
-							<p>internal use only - no reason to call/use</p>
 						</div>
+						<p>internal use only - no reason to call/use</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -227,14 +228,15 @@
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.coord.html" class="tsd-signature-type">Coord</a><span class="tsd-signature-symbol"> =&nbsp;new Coord()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:681</li>
+							<li>Defined in liefs-layout-manager.ts:925</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<h5 id="-dragbar-instance-size-class-coord-object-containing-dimensions-needed-to-plot-this-dragbar-"><strong>(Dragbar Instance).size - Class Coord Object containing dimensions needed to plot this Dragbar</strong></h5>
-							<p>internal use only - no reason to call/use</p>
+							<h5 id="-dragbar-instance-size-coord-_liefs_layout_manager_-coord-html-">**(Dragbar Instance).size - <a href="./_liefs_layout_manager_.coord.html">Coord</a></h5>
+							<p>Object containing dimensions needed to plot this Dragbar**</p>
 						</div>
+						<p>internal use only - no reason to call/use</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -243,20 +245,20 @@
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:706</li>
+							<li>Defined in liefs-layout-manager.ts:954</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-instance-width-"><strong>(Dragbar Instance).width</strong></h5>
-							<p>This horribly named parameter is the width of the dragbar;
-								Note: a dragbar has to be visible to work, so making this value larger than margin
-								will make the dragbar visible.  similarily, if the width is too small, it will be
-								difficult for the mouse to click the dragbar
-							Optional resetting this value to suit:</p>
-							<pre><code class="lang-javascript">Item.get(<span class="hljs-string">"ItemLabel"</span>).Dragbar.width = <span class="hljs-number">5</span>; <span class="hljs-comment">// or any new value</span>
-</code></pre>
 						</div>
+						<p>This horribly named parameter is the width of the dragbar;
+							Note: a dragbar has to be visible to work, so making this value larger than margin
+							will make the dragbar visible.  similarily, if the width is too small, it will be
+							difficult for the mouse to click the dragbar
+						Optional resetting this value to suit:</p>
+						<pre><code class="lang-javascript">Item.get(<span class="hljs-string">"ItemLabel"</span>).Dragbar.width = <span class="hljs-number">5</span>; <span class="hljs-comment">// or any new value</span>
+</code></pre>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -265,7 +267,7 @@
 					<div class="tsd-signature tsd-kind-icon">active<wbr>Dragbar<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.dragbar.html" class="tsd-signature-type">Dragbar</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:641</li>
+							<li>Defined in liefs-layout-manager.ts:877</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -281,14 +283,14 @@
 					<div class="tsd-signature tsd-kind-icon">before<wbr>Current<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:636</li>
+							<li>Defined in liefs-layout-manager.ts:872</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-beforecurrent-static-string-"><strong>Dragbar.beforeCurrent - Static String:</strong></h5>
-							<p>internal use only - no reason to call/use - stores &quot;at drag begin&quot; current value.</p>
 						</div>
+						<p>internal use only - no reason to call/use - stores &quot;at drag begin&quot; current value.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -297,14 +299,14 @@
 					<div class="tsd-signature tsd-kind-icon">direction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:646</li>
+							<li>Defined in liefs-layout-manager.ts:883</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-direction-static-boolean-"><strong>Dragbar.direction - Static Boolean:</strong></h5>
-							<p>internal use only - no reason to call/use - will be dropped next version</p>
 						</div>
+						<p>internal use only - no reason to call/use - will be dropped next version</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -313,14 +315,14 @@
 					<div class="tsd-signature tsd-kind-icon">dragstart<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:651</li>
+							<li>Defined in liefs-layout-manager.ts:889</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-dragstart-static-number-"><strong>Dragbar.dragstart - Static Number:</strong></h5>
-							<p>internal use only - no reason to call/use</p>
 						</div>
+						<p>internal use only - no reason to call/use</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -329,15 +331,15 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Down<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:657</li>
+							<li>Defined in liefs-layout-manager.ts:896</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-isdown-static-boolean-"><strong>Dragbar.isDown - Static Boolean:</strong></h5>
-							<p>internal use only - no reason to call/use - Indicates that the mouse has been clicked on
-							a dragbar, and is waiting to come up</p>
 						</div>
+						<p>internal use only - no reason to call/use - Indicates that the mouse has been clicked on
+						a dragbar, and is waiting to come up</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -346,15 +348,15 @@
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Init<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:663</li>
+							<li>Defined in liefs-layout-manager.ts:903</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<h5 id="-dragbar-noinit-static-boolean-"><strong>Dragbar.noInit - Static Boolean:</strong></h5>
-							<p>internal use only - no reason to call/use - needs &quot;on first instance set up&quot;
-							false to start, true after first instance of Dragbar</p>
 						</div>
+						<p>internal use only - no reason to call/use - needs &quot;on first instance set up&quot;
+						false to start, true after first instance of Dragbar</p>
 					</div>
 				</section>
 			</section>
@@ -370,15 +372,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:671</li>
+									<li>Defined in liefs-layout-manager.ts:912</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-dragbar-instance-selector-anonymous-function-"><strong>(Dragbar Instance).Selector - anonymous function:</strong></h5>
-									<p>internal use only - no reason to call/use - Indicates the selector uses to find the Dragbar
-									in this version it is Item.selector() + &quot; &gt; .&quot; + (&quot;Hdragbar&quot; or &quot;Vdragbar&quot;)</p>
 								</div>
+								<p>internal use only - no reason to call/use - Indicates the selector uses to find the Dragbar
+								in this version it is <a href="./_liefs_layout_manager_.item.html#selector">Item.selector</a>() + &quot; &gt; .&quot; + (&quot;Hdragbar&quot; or &quot;Vdragbar&quot;)</p>
 								<p>This could be changed by resetting this anonymous function</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -395,15 +397,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:736</li>
+									<li>Defined in liefs-layout-manager.ts:986</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-dragbar-instance-update-"><strong>(Dragbar Instance).update</strong></h5>
-									<p>internal use only - no reason to call/use
-									this function is called on resizeEvent to recalculate the Coord Class</p>
 								</div>
+								<p>internal use only - no reason to call/use
+								this function is called on resizeEvent to recalculate the Coord Class</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -419,14 +421,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:601</li>
+									<li>Defined in liefs-layout-manager.ts:834</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-dragbar-mousedown-static-method-"><strong>Dragbar.mouseDown - Static Method:</strong></h5>
-									<p>internal use only - no reason to call/use - called when dragbar clicked</p>
 								</div>
+								<p>internal use only - no reason to call/use - called when dragbar clicked</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -451,14 +453,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:620</li>
+									<li>Defined in liefs-layout-manager.ts:855</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-dragbar-mousemove-static-method-"><strong>Dragbar.mouseMove - Static Method:</strong></h5>
-									<p>internal use only - no reason to call/use - called when mousemove</p>
 								</div>
+								<p>internal use only - no reason to call/use - called when mousemove</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -480,14 +482,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:613</li>
+									<li>Defined in liefs-layout-manager.ts:847</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<h5 id="-dragbar-mouseup-static-method-"><strong>Dragbar.mouseUp - Static Method:</strong></h5>
-									<p>internal use only - no reason to call/use called when mouseUp</p>
 								</div>
+								<p>internal use only - no reason to call/use called when mouseUp</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">

@@ -69,6 +69,33 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<h5 id="-container-class-description-"><strong>Container - Class Description:</strong></h5>
+					</div>
+					<p>a (instance of Container) is simply a column OR (Never And) a row of Items.</p>
+					<p>A Container is an essential part of how liefs-layout-manager works.  That being said,
+					it is mostly invisible - which can be confusing.</p>
+					<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> l=I(<span class="hljs-string">"LeftSide"</span>,<span class="hljs-string">"200px"</span>); <span class="hljs-comment">// This defines an (instance of Item) - No Containers</span>
+</code></pre>
+					<p>The above only defines a Item.</p>
+					<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> B=h(<span class="hljs-string">"Both"</span>, I(<span class="hljs-string">"LeftSide"</span>,<span class="hljs-string">"200px"</span>), I(<span class="hljs-string">"RightSide"</span>,<span class="hljs-string">"100%"</span>)); <span class="hljs-comment">// This line creates 3 Items, and 1 Container.</span>
+</code></pre>
+					<p>The above does the following:</p>
+					<ul>
+						<li>Defines (instace of Item) &quot;LeftSide&quot;</li>
+						<li>Defines (instace of Item) &quot;RightSide&quot;</li>
+						<li>Defines (instace of Container) &quot;Both&quot; - with array of [LeftSide, RightSide] - horizontal direction indicator</li>
+						<li>Defines (instance of Item) &quot;Both&quot; - with (instance of Item).container = (the above line)</li>
+					</ul>
+					<p>Understanding the above, there is no need to access the Container Directly.
+						with the intension of making liefs-layout-manager easier to use, you ALWAYS refer to the Item.
+						...so even when we want data from a Container, we use the Item, and liefs-layout-manager finds the
+					matching container in the background.</p>
+					<p>It is helpful, if not key, Understanding this.</p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -135,9 +162,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1211</li>
+									<li>Defined in liefs-layout-manager.ts:1842</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-constructor-"><strong>Container constructor </strong></h5>
+									<p>This is done &quot;automatically&quot; by liefs-layout-manager using Item.I()
+									Do not call/use this - interlal use only</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -166,9 +200,19 @@
 					<div class="tsd-signature tsd-kind-icon">direction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1207</li>
+							<li>Defined in liefs-layout-manager.ts:1821</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-container-direction-boolean-"><strong>(instance of Container).direction boolean </strong></h5>
+							<p>&quot;the truth is horrible&quot; is how i rememer:</p>
+							<pre><code class="lang-javascript">(instance <span class="hljs-keyword">of</span> Container).direction = <span class="hljs-literal">true</span>; <span class="hljs-comment">// indicates horizontal (horrible)</span>
+(instance <span class="hljs-keyword">of</span> Container).direction = fase; <span class="hljs-comment">// indicates vertical (not horrible)</span>
+See DIRECTIONAL INDICATOR
+</code></pre>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="el" class="tsd-anchor"></a>
@@ -176,9 +220,15 @@
 					<div class="tsd-signature tsd-kind-icon">el<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1210</li>
+							<li>Defined in liefs-layout-manager.ts:1837</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-container-el-htmlelement-"><strong>(instance of Container).el HTMLElement </strong></h5>
+							<p>This (sometimes) point to the element represented by this Class</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="items" class="tsd-anchor"></a>
@@ -186,9 +236,16 @@
 					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.item.html" class="tsd-signature-type">Item</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1208</li>
+							<li>Defined in liefs-layout-manager.ts:1827</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-container-items-array-item-"><strong>(instance of Container).items Array<Item> </strong></h5>
+							<p>this is the Array<Items> that make up a row/column container
+							internal use only.  Can be accesses with:</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="label" class="tsd-anchor"></a>
@@ -196,9 +253,15 @@
 					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1205</li>
+							<li>Defined in liefs-layout-manager.ts:1790</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-container-label-string-"><strong>(instance of Container).label string </strong></h5>
+							<p>Simply the (optional) label of the (instance of Container)</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="lastupdate" class="tsd-anchor"></a>
@@ -206,9 +269,15 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1209</li>
+							<li>Defined in liefs-layout-manager.ts:1832</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-container-lastupdate-depreciated-"><strong>(instance of Container).lastUpdate Depreciated </strong></h5>
+							<p>this will be removed next revision</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -224,9 +293,28 @@
 					<div class="tsd-signature tsd-kind-icon">margin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1206</li>
+							<li>Defined in liefs-layout-manager.ts:1811</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-instance-of-container-margin-string-"><strong>(instance of Container).margin string </strong></h5>
+							<p>This is the space in pixels between the Items it contains.</p>
+						</div>
+						<p>If not specified, it duplicates <code>Container.marginDefault;</code>
+						It can be specified as follows:</p>
+						<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> o=h(<span class="hljs-string">"SomeGroupName"</span>, <span class="hljs-string">"100%"</span>, <span class="hljs-number">10</span>,   <span class="hljs-comment">// h(), v(), and I() all define items and Containers.  The first</span>
+        I(<span class="hljs-string">"LeftSideid"</span>, <span class="hljs-string">"50%"</span>),        <span class="hljs-comment">// TypeOf 'number' that it finds as an argument, it uses as margin</span>
+        I(<span class="hljs-string">"RightSideid"</span>, <span class="hljs-string">"50%"</span>)         <span class="hljs-comment">// for (instance of Container "SomeGroupName") in this case '10'</span>
+      );
+</code></pre>
+						<p>or, it can be modifed afterward: The next four lines all do the exact same thing.</p>
+						<pre><code class="lang-javascript">o.container.margin = <span class="hljs-number">4</span>;                                  <span class="hljs-comment">// by using variable assignment...</span>
+Item.get(<span class="hljs-string">"SomeGroupName"</span>).container.margin = <span class="hljs-number">4</span>;          <span class="hljs-comment">// by label of parent ITEM</span>
+Container.of( Item.get(<span class="hljs-string">"LeftSideid"</span>) ).margin = <span class="hljs-number">4</span>;       <span class="hljs-comment">// by label of child ITEM</span>
+Container.get(<span class="hljs-string">"SomeGroupName"</span>).margin = <span class="hljs-number">4</span>;               <span class="hljs-comment">// by label of parent CONTAINER</span>
+</code></pre>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="containers" class="tsd-anchor"></a>
@@ -234,9 +322,16 @@
 					<div class="tsd-signature tsd-kind-icon">containers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1197</li>
+							<li>Defined in liefs-layout-manager.ts:1749</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-container-containers-object-of-key-label-value-container-static-"><strong>Container.containers Object of key label value Container STATIC </strong></h5>
+							<p>This is where the complete list of Containers is stored.
+							Internal use - although I CAN think of reasons to access</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -252,9 +347,15 @@
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1196</li>
+							<li>Defined in liefs-layout-manager.ts:1743</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-container-debug-static-"><strong>Container.debug STATIC </strong></h5>
+							<p>This has not been implemented yet</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="lastdefined" class="tsd-anchor"></a>
@@ -262,9 +363,17 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Defined<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1200</li>
+							<li>Defined in liefs-layout-manager.ts:1774</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-container-lastdefined-instance-of-container-class-static-"><strong>Container.lastDefined (instance of Container) Class STATIC </strong></h5>
+							<p>If Handler and Layout left for liefs-layout-manager to figure out.....
+								this helps is its &#39;best guess&#39; for what you inteded the root to be.
+							... by thinking f(f(f(something))) // last called f() should be root</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="margindefault" class="tsd-anchor"></a>
@@ -272,9 +381,18 @@
 					<div class="tsd-signature tsd-kind-icon">margin<wbr>Default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;4</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1198</li>
+							<li>Defined in liefs-layout-manager.ts:1758</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-container-margindefault-number-static-"><strong>Container.marginDefault number STATIC </strong></h5>
+							<p>All Items are separated by (instance of Container).margin pixels.
+							If margin Value is not indicated at time of creation, this default is assumed.</p>
+							<pre><code class="lang-javascript">Container.marginDefault = <span class="hljs-number">10</span>; <span class="hljs-comment">// This changed the margin Default to 10 pixels</span>
+</code></pre>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="suspectedroot" class="tsd-anchor"></a>
@@ -282,9 +400,18 @@
 					<div class="tsd-signature tsd-kind-icon">suspected<wbr>Root<span class="tsd-signature-symbol">:</span> <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in liefs-layout-manager.ts:1199</li>
+							<li>Defined in liefs-layout-manager.ts:1767</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<h5 id="-container-suspectedroot-instance-of-container-class-static-"><strong>Container.suspectedRoot (instance of Container) Class STATIC </strong></h5>
+							<p>If Handler and Layout left for liefs-layout-manager to figure out.....
+								this is its &#39;best guess&#39; for what you inteded the root to be.
+							... usually correct - if not, add Handler and Layout to your code.</p>
+						</div>
+						<p>internal use</p>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -299,9 +426,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1228</li>
+									<li>Defined in liefs-layout-manager.ts:1883</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-container-itembylabel-function-"><strong>(instance of Container).itemByLabel() function </strong></h5>
+									<p>debating if this function has merit - on the axe list.
+									just use Item.get(&quot;SomeLabel&quot;);</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -322,9 +456,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1219</li>
+									<li>Defined in liefs-layout-manager.ts:1859</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-container-itemscheck-function-"><strong>(instance of Container).itemsCheck() function </strong></h5>
+									<p>When a Container is defined, this function checks to see that the % values total 100 percent</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -339,9 +479,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1211</li>
+									<li>Defined in liefs-layout-manager.ts:1842</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-container-selector-"><strong>(instance of Container).selector </strong></h5>
+									<p>Identical to (see) Item.selector</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -356,9 +502,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1225</li>
+									<li>Defined in liefs-layout-manager.ts:1875</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-instance-of-container-update-function-"><strong>(instance of Container).update() function </strong></h5>
+									<p>This function calles a recursive update of container - items.
+									it is called by resizeEvent.</p>
+								</div>
+								<p>If you would like to &quot;test&quot; your layout - you can pop some co-ordinates here to check</p>
+								<pre><code class="lang-javascript">Container.get(<span class="hljs-string">"SomeGroupName"</span>).update(<span class="hljs-number">1920</span>, <span class="hljs-number">1080</span>); <span class="hljs-comment">// this returns an object of co-ordinates call this to test layout</span>
+</code></pre>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -391,19 +547,38 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1162</li>
+									<li>Defined in liefs-layout-manager.ts:1700</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-fill-function-static-"><strong>Container.fill() - function: Static</strong></h5>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>container: <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(instance of Container)</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> xOffset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - Offset of container, relative to parents</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> yOffset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - Offset of container, relative to parents</p>
+										<p>The &#39;Magic&#39; that calculates all the Coord Classes is here in Contianer Class.
+											This is step 3 of 3
+											this applys the results of Container.fixed, and Container.percent
+										and fills the Item.size (Coord Object) with the results calculated</p>
+										<p>This is an internal function - no need to call/use</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -420,22 +595,42 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1131</li>
+									<li>Defined in liefs-layout-manager.ts:1642</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-fixed-function-static-"><strong>Container.fixed() - function: Static</strong></h5>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>container: <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(instance of Container)</p>
+									</div>
 								</li>
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - new width used in calculations</p>
+									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - new height used in calculations</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>number - sum of fixed pixels</p>
+							<p>The &#39;Magic&#39; that calculates all the Coord Classes is here in Contianer Class.
+								This is step 1 of 3
+								this step adds all the &#39;px&#39; values in the row/column of the container, and returns them.
+							They will be subtracted from available pixels for %</p>
+							<p>This is an internal function - no need to call/use</p>
 						</li>
 					</ul>
 				</section>
@@ -449,16 +644,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1123</li>
+									<li>Defined in liefs-layout-manager.ts:1612</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-get-function-static-"><strong>Container.get() - function: Static</strong></h5>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>label: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>label of (instance of Item)</p>
+										<pre><code class="lang-javascript">Container.get(<span class="hljs-string">"SomeItemLabel"</span>);  <span class="hljs-comment">// returns (instance of Container)</span>
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h4>
+							<p>(instance of Container)</p>
 						</li>
 					</ul>
 				</section>
@@ -472,16 +678,32 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1114</li>
+									<li>Defined in liefs-layout-manager.ts:1595</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-of-function-static-"><strong>Container.of() - function: Static</strong></h5>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>item: <a href="_liefs_layout_manager_.item.html" class="tsd-signature-type">Item</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(instance of Item) - Child Item Looking for parent</p>
+										<pre><code class="lang-javascript">(instance <span class="hljs-keyword">of</span> Item).container;       <span class="hljs-comment">// this returns the container child of the (instance of Item)</span>
+<span class="hljs-comment">// ... so returns CHILD Of ITEM (Container)</span>
+Container.of( (instance <span class="hljs-keyword">of</span> Item) );
+<span class="hljs-comment">// The above line returns the container that contains this exact (insance of Item)</span>
+<span class="hljs-comment">// as one of its children</span>
+<span class="hljs-comment">// ... so returns PARENT Of ITEM (Container)</span>
+</code></pre>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h4>
+							<p>(instance of Container)</p>
 						</li>
 					</ul>
 				</section>
@@ -495,22 +717,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1147</li>
+									<li>Defined in liefs-layout-manager.ts:1672</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-percent-function-static-"><strong>Container.percent() - function: Static</strong></h5>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>container: <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(instance of Container)</p>
+									</div>
 								</li>
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - new width used in calculations</p>
+									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - new height used in calculations</p>
+									</div>
 								</li>
 								<li>
 									<h5>fixed: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>number - fixed value calculated in Contaner.fixed()</p>
+										<p>The &#39;Magic&#39; that calculates all the Coord Classes is here in Contianer Class.
+											This is step 2 of 3
+											this step divides the remaining pixels (after minusing all the constant px values)
+										and splits them according to the % values defined in each (instance of Item) in the (Container.items Array)</p>
+										<p>This is an internal function - no need to call/use</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -527,16 +771,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1127</li>
+									<li>Defined in liefs-layout-manager.ts:1624</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-push-function-static-"><strong>Container.push() - function: Static</strong></h5>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>container: <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(instance of Container)</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h4>
+							<p>(instance of Container)
+								No reason to use this - internal use -
+								...as the Containers are defines, push them on to the &quot;Array<defined>&quot;
+							<code>Container.containers</code></p>
 						</li>
 					</ul>
 				</section>
@@ -550,9 +806,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1201</li>
+									<li>Defined in liefs-layout-manager.ts:1782</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-root-instance-of-container-class-static-"><strong>Container.root (instance of Container) Class STATIC </strong></h5>
+									<p>Seeing the whole function is the best explanation:</p>
+									<pre><code class="lang-javascript"><span class="hljs-keyword">static</span> root() { <span class="hljs-keyword">return</span> (Container.suspectedRoot) ? Container.suspectedRoot : Container.lastDefined;}
+</code></pre>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_liefs_layout_manager_.container.html" class="tsd-signature-type">Container</a></h4>
 						</li>
 					</ul>
@@ -567,9 +831,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in liefs-layout-manager.ts:1178</li>
+									<li>Defined in liefs-layout-manager.ts:1721</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h5 id="-container-updaterecursive-function-static-"><strong>Container.updateRecursive() - function: Static</strong></h5>
+									<p>This is an internal function - no need to call/use</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
