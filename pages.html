@@ -39,11 +39,8 @@
 </html>
 <script>
 function onSelectChange(value) {  // our custom Select Change Function.......
-    if (value[0] === '/') window.location = "http://liefs.paperplane.io"+value;// start of / - link
-    else {
-      var pageNames = Item.get("Pages").pages.map(function (item) { return item.label; })
-      if (pageNames.indexOf(value) > -1) Item.setPage("Pages", value);
-    }
+    var pageNames = Item.get("Pages").pages.map(function (item) { return item.label; })
+    if (pageNames.indexOf(value) > -1) Item.setPage("Pages", value);
 }
     H("MasterHandler",                                                  // Tell Master Handler, new Instance (Usually Only One)
         L("SmallLayout",                                                // Layout (Use Container if Condition) --------------//
