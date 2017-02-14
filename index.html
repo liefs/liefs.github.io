@@ -64,35 +64,112 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p><style>
+body {font-size: 120%;}
+.Item{color: blue;}
+.Dragbar{color : #88a3e0;}
+.Container{color : green;}
+.Layout{color : red;}
+.Handler{color : #6006e8;}
+.boxed { border: 1px solid darkgreen;}
+</style></p>
 				<p><h1>liefs-layout-manager CONCEPT PAGE</h1></p>
+				<p><hr /></p>
 				<p>
-					liefs-layout-manager is (Typescript) javascript code that manages the positions of the elements on the page. This is a basic &quot;concept&quot; outline.<br><br> Item refers to liefs-layout-manager.Item<br> Dragbar refers to liefs-layout-manager.Dragbar<br>    Container refers to liefs-layout-manager.Container<br> Layout refers to liefs-layout-manager.Layout<br> Handler refers to liefs-layout-manager.Handler<br><br> liefs-layout-manager does the following:<br>
+					This project is best understood &#39;by example&#39; - if you are new to this repo please do the following:<br /><br />
+					For Each of the following examples:
+					<ol>
+						<li>
+							Click on the link and resize the page - move your mouse all over it... (Think to yourself - I don&#39;t get it...)
+						</li>
+						<li>
+							<span class="Layout">View Source</span> of that page. (wonder where that actual code is - is it not in front of me? Wait that one line is it? Feel the mental epiphany.)
+						</li>
+					</ol>
+					<ol>
+						<li>
+							<a href="https://liefs.github.io/step01.html">Example 01 - &quot;You have to start somewhere&quot;</a><br /><br />
+							This example shows the most &quot;basic&quot; example using liefs-layout-manager possible.<br />
+							It introduces you to
+							<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>,
+							the format, and (if you read the view source) explains terms, and details what exact steps are happening in the backgroud.
+						</li><br />
+						<li>
+							<a href="https://liefs.github.io/step02.html">Example 02 - &quot;Any Combination of Items/Containers makes a layout&quot;</a><br /><br />
+							This example extends the first example, showing how to nest
+							<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>s
+							and <a href="classes/_liefs_layout_manager_.container.html" class="Container" title="liefs-layout-manager.Container (Class Object)">Container</a>s
+							to create any (rectangual) layout (triangles are not in the forcast)
+						</li><br />
+						<li>
+							<a href="https://liefs.github.io/step03.html">Example 03 - &quot;Items in a layout can be defined as &#39;pages&#39;&quot;</a><br /><br />
+							This example demonstrates how to define an
+							<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>(s)
+							as a &quot;Page(s) of Some Other
+							<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>&quot;
+						</li><br />
+						<li>
+							<a href="https://liefs.github.io/step04.html">Example 04 - &quot;Items in a layout can be defined with Dragbars&quot;</a><br /><br />
+							This example demonstrates how to define an
+							<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>(s)
+							with a
+							<a href="classes/_liefs_layout_manager_.dragbar.html" class="Dragbar" title="liefs-layout-manager.Dragbar (Class Object)">Dragbar</a>.<br />
+							By doing so, you enable this item to be &quot;stretch&quot; starting at &#39;start&#39; as low as &#39;min&#39; and as high as &#39;max&#39; (see view-source for more details)
+						</li><br />
+						<li>
+							<a href="https://liefs.github.io/step05.html">Example 05 - &quot;Handlers Handle Layous according to Your Rules.&quot;</a><br /><br />
+							This example demonstrates using a Handler.  In this example, the Handler has 6 different Layouts that are chosen by
+							our conditionalFunction (for Each Layout) based on sreen ratio.  If the screen ratio is high (way more width pixels than height) it
+							has all Items in a row, as you progress towards (way more height pixels that width) it progresses to all one column.  This example
+							is &quot;impractable&quot; for ANY application, but demonstrates how Layout Change.<br />
+							Note on this example: on your Chrome Browser (while viewing link): open Console (F12) and see it note layout switches in output.
+						</li><br />
+						<li>
+							<a href="https://liefs.github.io/pages.html">Pages - Putting it all together</a><br /><br />
+							This is a boilerplate html template - for liefs-layout-manager<br />
+							If you are going to use this software, why not start is this exact working page and add/delete from there....
+						</li><br />
+					</ol><hr />
+				</p>
+				<p>
+					Ok - You&#39;ve tried the examples, here is the docs: (or the link below will make 0 sense)<br />
+					<a href="https://liefs.github.io/modules/_liefs_layout_manager_.html">https://liefs.github.io/modules/_liefs_layout<em>manager</em>.html</a><br />
+				</p><hr />
+				<p>
+					liefs-layout-manager is (Typescript) javascript code that manages the positions of the elements on the page.
+					This is a basic &quot;concept&quot; outline.<br><br>
+					<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> refers to liefs-layout-manager.<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a><br>
+					<a href="classes/_liefs_layout_manager_.dragbar.html" class="Dragbar" title="liefs-layout-manager.Dragbar (Class Object)">Dragbar</a> refers to liefs-layout-manager.<a href="classes/_liefs_layout_manager_.dragbar.html" class="Dragbar" title="liefs-layout-manager.Dragbar (Class Object)">Dragbar</a><br>
+					<a href="classes/_liefs_layout_manager_.container.html" class="Container" title="liefs-layout-manager.Container (Class Object)">Container</a> refers to liefs-layout-manager.<a href="classes/_liefs_layout_manager_.container.html" class="Container" title="liefs-layout-manager.Container (Class Object)">Container</a><br>
+					<a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a> refers to liefs-layout-manager.<a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a><br>
+					<a href="classes/_liefs_layout_manager_.handler.html" class="Handler" title="liefs-layout-manager.Handler (Class Object)">Handler</a> refers to liefs-layout-manager.<a href="classes/_liefs_layout_manager_.handler.html" class="Handler" title="liefs-layout-manager.Handler (Class Object)">Handler</a><br><br>
+					liefs-layout-manager does the following:<br>
 					<ul>
 						<li>
-							An Item (Object/Class) points to an HTML Element. Each Item points to only one Element.
-							It is common for different Items to point to the same Element. This &quot;assignment&quot; Indicates
+							An <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> (Object/Class) points to an HTML Element. Each <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> points to only one Element.
+							It is common for different <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>s to point to the same Element. This &quot;assignment&quot; Indicates
 							that the position of this HTML element will be governed by liefs-layout-manager
 							(by css Element.style - position, visibility, left, top, width, height). This element,
 							and all its children will ignore what the dom proposes as its postion, and will be &quot;overwritten&quot;
 							to whatever liefs-layout-manager deceides is best. (Detailed later on)<br>
-							Item (Object/Class) Handles the creation, and storage of all Item related data.
+							<a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> (Object/Class) Handles the creation, and storage of all <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> related data.
 						</li><br>
 						<li>
-							An Item can be extended to be the &quot;root&quot; of a Container. (Details explained later on)<br />
-							An Item can be extedend to include other items, as Pages. (Details explained later on)<br />
+							An <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> can be extended to be the &quot;root&quot; of a <a href="classes/_liefs_layout_manager_.container.html" class="Container" title="liefs-layout-manager.Container (Class Object)">Container</a>. (Details explained later on)<br />
+							An <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> can be extedend to include other items, as Pages. (Details explained later on)<br />
 						</li><br>
 						<li>
-							A Container (Object/Class) contains an Array of [row (horizontal) or column (vertical)] of Items.
+							A <a href="classes/_liefs_layout_manager_.container.html" class="Container" title="liefs-layout-manager.Container (Class Object)">Container</a> (Object/Class) contains an Array of [row (horizontal) or column (vertical)] of <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>s.
 						</li><br>
 						<li>
-							By understanding how to nest Items and Containers, you can produce ANY arrangement of Elements
+							By understanding how to nest <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>s and <a href="classes/_liefs_layout_manager_.container.html" class="Container" title="liefs-layout-manager.Container (Class Object)">Container</a>s, you can produce ANY arrangement of Elements
 							(usually divs) any way you like.<br>Note: Scrolling inside divs is accomplished through standard methods.<br />
 						</li><br>
 						<li>
-							A Layout (Object/Class) has only two properties:
+							A <a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a> (Object/Class) has only two properties:
 							<ol>
 								<li>
-									A root Item - representing the &quot;arrangment&quot; of Elements created above.
+									A root <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> - representing the &quot;arrangment&quot; of Elements created above.
 								</li>
 								<li>
 									An anonymous function with Elements current width and height as arguments, to determine if this
@@ -102,9 +179,9 @@
 							</ol>
 						</li><br>
 						<li>
-							A Handler (Object/Class) represents a choice list of which Layout to display.(Array &lt;Layout&gt;)<br /> After each resizeEvent, this Handler instance iterates over a list of Layouts, checking the Layout.conditionalFunction. if it returns
-							true, that Layout.container is Chosen.<br /> If it makes it to the end of the list, and no layout is chosen, it defaults to the last Layout in list, then whines about it in console.log()<br> If a liefs-layout-manager Item, is the root
-							of the page, there will be only one Handler instance.<br> If a liefs-layout-manager Item is a child of <em>some other resize method</em> then a seperate Handler instance must be made for each &quot;free Item child&quot; of the page.<br> (Examples To follow)
+							A <a href="classes/_liefs_layout_manager_.handler.html" class="Handler" title="liefs-layout-manager.Handler (Class Object)">Handler</a> (Object/Class) represents a choice list of which <a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a> to display.(Array &lt;<a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a>&gt;)<br /> After each resizeEvent, this <a href="classes/_liefs_layout_manager_.handler.html" class="Handler" title="liefs-layout-manager.Handler (Class Object)">Handler</a> instance iterates over a list of <a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a>s, checking the <a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a>.conditionalFunction. if it returns
+							true, that <a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a>.container is Chosen.<br /> If it makes it to the end of the list, and no layout is chosen, it defaults to the last <a href="classes/_liefs_layout_manager_.layout.html" class="Layout" title="liefs-layout-manager.Layout (Class Object)">Layout</a> in list, then whines about it in console.log()<br> If a liefs-layout-manager <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a>, is the root
+							of the page, there will be only one <a href="classes/_liefs_layout_manager_.handler.html" class="Handler" title="liefs-layout-manager.Handler (Class Object)">Handler</a> instance.<br> If a liefs-layout-manager <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> is a child of <em>some other resize method</em> then a seperate <a href="classes/_liefs_layout_manager_.handler.html" class="Handler" title="liefs-layout-manager.Handler (Class Object)">Handler</a> instance must be made for each &quot;free <a href="classes/_liefs_layout_manager_.item.html" class="Item" title="liefs-layout-manager.Item (Class Object)">Item</a> child&quot; of the page.<br> (Examples To follow)
 						</li>
 					</ul>
 				</p>
