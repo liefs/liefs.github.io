@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager Example 001</title>
+<style>
+div {border-style: solid; border-width: 1px;}
+li {cursor: pointer;} li:hover {cursor: pointer; background-color: green;}
+#Pages {background-color: lightgreen;} #Page2 {background-color: lightcyan;}
+#Page3 {background-color: lightsteelblue;} #Page4 {background-color: AliceBlue;}
+#Page5 {background-color: Beige;} #Page6 {background-color: pink;}
+</style>
+    <script src="https://liefs.github.io/liefs-layout-manager.V1.0.0.min.js"></script>
+  </head>
+<body>
+
+<div id="TreeMenu">TreeMenu
+  <ol>
+    <li onclick='Item.nextPage("Pages");'>Next Page (loop)</li>
+    <li onclick='Item.nextPage("Pages", true);'>Next Page (stop)</li>
+    <li onclick='Item.backPage("Pages");'>Back Page (loop)</li>
+    <li onclick='Item.backPage("Pages", true);'>Back Page (stop)</li>
+    <li onclick='Item.setPage("Pages", "Pages");'>Go To Page 1</li>
+    <li onclick='Item.setPage("Pages", "Page2");'>Go To Page 2</li>
+    <li onclick='Item.setPage("Pages", "Page3");'>Go To Page 3</li>
+    <li onclick='Item.setPage("Pages", "Page4");'>Go To Page 4</li>
+    <li onclick='Item.setPage("Pages", "Page5");'>Go To Page 5</li>
+    <li onclick='Item.setPage("Pages", "Page6");'>Go To Page 6</li>
+  </ol>
+</div>
+
+<div id="Pages">Page 1</div>
+<div id="Page2">Page 2</div>
+<div id="Page3">Page 3</div>
+<div id="Page4">Page 4</div>
+<div id="Page5">Page 5</div>
+<div id="Page6">Page 6</div>
+
+</body>
+</html>
+<script>
+h("Root",                      // Horizontal container of
+  I("TreeMenu", "300px"),      // Menu on left (300 px wide)
+  I("Pages", "100%",           // .. and the "page" on the rest of the width
+      I("Page2"),              // no directional indicator? ok these must be
+      I("Page3"),              // pages that are being added
+      I("Page4"),              // there is not limit to the amount of pages you add.
+      I("Page5"),              // adding pages can be done afterward
+      I("Page6"))              // I("Pages","300px").pages = [I("Page2"), I("Page3"), ...]
+);                             // there are cases where an array of Items might exist, that should be pages.
+</script>
+
+<!--
+/* Example 03 - "Items in a layout can be defined as 'pages'"
+ *
+ * This Example demonstrates how to implement the 'pages' feature.
+ *
+ * Note - any 'start' values in Items defined as page-children are ignored.
+ * and the "root" page is used for 'start' values (in this case id="Pages")
+ *
+ * Note: Becuse there is NO DIRECTIONAL INDICATOR, liefs-layout-manager thinks
+ * you are trying to make pages.
+ * if you ACCIDENTLY ADDED a Direction Indicator, it would assume you are trying
+ * to make a row/column of Items, NOT Pages. - World of Difference
+ *
+ * Note: separate layouts might require separate instances of I("Pages")
+ * (...read more about this on upcomming example "multiple layouts")
+ *
+ */
+-->

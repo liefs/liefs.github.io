@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager Example 001</title>
+    <style>div {border-style: solid; border-width: 1px;}
+    .Hdragbar {position: fixed;cursor:col-resize;border-style: none;border-width: medium;}
+    .Vdragbar {position: fixed;cursor:row-resize;border-style: none;border-width: medium;}
+    </style>
+    <script src="https://liefs.github.io/liefs-layout-manager.V1.0.0.min.js"></script>
+  </head>
+<body>
+<div id="Header">Header Content</div>
+<div id="leftSide">Left Side Content</div>
+<div id="rightSide">Right Side Content</div>
+</body>
+</html>
+<script>
+v("Master",                                        // define Vertical Container,
+    I("Header", "100px", "40px", "200px"),         //     The id="Header" element starts at 100px high, but can be stretched from 40px to 200px
+    h("HorizontalGroup", "100%",                   //     Whatever the Header doesn't use, goes here
+      I("leftSide", "400px", "100px", "800px"),    //         The left of 'here' starts at 400px but can be dragged from 100px to 800px
+      I("rightSide", "100%")                       //         The Right of this is whatever the left isn't using.
+    )
+)
+</script>
+
+
+<!--
+/* Example 04 - "Items in a layout can be defined with Dragbars"
+ *
+ * This demonstrates how to set upper and lower limits for a draggable element(or element groups)
+ * by having 3 'start' values, instead of one, it reads them as initial (start) lower (min) and upper (max)
+ *
+ * Note: v1.0.0 only drags 'px' start values
+ * not designed for '%' implementation - draggable change
+ *
+ * Note: By default, the Dragbar size = margin size.
+ * if you are having a difficult time with mouseover, increase margin size.
+ * (see Docs for how to custom set)
+ *
+ * Note: to accomplish this dragbar effect, liefs-layout-manager inserts a child element:
+ * <div id="Header">                        // both of these
+ *  <div class="Vdragbar"></div>            // are positioned buy liefs-layout-manager
+ * </div>                                   // but the .css style of dragbar is all you BABY!
+ * <div id="leftSide">                      // :hover effect?
+ *  <div class="Hdragbar"></div>            // possible background image?
+ * </div>
+ *
+ * Note: Order of operations has the Item created BEFORE its parent.
+ * .....but Dragbar - needs to know the parent Container direction
+ * to know which css style to use.... Vdragbar or Hdragbar
+ *
+ * quick fix - I pushed back its creation by a tick.  Ok - now parent exists
+ * at time of creation.  Why do I mention it?
+ * You might (like I was) have your code searching for something created Next Tick.
+ * ...so your search has to be next tick.
+ *
+ * Note: you MUST set style.position of (V/H)dragbar to fixed, or is just wont work!
+ * You have to do that part (as seen in this example)
+ */

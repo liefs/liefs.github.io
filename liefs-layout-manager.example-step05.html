@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager Example 001</title>
+<style>
+div {border-style: solid; border-width: 1px;}
+#div01 {background-color: #418769;} #div02 {background-color: #86B699;} #div03 {background-color: #616656;}
+#div04 {background-color: #86B699;} #div05 {background-color: #C3FBF0;} #div06 {background-color: #A7F9D6;}
+#div07 {background-color: #5FDD9D;} #div08 {background-color: #76F7BF;} #div09 {background-color: #91F9E5;}
+#div10 {background-color: #599B74;} #div11 {background-color: #3F4531;} #div12 {background-color: pink;}
+</style>
+    <script src="https://liefs.github.io/liefs-layout-manager.V1.0.0.min.js"></script>
+  </head>
+<body>
+<div id="div01">01</div>
+<div id="div02">02</div>
+<div id="div03">03</div>
+<div id="div04">04</div>
+<div id="div05">05</div>
+<div id="div06">06</div>
+<div id="div07">07</div>
+<div id="div08">08</div>
+<div id="div09">09</div>
+<div id="div10">10</div>
+<div id="div11">11</div>
+<div id="div12">12</div>
+
+</body>
+</html>
+<script>
+Container.marginDefault = 8;
+H(
+    L(  (x, y) => { return (x > y*5); },    // Layout 1 of 6
+        h("L_12x1", I("div01", "9%"), I("div02", "8%"), I("div03", "8%"), I("div04", "9%"), I("div05", "8%"), I("div06", "8%"),
+          I("div07", "8%"), I("div08", "9%"), I("div09", "8%"), I("div10", "8%"), I("div11", "8%"), I("div12", "9%")
+        )
+    ),
+    L(  (x, y) => { return (x > y*2); },    // Layout 2 of 6
+        v("L_6x2",
+            h("50%", I("div01", "17%"), I("div02", "16%"), I("div03", "17%"), I("div04", "17%"), I("div05", "16%"), I("div06", "17%")
+            ),
+            h("50%", I("div07", "17%"), I("div08", "16%"), I("div09", "17%"), I("div10", "17%"), I("div11", "16%"),I("div12", "17%")
+            )
+        )
+    ),
+    L(  (x, y) => { return (x > y); },    // Layout 3 of 6
+        v("L_4x3",
+            h("33%", I("div01", "25%"), I("div02", "25%"), I("div03", "25%"), I("div04", "25%")
+            ),
+            h("34%", I("div05", "25%"), I("div06", "25%"), I("div07", "25%"), I("div08", "25%")
+            ),
+            h("33%", I("div09", "25%"), I("div10", "25%"), I("div11", "25%"), I("div12", "25%")
+            )
+        )
+    ),
+    L(  (x, y) => { return (x*1.5 > y); },    // Layout 4 of 6
+        v("L_3x4",
+            h("25%", I("div01", "33%"), I("div02", "34%"), I("div03", "33%")),
+            h("25%", I("div04", "33%"), I("div05", "34%"), I("div06", "33%")),
+            h("25%", I("div07", "33%"), I("div08", "34%"), I("div09", "33%")),
+            h("25%", I("div10", "33%"), I("div11", "34%"), I("div12", "33%"))
+        )
+    ),
+    L(  (x, y) => { return (x*2.5 > y); },    // Layout 5 of 6
+        v("L_2x6",
+            h("17%", I("div01", "50%"), I("div02", "50%")),
+            h("16%", I("div03", "50%"), I("div04", "50%")),
+            h("17%", I("div05", "50%"), I("div06", "50%")),
+            h("17%", I("div07", "50%"), I("div08", "50%")),
+            h("16%", I("div09", "50%"), I("div10", "50%")),
+            h("17%", I("div11", "50%"), I("div12", "50%"))
+        )
+    ),
+    L(  (x, y) => { return true; },          // Layout 6 of 6
+        v("L_1x12", I("div01", "9%"), I("div02", "8%"), I("div03", "8%"), I("div04", "9%"), I("div05", "8%"), I("div06", "8%"),
+            I("div07", "8%"), I("div08", "9%"), I("div09", "8%"),  I("div10", "8%"), I("div11", "8%"), I("div12", "9%")
+        )
+    )
+);
+</script>
+
+
+<!--
+/* Example 05 - "Handlers Handle Layous according to Your Rules."
+
+ */
+7

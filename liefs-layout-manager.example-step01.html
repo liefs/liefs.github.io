@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager Example 001</title>
+    <style>div {border-style: solid; border-width: 1px;}</style>
+    <script src="https://liefs.github.io/liefs-layout-manager.V1.0.0.min.js"></script>
+  </head>
+<body>
+<div id="leftSide">Left Side Content</div>
+<div id="rightSide">Right Side Content</div>
+</body>
+</html>
+<script>
+h("SomeNameImadeUp", I("leftSide", "400px"), I("rightSide", "100%") );
+</script>
+
+
+<!-- (~23K) is NOTHING - A VERY IMPORTANT UNDERSTANDING IS HOW SMALL THIS CODE IS! OPEN .min.js in a new page and see -->
+<!-- or "https://liefs.github.io/liefs-layout-manager.V1.0.0.js" (~80K) for documented code -->
+<!-- Note: liefs-layout-manager starts with the first javascript call to: H/L/h/v/I() - it does nothing "onload"  -->
+
+<!--
+/* Example 01 - "You have to start somewhere"
+ *
+ * sure, for a "one liner" the above is readable, and works fine, but as things progress,
+ * readable will be Escential - to avoid "bracket/coma/semicolen nightmares"
+ * An easy to spot pattern will help:
+ *
+ * h("SomeNameImadeUp",
+ *  I("leftSide", "400px"),
+ *  I("rightSide", "100%")
+ * );
+ *
+ * The above line indicates the following (in order of operations):
+ * 1. There is only element in this dom with id="leftSide" - Create (Item Instance) with .label = "leftSide"
+ *    The "400px" (refered to as a 'start' value) indicates this element will have
+ *    a fixed width/height (...at this point we don't know which) of 400 pixels
+ *
+ * 2. There is only element in this dom with id="rightSide" - Create (Item Instance) with .label = "rightSide"
+ *    The "100%" (refered to as a 'start' value) indicates this element will have
+ *    a variable width of "whatever is left after all px's are removed"
+ *    In this case, the screen width has 400px removed, and the remaining 100% of pixels go here.
+ *
+ * 3. h() - is IDENTICAL to I() in EVERY WAY - but is a 'Horizontal Indicator' (see docs)
+ *    note: h(...) and I("hor", ...) are IDENTICAL - same function call.
+ *
+ *    (Because of above Indicator) There may be 0 or 1 elements in the dom with id="SomeNameImadeUp"
+ *    In the above example, there isn't an element (0), so outer screen size is used as "root"
+ *    If there was an element with id="SomeNameImadeUp" (1), its dimentions would be considered "root"
+ *
+ *   unlike 1) and 2) this Item Definition has a Horizontal indicator, and Item Children.
+ *   That means that "SomeNameImadeUp" is defined as both a (Item Instance) AND a (Container Instance)
+ *
+ * 4. Wait [Handler.delayUntilStart (default 200)] miliseconds to let the users code "sink in"
+ *
+ * 5. There is no (Layout Instance) - Create One Automatically - done in background
+ *
+ * 6. There is no (Handler Instance) - Create One Automatically - done in background
+ *
+ * 7. Code will remain dormant until a "resizeEvent" - then tries to hold Definitions
+ *
+ */ -->
