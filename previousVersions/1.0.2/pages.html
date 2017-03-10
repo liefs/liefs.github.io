@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager Example 001</title>
+    <link rel="stylesheet" href="https://liefs.github.io/liefs-layout-manager.css"> <!-- Note: .Hdragbar .Vdragbar are required for Dragbars -->
+    <script src="https://liefs.github.io/liefs-layout-manager.V1.0.0.min.js"></script>
+<!-- 23K is NOTHING - A VERY IMPORTANT UNDERSTANDING IS HOW SMALL THIS CODE IS! OPEN .min.js in a new page and see -->
+  </head> <!-- or "https://liefs.github.io/liefs-layout-manager.V1.0.0.js" (~80K) for documented code -->
+<!-- Note: liefs-layout-manager starts with the first javascript call to: H/L/h/v/I() - it does nothing "onload"  -->
+<body>
+    <div id="Header">This Is My Giant Title</div>
+    <div id="ListTree">
+        <h2 align="center">My Menu</h2>
+        <ul>
+            <li onclick='Item.setPage("Pages", "Pages");'>Page1</li>
+            <li onclick='Item.setPage("Pages", "Page2");'>Page2</li>
+            <li onclick='Item.setPage("Pages", "Page3");'>Page3</li>
+            <li onclick='Item.setPage("Pages", "Page4");'>Page4</li>
+        </ul>
+    </div>
+    <!-- Above Used Only on Large Layout -->
+    <div id="SelectTree">
+        <select onchange="onSelectChange(this.value)"><!-- Select Events are handled in our custom function below on this page-->
+        <option value="Pages">Page 1</option>
+        <option value="Page2">Page 2</option>
+        <option value="Page3">Page 3</option>              <!--Good, ole dependable select. Nothin beats select-->
+        <option value="Page4">Page 4</option>
+    </select>
+    </div>
+    <!-- Above Used Only On Small Layout -->
+    <div id="Pages">Page 1 Content - Resize Page Width <-- this way --> to switch layouts<br>Try the dragbar below the giant title, and right of my menu</div>
+    <!-- Above Default Page -->
+    <div id="Page2">Page 2 Content - Resize Page Width <-- this way --> to switch layouts<br>Try the dragbar below the giant title, and right of my menu</div>
+    <div id="Page3">Page 3 Content - Resize Page Width <-- this way --> to switch layouts<br>Try the dragbar below the giant title, and right of my menu</div>
+    <div id="Page4">Page 4 Content - Resize Page Width <-- this way --> to switch layouts<br>Try the dragbar below the giant title, and right of my menu</div>
+</body>
+
+</html>
+<script>
+function onSelectChange(value) {  // our custom Select Change Function.......
+    var pageNames = Item.get("Pages").pages.map(function (item) { return item.label; })
+    if (pageNames.indexOf(value) > -1) Item.setPage("Pages", value);
+}
+    H("MasterHandler",                                                  // Tell Master Handler, new Instance (Usually Only One)
+        L("SmallLayout",                                                // Layout (Use Container if Condition) --------------//
+            v("Small",                                                  // Arbitrary name of Vertical Item                   //
+                I("Header", "100px", "70px", "150px"),                  // Header, Start 100px, drag from 70px to 150px      //
+                I("SelectTree", "50px"),                                // Select Tree 50px high                             //
+                I("Pages", "100%", I("Page2"), I("Page3"), I("Page4"))  // define Item Pages - with "Pages" as 1st page.     //
+            ),                                                                                                               //
+            (x, y) => {return (x < 1000) ? true : false;}               // I'm using screen size, but ANY condition works ---//
+        ),
+        L("LargeLayout",
+            v("Large",                                                  // Layout (Use Container if Condition) --------------//
+                Item.get("Header"),                                     // If you wish to "remember" strech - to be seperate instance, I("Header", ...)
+                h("Body", "100%",                                       // Arbitrary name ov Horizontal Item
+                    I("ListTree", "200px", "100px", "400px"),           // ListTree, Start 200px, drag from 100px to 400px
+                    Item.get("Pages")                                   // To "Remember Page" and stretch - to be separate instance, I("Pages", ...)
+                )
+            ),
+            (x, y) => { return true; }                                  // Good practice, if makes it to end of list, and none qualify, chooses last anyways
+        )
+    );
+</script>

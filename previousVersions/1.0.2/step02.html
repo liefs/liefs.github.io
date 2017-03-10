@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager Example 001</title>
+    <style>div {border-style: solid; border-width: 1px;}</style>
+    <script src="https://liefs.github.io/liefs-layout-manager.V1.0.0.min.js"></script>
+  </head>
+<body>
+<!-- header -->
+<div id="HeaderLeft">HeaderLeft</div>
+<div id="HeaderRight">HeaderRight</div>
+
+<!-- body -->
+<div id="TreeMenu">TreeMenu</div>
+<div id="MainContent">MainContent</div>
+
+<div id="AdBlock1">AddBlock1</div>
+<div id="AdBlock2">AddBlock2</div>
+<div id="AdBlock3">AddBlock3</div>
+
+<!-- Footer -->
+<div id="FooterLeft">FooterLeft</div>
+<div id="FooterMid">FooterMid</div>
+<div id="FooterRight">FooterRight</div>
+</body>
+</html>
+<script>
+v("ConceptualMasterVerticalColumn___ROOT_OVERALL_SCREEN", 6,  // This Layout is a Giant Vertical Column (6px margin)
+    h("ConceptionalHorizontalHeader",          "100px",  20,  // First, There is a Horizontal Group "Header" (20px margin) (100px in height)
+        I("HeaderLeft",  "50%"),                              //      A Pane on the left, half the width (height from parent)
+        I("HeaderRight", "50%")                               //      A Pane on the right, the other half. (height from parent)
+    ),
+    h("ConceptualGroupOfHorizontalMidSection", "100%",    6,  // Second, There is a Horizontal Group "MidSecgtion" (6px margin) (filling whatever header and footer don't)
+        I("TreeMenu",           "300px"),                     //      A Pane on the left for the tree menu (300px Wide, Height of Parent)
+        I("MainContent",        "80%"),                       //      A Pane in the middle (width = 80% after tree pixels removed, Height of Parent)
+        v("ConceptualAddBlock", "20%",                   15,  //      And A Pane at the end for Adds, (15px margin) (width = 20% after tree pixels removed, Height of Parent)
+            I("AdBlock1", "30%"),                             //          The first Ad uses (parent Width, and 30% of parent height)
+            I("AdBlock2", "40%"),                             //          The second Ad uses (parent Width, and 40% of parent height)
+            I("AdBlock3", "30%")                              //          The first Ad uses (parent Width, and 30% of parent height)
+        )
+    ),
+    h("ConceptionalHorizontalFooter",           "75px",   4,  // Finally, There is a Horizontal Group "Footer" (4px margin) (75px in height)
+        I("FooterLeft",  "160px"),                            //      The left Footer is 160px wide, height of parent
+        I("FooterMid",   "100%"),                             //      The Mid Footer is whatever left and right leave me, height of parent
+        I("FooterRight", "160px")                             //      The left Footer is 160px wide, height of parent
+    )
+);
+</script>
+
+<!--
+/* Example 02 - "Any Combination of Items/Containers makes a layout"
+ *
+ * This Example demonstrates that ANY layout can be made if correctly defined.
+ *
+ * ...as a side note: <div>'s CAN be set to scroll... that has nothing to do with this manager..
+ *
+ * I, the Author, have had bracket/comma/nightmares - this design is not friendly for that.
+ * (([{(([[{(try Programming in AutoCAD's AutoLisp), (simple enough just count tons of brackets)}]]))}]))
+ *
+ * I recomend starting simple: make variables for each piece, so each peice is "easy"
+ *
+ * var header = h("Header", "100px", 20,
+ *                  I("HeaderLeft", "50%"),
+ *                  I("HeaderRight", "50%")
+ *              );
+ *
+ * ok... now piece the pieces together....
+ *
+ *v("ConceptualMasterVerticalColumn___ROOT_OVERALL_SCREEN", 6,
+ *     header,
+ *     body,
+ *     footer
+ * );
+ * ok... now remove/reduce the varialbes you make until you have the 'above'.
+ *
+ * in small pieces, this process is "easy"
+ *
+ * learn from the Authors mistakes - trying to look smart (like above) would have taken me
+ * much less time if I broke it down, and looked a little dumber.
+ *
+ * As a side note: all "conceptual" labels CAN BE REMOVED without error/side effects.
+ *
+ * the 'reason' one puts it there, is a reference to get it back!
+ *
+ * if you like it without labels, because you always use variable assignment, go crazy:
+ * Note: this only applys if there is no matching element to find.
+ * (This applies to H() L() h() v() I()):
+ * var header = h("100px", 20,                    // hey, I Can drop the label if no element to match
+ *                  I("HeaderLeft", "50%"),
+ *                  I("HeaderRight", "50%")
+ *              );
+ */
+-->
