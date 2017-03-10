@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Liefs-Layout-Manager Examples</title>
+    <script src="liefs-layout-manager.V1.0.3.min.js"></script>           <!-- liefs layout manager -->
+    <style>
+    div {border-style: solid;border-width: 1px;overflow-y: auto;overflow-x: inherit; visibility: hidden;} pre {background-color:grey; }
+    #I01 {font-size:200%; background-color: #FFF2DD}
+    #I02 {font-size:200%; background-color: #D1FFD0}
+    #I03 {font-size:200%; background-color: #FFBEBD}
+    #I04 {font-size:200%; background-color: #CFD7E8}
+    #PageRoot {font-size:200%; background-color: #FFBCC3}
+    #Menu {background-color: lightgreen} #ex01 {background-color: lightblue}
+    #ex02 {background-color: lightcoral} #ex03 {background-color: #E6C2FF }
+    .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .fakeclick {color:blue;text-decoration: underline;cursor: pointer;}
+    </style>
+</head>
+<body>
+  <div id="Menu">
+    <h4>Menu</h4>
+    Example 01<br><a href="examples.html">All Examples One File</a><br><a href="example01.html">Example Single File</a><br><br>
+    Example 02<br><a href="examples.html">All Examples One File</a><br><a href="example02.html">Example Single File</a><br><br>
+    Example 03<br><a href="examples.html">All Examples One File</a><br><a href="example03.html">Example Single File</a><br><br>
+    Example 04<br><a href="examples.html">All Examples One File</a><br><a href="example04.html">Example Single File</a><br><br>
+    Example 05<br><a href="examples.html">All Examples One File</a><br><a href="example05.html">Example Single File</a><br><br>
+  </div>
+    <div id="ex05">
+      <h2>Example 05 - There is a lot of feedback</h2>
+      <pre>
+Handler.callback = function () {
+  // you can access this information here
+};
+      </pre>
+      This is LIVE: Open Console:(Chrome F12- Console Tab) and Try these: (without above)<br>
+      Try Re-sizing the screen, and watch the numbers!<br>
+      <div id="feedback" style="visibility: visible;border-style: none"></div>
+    </div>
+<script>
+  Handler.callback = function () {
+    var el = document.getElementById("feedback");
+    var out = "";
+    if (Dragbar.isDown) out += '<span style="color: red">Dragging A Dragbar!</span><br>';
+    out += "Current Handler Coord:<br> &gt;&nbsp;JSON.stringify(Handler.handlers[0].position)<br>" + JSON.stringify(Handler.handlers[0].position) + "<br><br>";
+    out += "Last Update:<br> &gt;&nbsp;JSON.stringify(Handler.handlers[0].activeContainer.lastUpdate, undefined, 4)<br><pre>" + JSON.stringify(Handler.handlers[0].activeContainer.lastUpdate, undefined, 4) + "</pre><br>";
+    out += 'Item Locations:<br> &gt;&nbsp;JSON.stringify(Item.get("ex05").size)<br><pre>' + JSON.stringify(Item.get("ex05").size) + "</pre><br>";
+    out += 'Current Dragbar Position:<br> &gt;&nbsp;Item.get("Menu").current;<br>' + Item.get("Menu").current + "<br><br>";
+    out += "Current Handler:<br> &gt;&nbsp;Handler.handlers[0].label<br>" + Handler.handlers[0].label + "<br><br>";
+    out += "Default Margins:<br> &gt;&nbsp;Container.marginDefault.toString()<br>" + Container.marginDefault.toString() + "<br><br>";
+    out += "Current Handler Container:<br> &gt;&nbsp;Handler.handlers[0].activeContainer.label<br>" + Handler.handlers[0].activeContainer.label + "<br><br>";
+    out += "toString of Current Handler:<br> &gt;&nbsp;Handler.handlers[0].toString()<br><pre>" + Handler.handlers[0].toString() + "</pre><br><br>";
+    out += 'toString of Any Item:<br> &gt;&nbsp;Item.get("Menu").toString()<br><pre>' + Item.get("Menu").toString() + "</pre><br><br>";
+    out += 'List of all defined Items: (Note, may have multiple instances)<br> &gt;&nbsp;Item.keys()<br>' + Item.keys() + "<br><br>";
+    out += 'Containers Of Items:<br> &gt;&nbsp;Container.of( Item.get("ex05") ).label<br>' + Container.of( Item.get("ex05") ).label + "<br><br>";
+    out += 'Handler.iterator():<br> &gt;&nbsp;Handler.iterator().map(function(x){ return x.label});<br>' + Handler.iterator().map(function(x){ return x.label}) + "<br><br>";
+    out += 'Container.iterator():<br> &gt;&nbsp;Handler.handlers[0].activeContainer.iterator().map(function(x){ return x.label});<br>' + Handler.handlers[0].activeContainer.iterator().map(function(x){ return x.label}) + "<br><br>";
+    out += 'Item.iterator():<br> &gt;&nbsp;Item.get("example05").iterator().map(function(x){ return x.label});<br>' + Item.get("example05").iterator().map(function(x){ return x.label}) + "<br><br>";
+
+    el.innerHTML = out;
+  }
+  h("example05", 4 ,
+      I("Menu","200px", "200px", "600px"),
+      I("ex05", "100%")
+  );
+
+  </script>
+</body>
+</html>

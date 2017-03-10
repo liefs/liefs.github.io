@@ -1,0 +1,167 @@
+<html>
+<head>
+    <title>Liefs-Layout-Manager Example 03</title>
+    <script src="liefs-layout-manager.V1.0.3.min.js"></script>           <!-- liefs layout manager -->
+    <style>
+    div {border-style: solid;border-width: 1px;overflow-y: auto;overflow-x: inherit; visibility: hidden;} pre {background-color:grey; }
+    #I01 {font-size:200%; background-color: #FFF2DD}
+    #I02 {font-size:200%; background-color: #D1FFD0}
+    #I03 {font-size:200%; background-color: #FFBEBD}
+    #I04 {font-size:200%; background-color: #CFD7E8}
+    #Menu {background-color: lightgreen} #ex03 {background-color: #E6C2FF }
+    .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    </style>
+</head>
+<body>
+  <div id="Menu">
+    <h4>Menu</h4>
+    Example 01<br><a href="examples.html">All Examples One File</a><br><a href="example01.html">Example Single File</a><br><br>
+    Example 02<br><a href="examples.html">All Examples One File</a><br><a href="example02.html">Example Single File</a><br><br>
+    Example 03<br><a href="examples.html">All Examples One File</a><br><a href="example03.html">Example Single File</a><br><br>
+    Example 04<br><a href="examples.html">All Examples One File</a><br><a href="example04.html">Example Single File</a><br><br>
+    Example 05<br><a href="examples.html">All Examples One File</a><br><a href="example05.html">Example Single File</a><br><br>
+  </div>
+    <div id="I01">1 Same Div...</div>
+    <div id="I02">2 Location Managed...</div>
+    <div id="I03">3 By...</div>
+    <div id="I04">4 Lief's Layout Manager</div>
+    <div id="ex03">
+      <h2>Example 03 - Layouts Are Managed By Conditional Functions</h2>
+      This Example shows 4 Different Items, 4 Different Ways.
+      <button onclick="ex3Layout=0;Handler.resizeEvent();">1</button>
+      <button onclick="ex3Layout=1;Handler.resizeEvent();">2</button>
+      <button onclick="ex3Layout=2;Handler.resizeEvent();">3</button>
+      <button onclick="ex3Layout=3;Handler.resizeEvent();">4</button><br><br>
+      In this example, we created 4 Layous, each dependant on a conditional value.
+      In this case, the value of "ex3Layout" - which we created to suit our needs.
+<pre>
+&lt;button onclick="ex3Layout=0;Handler.resizeEvent();"&gt;1&lt;/button&gt;
+&lt;button onclick="ex3Layout=1;Handler.resizeEvent();"&gt;2&lt;/button&gt;
+&lt;button onclick="ex3Layout=2;Handler.resizeEvent();"&gt;3&lt;/button&gt;
+&lt;button onclick="ex3Layout=3;Handler.resizeEvent();"&gt;4&lt;/button&gt;
+</pre><pre>
+var ex3Layout=0;
+var MenuR = I("Menu","100px", "100px", "250px");
+var ex3col = h("ex3col", 8 ,
+                v("100%", 8,
+                    I("ex03", "50%"),
+                    h("50%", 8,
+                      I("I01", "25%"),
+                      I("I02", "25%"),
+                      I("I03", "25%"),
+                      I("I04", "25%")
+                    )
+                ),
+                 MenuR
+               );
+ var ex3row = h("ex3row", 8 ,
+                 v("100%", 8,
+                     I("ex03", "50%"),
+                     I("I01", "12%"),
+                     I("I02", "13%"),
+                     I("I03", "12%"),
+                     I("I04", "13%")
+                 ),
+                  MenuR
+                );
+
+  var ex3grid = h("ex3grid", 8 ,
+                  v("100%", 8,
+                      I("ex03", "50%"),
+                      h("25%", 8,
+                        I("I01", "50%"),
+                        I("I02", "50%")
+                      ),
+                      h("25%", 8,
+                        I("I03", "50%"),
+                        I("I04", "50%")
+                      )
+                  ),
+                   MenuR
+                 );
+   var ex3cust = h("ex3cust", 8,
+                   v("100%", 8,
+                       I("ex03", "50%"),
+                       I("I01", "25%"),
+                       h("25%", 8,
+                         I("I02", "33%"),
+                         I("I03", "33%"),
+                         I("I04", "34%")
+                       )
+                   ),
+                    MenuR
+                  );
+  var ex3L1 = L("ex03L1", ex3col, function () { return (ex3Layout === 0); });   // define layouts
+  var ex3L2 = L("ex03L2", ex3row, function () { return (ex3Layout === 1); });   // define layouts
+  var ex3L3 = L("ex03L3", ex3grid, function () { return (ex3Layout === 2); });  // define layouts
+  var ex3L4 = L("ex03L4", ex3cust, function () { return (ex3Layout === 3); });  // define layouts
+
+  H("Main", [ex3L1, ex3L2, ex3L3, ex3L4] ); // hander given 4 layous each with conditional function
+</pre>
+    </div>
+<script>
+  // define Items used more than once
+  var Menu = I("Menu","200px", "200px", "600px");
+  var MenuR = I("Menu","200px", "200px", "600px");
+
+    var ex3Layout=0;
+    var ex3col = h("ex3col", 8 ,
+                    v("100%", 8,
+                        I("ex03", "50%"),
+                        h("50%", 8,
+                          I("I01", "25%"),
+                          I("I02", "25%"),
+                          I("I03", "25%"),
+                          I("I04", "25%")
+                        )
+                    ),
+                     MenuR
+                   );
+     var ex3row = h("ex3row", 8 ,
+                     v("100%", 8,
+                         I("ex03", "50%"),
+                         I("I01", "12%"),
+                         I("I02", "13%"),
+                         I("I03", "12%"),
+                         I("I04", "13%")
+                     ),
+                      MenuR
+                    );
+
+      var ex3grid = h("ex3grid", 8 ,
+                      v("100%", 8,
+                          I("ex03", "50%"),
+                          h("25%", 8,
+                            I("I01", "50%"),
+                            I("I02", "50%")
+                          ),
+                          h("25%", 8,
+                            I("I03", "50%"),
+                            I("I04", "50%")
+                          )
+                      ),
+                       MenuR
+                     );
+       var ex3cust = h("ex3cust", 8,
+                       v("100%", 8,
+                           I("ex03", "50%"),
+                           I("I01", "25%"),
+                           h("25%", 8,
+                             I("I02", "33%"),
+                             I("I03", "33%"),
+                             I("I04", "34%")
+                           )
+                       ),
+                        MenuR
+                      );
+    var ex3L1 = L("ex03L1", ex3col, function () { return (ex3Layout === 0); });
+    var ex3L2 = L("ex03L2", ex3row, function () { return (ex3Layout === 1); });
+    var ex3L3 = L("ex03L3", ex3grid, function () { return (ex3Layout === 2); });
+    var ex3L4 = L("ex03L4", ex3cust, function () { return (ex3Layout === 3); });
+
+  H("Main", [ex3L1, ex3L2, ex3L3, ex3L4] );
+
+  </script>
+</body>
+</html>

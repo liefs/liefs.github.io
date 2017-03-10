@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Liefs-Layout-Manager Example 01</title>
+    <script src="liefs-layout-manager.V1.0.3.min.js"></script>           <!-- liefs layout manager -->
+    <style>
+    div {border-style: solid;border-width: 1px;overflow-y: auto;overflow-x: inherit; visibility: hidden;} pre {background-color:grey; }
+    #Menu {background-color: lightgreen} #ex01 {background-color: lightblue}
+    .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    </style>
+</head>
+<body>
+  <div id="Menu">
+    <h4>Menu</h4>
+    Example 01<br><a href="examples.html">All Examples One File</a><br><a href="example01.html">Example Single File</a><br><br>
+    Example 02<br><a href="examples.html">All Examples One File</a><br><a href="example02.html">Example Single File</a><br><br>
+    Example 03<br><a href="examples.html">All Examples One File</a><br><a href="example03.html">Example Single File</a><br><br>
+    Example 04<br><a href="examples.html">All Examples One File</a><br><a href="example04.html">Example Single File</a><br><br>
+    Example 05<br><a href="examples.html">All Examples One File</a><br><a href="example05.html">Example Single File</a><br><br>
+  </div>
+  <div id="ex01">
+    <h2>Example 01 This is a basic example for Liefs Layout Manager.</h2>
+    This page (see view source this page) demonstrates a simple layout.<br>
+    It consists of x2 DIV tags: id="Menu" and id="right"<br><br>
+    This is the COMPLETE Javascript Code required for Liefs Layout Manager to Map this Page.
+<pre>
+h("example01", 4 ,
+  I("Menu","200px", "150px", "250px"),
+  I("ex01", "100%")
+);
+</pre>
+line:1 - Lief's Layout Manager function "h" defines a Horizontal Item, named "Master"
+with 4px Margins.<br><br>
+
+line:2 - Lief's Layout Manager function "I" defines an Item, named "Menu".
+For this statement to be valid, there must be exactly one matching selector
+(default is id ...so matching id) or an error will be thrown.
+This "Menu" Item will be 400px Wide, complete with dragBar stretching to a
+minimum value of 300px to a maximum value of 500px.<br><br>
+
+line:3 - Lief's Layout Manager function "I" defines an Item, named "right".
+For this statement to be valid, there must be exactly one matching selector
+(default is id ...so matching id) or an error will be thrown.
+This "right" Item will be 100% of the pixels left, after all others are
+subtracted from available.<br><br>
+
+line:4 close brackets, end line<br><br>
+
+Note: Liefs Layout Manager must be loaded with a script tag.
+<pre>&lt;script src="...js"&gt;</pre>
+Note: Liefs Layout Manager REQUIRES basic css styling of dragBars.
+Customize to suit, but they must be position: fixed to work.
+<pre>
+  .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+  .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+</pre>
+
+&lt;= This is a dragBar Here! Try It!
+  </div>
+<!--    Entire JavaScript Required for Example 01 -->
+<script>
+h("example01",
+    I("Menu","200px", "200px", "600px"),
+    I("ex01", "100%")
+);
+  </script>
+</body>
+</html>

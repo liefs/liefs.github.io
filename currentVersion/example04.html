@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title>Liefs-Layout-Manager Examples</title>
+    <script src="liefs-layout-manager.V1.0.3.min.js"></script>           <!-- liefs layout manager -->
+    <style>
+    div {border-style: solid;border-width: 1px;overflow-y: auto;overflow-x: inherit; visibility: hidden;} pre {background-color:grey; }
+    #I01 {font-size:200%; background-color: #FFF2DD}
+    #I02 {font-size:200%; background-color: #D1FFD0}
+    #I03 {font-size:200%; background-color: #FFBEBD}
+    #I04 {font-size:200%; background-color: #CFD7E8}
+    #PageRoot {font-size:200%; background-color: #FFBCC3}
+    #Menu {background-color: lightgreen}
+    .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .fakeclick {color:blue;text-decoration: underline;cursor: pointer;}
+    </style>
+</head>
+<body>
+  <div id="Menu">
+    <h4>Menu</h4>
+    Example 01<br><a href="examples.html">All Examples One File</a><br><a href="example01.html">Example Single File</a><br><br>
+    Example 02<br><a href="examples.html">All Examples One File</a><br><a href="example02.html">Example Single File</a><br><br>
+    Example 03<br><a href="examples.html">All Examples One File</a><br><a href="example03.html">Example Single File</a><br><br>
+    Example 04<br><a href="examples.html">All Examples One File</a><br><a href="example04.html">Example Single File</a><br><br>
+    Example 05<br><a href="examples.html">All Examples One File</a><br><a href="example05.html">Example Single File</a><br><br>
+  </div>
+
+    <div id="I01">1 Same Div...</div>
+    <div id="I02">2 Location Managed...</div>
+    <div id="I03">3 By...</div>
+    <div id="I04">4 Lief's Layout Manager</div>
+    <div id="PageRoot">PageRoot (Page 0)<br>
+      <pre style="font-size: 50%">
+&lt;h2&gt;Example 04 - Items Can Be Defined as Pages&lt;/h2&gt;
+&lt;button onclick='Item.nextPage("PageRoot", true);'&gt;Next Stop&lt;/button&gt;
+&lt;button onclick='Item.nextPage("PageRoot", false);'&gt;Next No Stop&lt;/button&gt;
+&lt;button onclick='Item.backPage("PageRoot", true);'&gt;Prev Stop&lt;/button&gt;
+&lt;button onclick='Item.backPage("PageRoot", false);'&gt;Prev No Stop&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "PageRoot");'&gt;0&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I01");'&gt;1&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I02");'&gt;2&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I03");'&gt;3&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I04");'&gt;4&lt;/button&gt;
+      </pre>
+      <pre style="font-size: 50%">
+var PageRoot = I("PageRoot", "100%", I("I01"), I("I02"), I("I03"), I("I04"));
+h("example01", 4 ,
+    Menu,
+    v("100%",
+      I("ex04", "400px", "100px", "800px"),
+      PageRoot
+    )
+  );
+      </pre>
+    </div>
+    <div id="ex04">
+      <h2>Example 04 - Items Can Be Defined as Pages</h2>
+      <button onclick='Item.nextPage("PageRoot", true);'>Next Stop</button>
+      <button onclick='Item.nextPage("PageRoot", false);'>Next No Stop</button>
+      <button onclick='Item.backPage("PageRoot", true);'>Prev Stop</button>
+      <button onclick='Item.backPage("PageRoot", false);'>Prev No Stop</button>
+      <button onclick='Item.setPage("PageRoot", "PageRoot");'>0</button>
+      <button onclick='Item.setPage("PageRoot", "I01");'>1</button>
+      <button onclick='Item.setPage("PageRoot", "I02");'>2</button>
+      <button onclick='Item.setPage("PageRoot", "I03");'>3</button>
+      <button onclick='Item.setPage("PageRoot", "I04");'>4</button><br><br>
+      Try "swiping" the (lower) page left and right (like touch-screen)
+      Changes Page (On Chrome anyways)
+    </div>
+
+<script>
+h("example04", 4 ,
+      I("Menu","200px", "200px", "600px"),
+      v("100%",
+        I("ex04", "400px", "100px", "800px"),
+        I("PageRoot", "100%", I("I01"), I("I02"), I("I03"), I("I04"))
+      )
+)
+  </script>
+</body>
+</html>
