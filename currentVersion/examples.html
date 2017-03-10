@@ -1,0 +1,363 @@
+<html>
+<head>
+    <title>Liefs-Layout-Manager Examples</title>
+    <script src="liefs-layout-manager.V1.0.3.min.js"></script>           <!-- liefs layout manager -->
+    <style>
+    div {border-style: solid;border-width: 1px;overflow-y: auto;overflow-x: inherit; visibility: hidden;} pre {background-color:grey; }
+    #I01 {font-size:200%; background-color: #FFF2DD}
+    #I02 {font-size:200%; background-color: #D1FFD0}
+    #I03 {font-size:200%; background-color: #FFBEBD}
+    #I04 {font-size:200%; background-color: #CFD7E8}
+    #PageRoot {font-size:200%; background-color: #FFBCC3}
+    #Menu {background-color: lightgreen} #ex01 {background-color: lightblue}
+    #ex02 {background-color: lightcoral} #ex03 {background-color: #E6C2FF }
+    .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+    .fakeclick {color:blue;text-decoration: underline;cursor: pointer;}
+    </style>
+</head>
+<body>
+
+<!-- - - - - - - - - - - - - - - Example 01 - - - - - - - - - - - - - - - - - -->
+  <div id="Menu">
+    <h4>Menu</h4>
+    Example 01<br><span class="fakeclick" onclick="mh('1');">All Examples One File</span><br><a href="example01.html" target="_blank">Example Single File</a><br><br>
+    Example 02<br><span class="fakeclick" onclick="mh('2');">All Examples One File</span><br><a href="example02.html" target="_blank">Example Single File</a><br><br>
+    Example 03<br><span class="fakeclick" onclick="mh('3');">All Examples One File</span><br><a href="example03.html" target="_blank">Example Single File</a><br><br>
+    Example 04<br><span class="fakeclick" onclick="mh('4');">All Examples One File</span><br><a href="example04.html" target="_blank">Example Single File</a><br><br>
+    Example 05<br><span class="fakeclick" onclick="mh('5');">All Examples One File</span><br><a href="example05.html" target="_blank">Example Single File</a><br><br>
+  </div>
+  <div id="ex01">
+    <h2>Example 01 This is a basic example for Liefs Layout Manager.</h2>
+    This page (see view source this page) demonstrates a simple layout.<br>
+    It consists of x2 DIV tags: id="Menu" and id="right"<br><br>
+    This is the COMPLETE Javascript Code required for Liefs Layout Manager to Map this Page.
+<pre>
+h("example01", 4 ,
+  I("Menu","200px", "150px", "250px"),
+  I("ex01", "100%")
+);
+</pre>
+line:1 - Lief's Layout Manager function "h" defines a Horizontal Item, named "Master"
+with 4px Margins.<br><br>
+
+line:2 - Lief's Layout Manager function "I" defines an Item, named "Menu".
+For this statement to be valid, there must be exactly one matching selector
+(default is id ...so matching id) or an error will be thrown.
+This "Menu" Item will be 400px Wide, complete with dragBar stretching to a
+minimum value of 300px to a maximum value of 500px.<br><br>
+
+line:3 - Lief's Layout Manager function "I" defines an Item, named "right".
+For this statement to be valid, there must be exactly one matching selector
+(default is id ...so matching id) or an error will be thrown.
+This "right" Item will be 100% of the pixels left, after all others are
+subtracted from available.<br><br>
+
+line:4 close brackets, end line<br><br>
+
+Note: Liefs Layout Manager must be loaded with a script tag.
+<pre>&lt;script src="...js"&gt;</pre>
+Note: Liefs Layout Manager REQUIRES basic css styling of dragBars.
+Customize to suit, but they must be position: fixed to work.
+<pre>
+  .Hdragbar {position: fixed;cursor: col-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+  .Vdragbar {position: fixed;cursor: row-resize;border-style: none;border-width: 0px;border-radius: 0px;}
+</pre>
+
+&lt;= This is a dragBar Here! Try It!
+  </div>
+
+<!-- - - - - - - - - - - - - - - Example 02 - - - - - - - - - - - - - - - - - -->
+
+  <div id="ex02">
+    <h2>Example 02 - You can use/reuse any Item, in Any Layout</h2>
+    This example demonstrates that you can show any Item, in Any Layout.<br>
+    In this example, we are repeating our Menu Item on the left,<br>
+    and our Example 01 below. (Complete with dragBar)<br><br>
+    This is the entire JavaScript require to Manage This Example.
+<pre>
+h("example02", 24 ,
+    I("Menu","100px", "100px", "250px"),
+    v("ex02v", "100%", 24,
+      I("ex02", "400px","300px", "700px"),
+      I("ex01", "100%")
+    )
+  )
+);
+</pre>
+  </div>
+
+  <!-- - - - - - - - - - - - - - - Example 03 - - - - - - - - - - - - - - - - - -->
+    <div id="I01">1 Same Div...</div>
+    <div id="I02">2 Location Managed...</div>
+    <div id="I03">3 By...</div>
+    <div id="I04">4 Lief's Layout Manager</div>
+    <div id="ex03">
+      <h2>Example 03 - Layouts Are Managed By Conditional Functions</h2>
+      This Example shows 4 Different Items, 4 Different Ways.
+      <button onclick="ex3Layout=0;Handler.resizeEvent();">1</button>
+      <button onclick="ex3Layout=1;Handler.resizeEvent();">2</button>
+      <button onclick="ex3Layout=2;Handler.resizeEvent();">3</button>
+      <button onclick="ex3Layout=3;Handler.resizeEvent();">4</button><br><br>
+      In this example, we created 4 Layous, each dependant on a conditional value.
+      In this case, the value of "ex3Layout" - which we created to suit our needs.
+<pre>
+&lt;button onclick="ex3Layout=0;Handler.resizeEvent();"&gt;1&lt;/button&gt;
+&lt;button onclick="ex3Layout=1;Handler.resizeEvent();"&gt;2&lt;/button&gt;
+&lt;button onclick="ex3Layout=2;Handler.resizeEvent();"&gt;3&lt;/button&gt;
+&lt;button onclick="ex3Layout=3;Handler.resizeEvent();"&gt;4&lt;/button&gt;
+</pre><pre>
+var ex3Layout=0;
+var MenuR = I("Menu","100px", "100px", "250px");
+var ex3col = h("ex3col", 8 ,
+                v("100%", 8,
+                    I("ex03", "50%"),
+                    h("50%", 8,
+                      I("I01", "25%"),
+                      I("I02", "25%"),
+                      I("I03", "25%"),
+                      I("I04", "25%")
+                    )
+                ),
+                 MenuR
+               );
+ var ex3row = h("ex3row", 8 ,
+                 v("100%", 8,
+                     I("ex03", "50%"),
+                     I("I01", "12%"),
+                     I("I02", "13%"),
+                     I("I03", "12%"),
+                     I("I04", "13%")
+                 ),
+                  MenuR
+                );
+
+  var ex3grid = h("ex3grid", 8 ,
+                  v("100%", 8,
+                      I("ex03", "50%"),
+                      h("25%", 8,
+                        I("I01", "50%"),
+                        I("I02", "50%")
+                      ),
+                      h("25%", 8,
+                        I("I03", "50%"),
+                        I("I04", "50%")
+                      )
+                  ),
+                   MenuR
+                 );
+   var ex3cust = h("ex3cust", 8,
+                   v("100%", 8,
+                       I("ex03", "50%"),
+                       I("I01", "25%"),
+                       h("25%", 8,
+                         I("I02", "33%"),
+                         I("I03", "33%"),
+                         I("I04", "34%")
+                       )
+                   ),
+                    MenuR
+                  );
+  var ex3L1 = L("ex03L1", ex3col, function () { return (ex3Layout === 0); });   // define layouts
+  var ex3L2 = L("ex03L2", ex3row, function () { return (ex3Layout === 1); });   // define layouts
+  var ex3L3 = L("ex03L3", ex3grid, function () { return (ex3Layout === 2); });  // define layouts
+  var ex3L4 = L("ex03L4", ex3cust, function () { return (ex3Layout === 3); });  // define layouts
+
+  H("Main", [ex3L1, ex3L2, ex3L3, ex3L4] ); // hander given 4 layous each with conditional function
+</pre>
+    </div>
+
+  <!-- - - - - - - - - - - - - - - Example 04 - - - - - - - - - - - - - - - - - -->
+    <div id="PageRoot">PageRoot (Page 0)<br>
+      <pre style="font-size: 50%">
+&lt;h2&gt;Example 04 - Items Can Be Defined as Pages&lt;/h2&gt;
+&lt;button onclick='Item.nextPage("PageRoot", true);'&gt;Next Stop&lt;/button&gt;
+&lt;button onclick='Item.nextPage("PageRoot", false);'&gt;Next No Stop&lt;/button&gt;
+&lt;button onclick='Item.backPage("PageRoot", true);'&gt;Prev Stop&lt;/button&gt;
+&lt;button onclick='Item.backPage("PageRoot", false);'&gt;Prev No Stop&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "PageRoot");'&gt;0&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I01");'&gt;1&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I02");'&gt;2&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I03");'&gt;3&lt;/button&gt;
+&lt;button onclick='Item.setPage("PageRoot", "I04");'&gt;4&lt;/button&gt;
+      </pre>
+      <pre style="font-size: 50%">
+var PageRoot = I("PageRoot", "100%", I("I01"), I("I02"), I("I03"), I("I04"));
+h("example01", 4 ,
+    Menu,
+    v("100%",
+      I("ex04", "400px", "100px", "800px"),
+      PageRoot
+    )
+  );
+      </pre>
+    </div>
+    <div id="ex04">
+      <h2>Example 04 - Items Can Be Defined as Pages</h2>
+      <button onclick='Item.nextPage("PageRoot", true);'>Next Stop</button>
+      <button onclick='Item.nextPage("PageRoot", false);'>Next No Stop</button>
+      <button onclick='Item.backPage("PageRoot", true);'>Prev Stop</button>
+      <button onclick='Item.backPage("PageRoot", false);'>Prev No Stop</button>
+      <button onclick='Item.setPage("PageRoot", "PageRoot");'>0</button>
+      <button onclick='Item.setPage("PageRoot", "I01");'>1</button>
+      <button onclick='Item.setPage("PageRoot", "I02");'>2</button>
+      <button onclick='Item.setPage("PageRoot", "I03");'>3</button>
+      <button onclick='Item.setPage("PageRoot", "I04");'>4</button><br><br>
+      Try "swiping" the (lower) page left and right (like touch-screen)
+      Changes Page (On Chrome anyways)
+    </div>
+
+<!-- - - - - - - - - - - - - - - Example 05 - - - - - - - - - - - - - - - - - -->
+
+    <div id="ex05">
+      <h2>Example 05 - There is a lot of feedback</h2>
+      <pre>
+Handler.callback = function () {
+  // you can access this information here
+};
+      </pre>
+      This is LIVE: Open Console:(Chrome F12- Console Tab) and Try these: (without above)<br>
+      Try Re-sizing the screen, and watch the numbers!<br>
+      <div id="feedback" style="visibility: visible;border-style: none"></div>
+    </div>
+<!-- - - - - - - - - - - - - - - - JavaScript Time! - - - - - - - - -->
+<!--    Entire JavaScript Required for Example 01 -->
+<script>
+  // define Trew as "always True" function
+  var Trew = function() {return true};
+  // This function swaps out Layouts to ones desired
+  function mh(index) {Handler.handlers[0].layouts = ha["ex"+index]; Handler.resizeEvent(); };
+  // define Object to hold Layouts
+  ha = {};
+
+  // define Items used more than once
+  var Menu = I("Menu","200px", "200px", "600px");
+  var MenuR = I("Menu","200px", "200px", "600px");
+  var Iex01 = I("ex01", "100%");
+
+  // Define Layouts for Example 01
+  ha.ex1 = [L("ex01L", Trew,
+            h("example01", 4 ,
+                Menu,
+                Iex01
+              )
+            )];
+
+  // Define Layouts for Example 02
+    ha.ex2 = [L("ex02L", Trew,
+              h("example02", 24 ,
+                  Menu,
+                  v("ex02v", "100%", 24,
+                    I("ex02", "400px","300px", "700px"),
+                    Iex01
+                  )
+                )
+              )];
+  // Define Layouts for Example 03
+    var ex3Layout=0;
+    var ex3col = h("ex3col", 8 ,
+                    v("100%", 8,
+                        I("ex03", "50%"),
+                        h("50%", 8,
+                          I("I01", "25%"),
+                          I("I02", "25%"),
+                          I("I03", "25%"),
+                          I("I04", "25%")
+                        )
+                    ),
+                     MenuR
+                   );
+     var ex3row = h("ex3row", 8 ,
+                     v("100%", 8,
+                         I("ex03", "50%"),
+                         I("I01", "12%"),
+                         I("I02", "13%"),
+                         I("I03", "12%"),
+                         I("I04", "13%")
+                     ),
+                      MenuR
+                    );
+
+      var ex3grid = h("ex3grid", 8 ,
+                      v("100%", 8,
+                          I("ex03", "50%"),
+                          h("25%", 8,
+                            I("I01", "50%"),
+                            I("I02", "50%")
+                          ),
+                          h("25%", 8,
+                            I("I03", "50%"),
+                            I("I04", "50%")
+                          )
+                      ),
+                       MenuR
+                     );
+       var ex3cust = h("ex3cust", 8,
+                       v("100%", 8,
+                           I("ex03", "50%"),
+                           I("I01", "25%"),
+                           h("25%", 8,
+                             I("I02", "33%"),
+                             I("I03", "33%"),
+                             I("I04", "34%")
+                           )
+                       ),
+                        MenuR
+                      );
+    var ex3L1 = L("ex03L1", ex3col, function () { return (ex3Layout === 0); });
+    var ex3L2 = L("ex03L2", ex3row, function () { return (ex3Layout === 1); });
+    var ex3L3 = L("ex03L3", ex3grid, function () { return (ex3Layout === 2); });
+    var ex3L4 = L("ex03L4", ex3cust, function () { return (ex3Layout === 3); });
+
+    ha.ex3 = [ex3L1, ex3L2, ex3L3, ex3L4];
+
+  // Define Layouts for Example 04
+
+  var PageRoot = I("PageRoot", "100%", I("I01"), I("I02"), I("I03"), I("I04"));
+
+  ha.ex4 = [L("ex04L", Trew,
+              h("example04", 4 ,
+                  Menu,
+                  v("100%",
+                    I("ex04", "400px", "100px", "800px"),
+                    PageRoot
+                  )
+                )
+            )];
+
+  // Define Layouts for Example 05
+
+    ha.ex5 = [L("ex05L", Trew,
+                h("example05", 4 ,
+                    Menu,
+                    I("ex05", "100%")
+                )
+              )];
+
+  Handler.callback = function () {
+    var el = document.getElementById("feedback");
+    var out = "";
+    if (Dragbar.isDown) out += '<span style="color: red">Dragging A Dragbar!</span><br>';
+    out += "Current Handler Coord:<br> &gt;&nbsp;JSON.stringify(Handler.handlers[0].position)<br>" + JSON.stringify(Handler.handlers[0].position) + "<br><br>";
+    out += "Last Update:<br> &gt;&nbsp;JSON.stringify(Handler.handlers[0].activeContainer.lastUpdate, undefined, 4)<br><pre>" + JSON.stringify(Handler.handlers[0].activeContainer.lastUpdate, undefined, 4) + "</pre><br>";
+    out += 'Item Locations:<br> &gt;&nbsp;JSON.stringify(Item.get("ex05").size)<br><pre>' + JSON.stringify(Item.get("ex05").size) + "</pre><br>";
+    out += 'Current Dragbar Position:<br> &gt;&nbsp;Item.get("Menu").current;<br>' + Item.get("Menu").current + "<br><br>";
+    out += "Current Handler:<br> &gt;&nbsp;Handler.handlers[0].label<br>" + Handler.handlers[0].label + "<br><br>";
+    out += "Default Margins:<br> &gt;&nbsp;Container.marginDefault.toString()<br>" + Container.marginDefault.toString() + "<br><br>";
+    out += "Current Handler Container:<br> &gt;&nbsp;Handler.handlers[0].activeContainer.label<br>" + Handler.handlers[0].activeContainer.label + "<br><br>";
+    out += "toString of Current Handler:<br> &gt;&nbsp;Handler.handlers[0].toString()<br><pre>" + Handler.handlers[0].toString() + "</pre><br><br>";
+    out += 'toString of Any Item:<br> &gt;&nbsp;Item.get("Menu").toString()<br><pre>' + Item.get("Menu").toString() + "</pre><br><br>";
+    out += 'List of all defined Items: (Note, may have multiple instances)<br> &gt;&nbsp;Item.keys()<br>' + Item.keys() + "<br><br>";
+    out += 'Containers Of Items:<br> &gt;&nbsp;Container.of( Item.get("ex01") ).label<br>' + Container.of( Item.get("ex01") ).label + "<br><br>";
+    out += 'Handler.iterator():<br> &gt;&nbsp;Handler.iterator().map(function(x){ return x.label});<br>' + Handler.iterator().map(function(x){ return x.label}) + "<br><br>";
+    out += 'Container.iterator():<br> &gt;&nbsp;Handler.handlers[0].activeContainer.iterator().map(function(x){ return x.label});<br>' + Handler.handlers[0].activeContainer.iterator().map(function(x){ return x.label}) + "<br><br>";
+    out += 'Item.iterator():<br> &gt;&nbsp;Item.get("example05").iterator().map(function(x){ return x.label});<br>' + Item.get("example05").iterator().map(function(x){ return x.label}) + "<br><br>";
+
+    el.innerHTML = out;
+  }
+
+  H("Main", ha.ex1 );            // Define, and start, the One, and ONLY Handler Instance Required.
+    if (window.location.href.indexOf("#") !== -1 ) mh('4');
+  </script>
+</body>
+</html>
