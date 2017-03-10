@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    <meta property="og:image" content="facebookimage.png" />
+    <meta charset="utf-8">
+    <title>Liefs-Layout-Manager</title>
+
+    <script src="resources/simpleConsole/simple-console.js"></script>             <!-- simple console -->
+    <script src="typeDocData.js"></script>  <!-- load data from typedoc ts -->
+    <script src="liefs-layout-manager.V1.0.3.min.js"></script>           <!-- liefs layout manager -->
+    <script src="indexFunction.js"></script>              <!-- do this before handler starts -->
+    <script src="index.js"></script>                 <!-- start handler -->
+    <script src="sunrise.js"></script>         <!-- do after handler starts -->
+
+    <link rel="stylesheet" href="resources/simpleConsole/simple-console.css">
+    <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="sunrise.css">
+    <style>.mybg {  }</style>
+</head>
+<style type="text/css">
+    .myButton {}
+    pre {background-color: rgba(220,220,220, 0.4);}
+.bdy { width: 100%; height: 100%; margin: 0; padding: 0;}
+::-webkit-scrollbar {width: 6px; height: 4px; cursor: pointer;}
+::-webkit-scrollbar-thumb {background-color: #000000; -webkit-border-radius: 1ex; }
+</style>
+<body class="bdy">
+<div id="SUNSWAP" style="visibility: hidden;">
+    <img src="no_sun.png" style="width:64px;height:64px" />
+</div>
+<div id="THESUN" style="visibility: hidden;">
+    <div id="starsContainer" class="mybg">
+      <div id="stars"></div>
+    </div>
+  	<div id="sun" class="mybg"></div>
+    <div id="sunDay" class="mybg"></div>
+    <div id="sunSet" class="mybg"></div>
+    <div id="sky" class="mybg"></div>
+
+    <div class="star" style="left: 250px; top: 30px;" class="mybg"></div>
+    <div class="star" style="left: 300px; top: 25px;" class="mybg"></div>
+    <div class="star" style="right: 40px; top: 40px;" class="mybg"></div>
+    <div class="star" style="right: 80px; top: 45px;" class="mybg"></div>
+    <div class="star" style="right: 120px; top: 20px;" class="mybg"></div>
+
+    <div id="horizon" class="mybg"></div>
+    <div id="horizonNight" class="mybg"></div>
+    <div id="moon" class="mybg"></div>
+
+    <div id="mountainRange" class="mybg">
+      <div id="mountain"></div>
+    </div>
+
+    <div id="division" class="mybg"></div>
+    <div id="water" class="mybg"></div>
+
+    <div id="waterReflectionContainer" class="mybg">
+      <div id="waterReflectionMiddle"></div>
+    </div>
+
+    <div id="waterDistance" class="mybg"></div>
+    <div id="darknessOverlaySky" class="mybg"></div>
+    <div id="darknessOverlay" class="mybg"></div>
+    <div id="oceanRippleContainer" class="mybg"></div>
+    <div id="oceanRipple" class="mybg"></div>
+</div>
+  <div id="loading" style="position: fixed;top: 0;left: 0;right: 0;bottom: 0;display: flex;align-items: center;justify-content: center;">
+    <table>
+      <tr><td align="center"><span style="font-size:200%;">Loading Lief's Layout Manager</span></td></tr>
+      <tr><td align="center">(Docs/Example)</td></tr>
+      <tr><td align="center">
+          If you have read this entire sentence, then your browser is not compatable.<br />
+          For best experience, please use the latest verstion of Chrome.
+      </td></tr>
+    </table>
+  </div>
+  <div id="left" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">ListTree</div>
+
+  <div id="smallLogo" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">
+    <img src="http://liefs.paperplane.io/images/liefslogo64.png" style="width: 100%; height: 100%;" />
+  </div>
+  <div id="titleBlock" class="myTitle" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Lief's Layout Manager</div>
+  <div id="XsmallTitleBlock" class="myTitle" style="font-size: 20px;left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Lief's Layout Manager</div>
+
+  <div id="Menu_description">wowowo</div>
+  <div id="Menu_Intro">
+    Lief's Layout Manager has two main functions.
+    <ol>
+      <li>Control the positioin of Elements (Usually &lt;div&gt;'s) On the screen, using a hiarchy of Items.</li>
+      <li>Control which Items will be displayed under which conditions.</li>
+    </ol>
+    This process is best understood by
+    <span class="fakeclick" onclick='Item.setPage("Menu_Intro","Menu_Example01")'>example</span>
+  </div>
+  <div id="Menu_Welcome">wowowo</div>
+  <div id="Menu_Example01">
+    Example01
+  </div>
+<!--  <div id="Menu_Intro" style="overflow-y: auto; left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Menu_Intro</div> -->
+  <div id="PageHeader" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Page Header</div>
+  <div id="legend" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">legend</div>
+
+  <div id="display" style="overflow-y: auto;left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Display</div>
+
+  <div id="SLauto" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="sa" onclick='myforce("auto");' title="Allow Lief's Layout Manager&#013;&#010; to Choose Layout" class="buttonlit">Auto</span></div>
+  <div id="SLXsmall" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="xs" onclick='myforce("xs");' title="FORCE Extra Small Layout, regardless of screen size" class="nav">XS</span></div>
+  <div id="SLsmall" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="ss" onclick='myforce("ss");' title="FORCE Small Layout, regardless of screen size" class="nav">Sm</span></div>
+  <div id="SLmeduim" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="sm" onclick='myforce("sm");' title="FORCE Medium Layout, regardless of screen size" class="nav">Med</span></div>
+  <div id="SLlarge" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="sl" onclick='myforce("sl");' title="FORCE Large Layout, regardless of screen size" class="nav">Lg</span></div>
+  <div id="SLXlarge" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="sx" onclick='myforce("sx");' title="FORCE Large Layout, regardless of screen size" class="nav">XL</span></div>
+  <div id="SLspacer" class="myTitle" style="border-style: none;left:0px;top:0px;width:0px;height:0px;visibility:hidden;"></div>
+  <div id="SLspacer2" class="myTitle" style="border-style: none;left:0px;top:0px;width:0px;height:0px;visibility:hidden;"></div>
+<!--  <div id="SunButton" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"> <button style="background: url(./sun.gif);background-size: 64px 64px;background-repeat: no-repeat;"></button></div> -->
+  <div id="BToff" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;" onclick="extraState=false;Handler.resizeEvent();"> <span id="bo" title="Remove Bottom 'window'" class="nav">Off</span></div>
+  <div id="BTconsole" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bc" title="Show 'console' in bottom 'window'" onclick="extraState=true; Item.setPage('console','console');Handler.resizeEvent();" class="nav">Console</span></div>
+  <div id="BTdisplay" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bd" title="Show 'display' in bottom 'window'" onclick="extraState=true; Item.setPage('console','jsonTree');Handler.resizeEvent();" class="nav">Display</span></div>
+  <div id="BTlegend" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bl" title="Show 'legend' in bottom 'window'" onclick="extraState=true; Item.setPage('console','legend');Handler.resizeEvent();" class="nav">Legend</span></div>
+
+  <div id="selectBack" style="cursor:pointer;left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span title="Back Page">
+      <img src="arr_ani_yl3.gif" style="width:100%;height:100%;" class="nav">
+  </span></div>
+  <div id="selectNext" style="cursor:pointer;left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span title="Next Page" class="nav">
+      <img src="arr_ani_yl1.gif" style="width:100%;height:100%;">
+  </span></div>
+  <div id="select1" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;color: inherit;">
+    <select id="selectClass" style="cursor:pointer;color: inherit;" class="nav">
+      <option value="Functions" class="myButton">Root</option>
+      <option value="Item" class="myButton">Class Item</option>
+      <option value="Dragbar" class="myButton">Class Dragbar</option>
+      <option value="Constainer" class="myButton">Class Container</option>
+      <option value="Layout" class="myButton">Class Layout</option>
+      <option value="Handler" class="myButton">Class Handler</option>
+    </select>
+  </div>
+  <div id="select2" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">
+    <select id="selectSubClass" style="cursor:pointer;color: inherit;" class="nav">
+      <option value="volvo" class="myButton">Volvo2</option>
+      <option value="saab" class="myButton">Saab2</option>
+      <option value="opel" class="myButton">Opel2</option>
+      <option value="audi" class="myButton">Audi2</option>
+    </select>
+  </div>
+  <div id="redBox" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"></div>
+  <div id="jsonTree" style="visibility: hidden"></div>
+</body>
+</html>
+<script>
+// const myJSON = {Starting: "...loading..."};
+// const formatter = new JSONFormatter(myJSON);
+// var ttt = formatter.render();
+// ttt.id = "jsonTree";
+// ttt.style.visibility = "hidden";
+// document.body.appendChild(ttt);
+</script>
