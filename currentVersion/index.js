@@ -33,7 +33,7 @@ function load_menu_to_ts(){
 //  aray = ["description","Intro","Welcome","Example01"];
 //  for (var i = 0 ; aray.length ; i++)
 //    ts["Menu_" + aray[i]] = "";
-
+  ts.Menu_Video = "";
   ts.Menu_description = "";
   ts.Menu_Intro = "";
   ts.Menu_Welcome = "";
