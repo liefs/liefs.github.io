@@ -1,0 +1,49 @@
+<!DOCTYPE html><!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example 02 - Container Many Items</title>
+</head>
+<body>
+<div id="LeftFixed" style="background-color: lightyellow"></div>
+<div id="LeftSide" style="background-color: lightgray">
+    This page is and example of:<br>
+    A Single Container Page, with Five Items<br><br>
+    Resize this page to see effects<br>
+    View Source of this page <span style="color:red">(Ctrl-u)</span> To understand
+</div>
+<div id="MidFixed" style="background-color: lightcyan"></div>
+<div id="RightSide" style="background-color: lightgreen">
+    Complete JavaCode that must be entered to define this page:
+<pre>
+H("Master", 4,
+    I("LeftFixed","100px"),
+    I("LeftSide", "40%"),
+    I("MidFixed","200px"),
+    I("RightSide", "60%"),
+    I("RightFixed","100px")
+);
+use("Master");
+startHandler();
+</pre>
+</div>
+<div id="RightFixed" style="background-color: lightcoral">
+
+</div>
+
+</body>
+</html>
+<script>
+window.onload = function () {
+    H("Master", 4,
+            I("LeftFixed","100px"),
+            I("LeftSide", "40%"),
+            I("MidFixed","200px"),
+            I("RightSide", "60%"),
+            I("RightFixed","100px")
+    );
+    use("Master");
+    startHandler();
+}
+</script>

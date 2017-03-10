@@ -1,0 +1,41 @@
+<h2>Array ManageArray:Array<[string,number,number]></h2><!-- -->
+<h2>Syntax (of Typescript Code)</h2>
+<pre class="prettyprint lang-js">
+var ManageArray:Array<[string,number,number]>;
+</pre>
+<h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+var ManageArray=[ ["SmallContainer", ifLengthIsLessThanThisAnd, ifWidthIsLessThanThis], // then use this one
+              ["MediumContainer", ifLengthIsLessThanThisAnd, ifWidthIsLessThanThis], // then use this one
+              ["LargerContainer", ifLengthIsLessThanThisAnd, ifWidthIsLessThanThis], // then use this one
+              ["ExLargeContainer"], // if all else fails, use this one (must be bigger than all others!)
+    ]; // uses first "valid" container - so list smallest to largest
+// Setting ifLengthIsLessThanThisAnd or ifWidthIsLessThanThis to undefined or null means *any* is valid
+</pre>
+<h2>Parameters</h2>
+This is not a function. It is a simple array of arrays.<br>
+<h2>Description</h2>
+Each Layout can be represented with the following:<br>
+<pre class="prettyprint lang-js">
+["Id", minLength, minWidth]
+</pre>
+for exmaple
+<pre class="prettyprint lang-js">
+["Layout1", 800, 600]
+</pre>
+This means then when the screen width is less than <strong>800px</strong> AND width is less than <strong>600px</strong>, use this layout
+<pre class="prettyprint lang-js">
+["Layout1", undefined, 600]
+</pre>
+This would be valid for ANY lenght, so long as the hieght is <strong>600px</strong> or less,<br>
+<h2>Examples</h2>
+So, Keeping with the above example:
+<pre class="prettyprint lang-js">
+var ManageArray=[ ["SmallContainer", 800, 800], // then use this one
+              ["MediumContainer", 1280, 800], // then use this one
+              ["LargerContainer", 1440, 900], // then use this one
+              ["ExLargeContainer"], // if all else fails, use this one (must be bigger than all others!)
+    ]; // uses first "valid" container - so list smallest to largest
+// Setting ifLengthIsLessThanThisAnd or ifWidthIsLessThanThis to undefined or null means *any* is valid
+</pre>
+<br><br><br>

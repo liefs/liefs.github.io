@@ -1,0 +1,40 @@
+<h1>Function startHandler() - (Lief Layout Manager)</h1><!-- -->
+<h2>Syntax (of Typescript Code)</h2>
+<pre class="prettyprint lang-js">
+function startHandler(label: string, start: string|number, is_a_container: Container = null): Item
+</pre>
+<h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+function startHandler()
+</pre>
+<h2>Parameters</h2>
+None<br>
+<h2>Return value</h2><br>
+Void<br><br>
+<h2>Discription</h2>
+Liefs layout manager will just sit around and do nothing until you call this function.<br>
+Once Activated, It will:<br>
+<ol>
+    <li>First Check to see if ManageArray is defined.</li>
+    <ol>
+        <li>If Defined, check screen size against ManageArray, and use that Layout.<br>
+            It does not care what use() was set to. (but you have to set it to something anyways *will fix*)</li>
+        <li>If not, will use Layout defined by use() function</li>
+    </ol>
+    <li>Loop the Array&lt;items&gt;</li>
+    <ol>
+        <li>If each item used in layout, set visibile=true (and appropriate x, y, length, height).</li>
+        <li>If each Item not used in layout, set visible=flase (and x, y, length, heigth to small values)</li>
+    </ol>
+    <li>Wait for resize event to repeat process</li>
+</ol>
+<h2>Example</h2>
+<pre class="prettyprint lang-js">
+    H("Master", 4,
+            I("LeftSide", "50%"),
+            I("RightSide", "50%")
+    );
+    use("Master");
+    startHandler();
+
+</pre>

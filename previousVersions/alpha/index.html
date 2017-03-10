@@ -1,0 +1,159 @@
+<!DOCTYPE html><!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Liefs Layout Manager</title>
+    <link rel="stylesheet" type="text/css" href="css/newindex.css"> <!-- standard css stuff -->
+</head>
+<body onload="start()">
+<div id="header" class="con">{Docs Liefs_Layout-Manager=}</div>
+<div id="menu" class="con" urlload="html/loads/menu.html"></div>
+<div id="smenu" class="con" style="overflow:hidden" urlload="html/loads/smallmenu.html"></div>
+<div id="menuicon" class="con" style="overflow:hidden">
+    <img src="images/liefslogo256.png"  style="width: 100%;height: 100%" />
+</div>
+<div id="feedback" class="con" style="font-size: 75%;background-color: rgba(103, 255, 39, 0.24)"></div>
+
+<div id="welcome" class="m con" urlload="html/loads/welcome.html">Loading Data...</div>
+<div id="isTiny" class="m con" urlload="html/loads/isTiny.html">Loading Data...</div>
+<div id="installation" class="m con" urlload="html/loads/installation.html">Loading Data...</div>
+
+<div id="docs" class="m con" urlload="html/loads/docs.html"></div>
+
+<div id="Core" class="m con" urlload="html/loads/core.html"></div>
+
+<div id="newItem" class="m con" urlload="html/loads/newItem.html"></div>
+<div id="newContainer" class="m con" urlload="html/loads/newContainer.html"></div>
+<div id="update" class="m con" urlload="html/loads/update.html"></div>
+
+<div id="Handler" class="m con" urlload="html/loads/handler.html"></div>
+
+<div id="manageArray" class="m con" urlload="html/loads/manageArray.html"></div>
+<div id="use" class="m con" urlload="html/loads/use.html"></div>
+<div id="checkWinWH" class="m con" urlload="html/loads/checkWinWH.html"></div>
+<div id="startHandler" class="m con" urlload="html/loads/startHandler.html"></div>
+
+<div id="Directive" class="m con" urlload="html/loads/directive.html"></div>
+
+<div id="Misc" class="m con" urlload="html/loads/misc.html"></div>
+
+<div id="urlload" class="m con" urlload="html/loads/urlload.html"></div>
+
+</body>
+</html>
+<script>
+    function setManage(id) {
+        V("sm_" + id,
+                I("header", "40px"),
+                I("smenu", "32px"),
+                I("feedback","25px"),
+                I(id, "100%")
+        );
+        V("ls_" + id,
+                I("header", "40px"),
+                h("menuMain", "100%", 12,
+                        v("MenuAndIcon", "200px",
+                                I("feedback","50px"),
+                                I("menu", "100%")
+                            ),
+                        I(id, "100%")
+                )
+        );
+        V("lh_" + id,
+                I("header", "40px"),
+                h("menuMain", "100%", 12,
+                        v("MenuAndIcon", "200px",
+                                I("feedback","50px"),
+                                I("menu", "100%"),
+                                I("menuicon", "200px")
+                        ),
+                        I(id, "100%")
+                )
+        );
+        ManageArray = [
+            ["sm_" + id, 1000],
+            ["ls_" + id, undefined, 680],
+            ["lh_" + id]
+        ];
+    }
+    function switchTo(id) {
+        setManage(id);
+        checkWinWH();
+        var displayUrl=thisUrl;
+        var temp = thisUrl.indexOf("#");
+        if (temp !== -1){
+            displayUrl = thisUrl.slice(0, thisUrl.indexOf("#") );
+        }
+        document.title = "Liefs "+id;
+        window.history.pushState({"html":"#"+id,"pageTitle":'Liefs '+id},"", displayUrl + "#" +id);
+    }
+
+    function myUse(ns){
+        var n=CurrentContainer.label.slice(4);
+        use("_"+ns+"_"+n);
+        resize_callback([winW, winH]);}
+
+    window.onpopstate = function(e){
+        if(e.state){
+            if (e.state.html[0]="#"){
+                setManage(e.state.html.slice(1));
+                document.title = "Liefs "+e.state.html.slice(1);
+                checkWinWH();
+            }
+        }
+    };
+
+    var thisUrl= window.location.href.slice(window.location.href.lastIndexOf('/'));
+    window.onload = function () {
+        marginDefault = 12;
+
+//waitForIt(function () {return (document.getElementById('tdocs'));},function () {document.getElementById('tdocs').setAttribute("checked", true);});
+
+        waitForIt(function () {
+                    return window['loadsDone']
+                },
+                function () {
+                    myRequire("js/run_prettify.js");
+                });
+        // This list is required for all divs NOT forced on start definition
+        // so leave out menus (always in default), Header, StartPage
+        for (var each of ["welcome", "docs", "Core", "newItem", "newContainer", "update", "Handler","installation",
+            "manageArray", "use", "checkWinWH", "Directive", "Misc", "urlload","startHandler","isTiny"])
+            I(each, "100%");
+
+        callback = function (cordobj) {
+            var feedbackContent= "&nbsp;Active Container: ";
+
+            if (CurrentContainer.label.slice(1,3) === 'sm') {
+            feedbackContent = feedbackContent + CurrentContainer.label + " " +
+                    "<button style='background-color:lightgreen'>Small</button>&nbsp;" +
+                    "<button onclick=\"myUse('ls')\">LongShort</button>&nbsp;" +
+                    "<button onclick=\"myUse('lh')\">LongHign</button>&nbsp;";
+            }
+            else if (CurrentContainer.label.slice(1,3) === 'ls') {
+                feedbackContent = feedbackContent + "<br>" + CurrentContainer.label + "<br>" +
+                        "<button onclick=\"myUse('sm')\">Small</button>&nbsp;" +
+                        "<button style='background-color:lightgreen'>LongShort</button>&nbsp;" +
+                        "<button onclick=\"myUse('lh')\">LongHign</button>&nbsp;";
+            } else {
+                feedbackContent = feedbackContent+"<br>" + CurrentContainer.label + "<br>" +
+                        "<button onclick=\"myUse('sm')\">Small</button>&nbsp;" +
+                        "<button onclick=\"myUse('ls')\">LongShort</button>&nbsp;" +
+                        "<button  style='background-color:lightgreen'>LongHigh</button>&nbsp;";
+            }
+
+
+            document.getElementById("feedback").innerHTML = feedbackContent;
+        };
+
+        setManage('welcome');
+//        console.log("WELCOME");
+//        console.log(containers["_lh_welcome"]);
+        use("lh_welcome");
+        startHandler();
+        if (thisUrl.indexOf("#") !== -1 ){
+            switchTo(thisUrl.slice(thisUrl.indexOf("#")+1));
+        }
+    }
+</script>

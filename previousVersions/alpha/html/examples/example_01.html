@@ -1,0 +1,41 @@
+<!DOCTYPE html><!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example 01 - Container Two Items</title>
+</head>
+<body>
+
+<div id="LeftSide" style="background-color: lightgray">
+    This page is and example of:<br>
+    A Single Container Page, with Two Items, Left and Right<br><br>
+    always 50% each side.
+    As you resize this page, both sides always hold 50%<br><br>
+    View Source of this page <span style="color:red">(Ctrl-u)</span> To understand
+</div>
+
+<div id="RightSide" style="background-color: lightgreen">
+Complete JavaCode that must be entered to define this page:
+<pre>
+H("Master", 4,
+    I("LeftSide", "50%"),
+    I("RightSide", "50%")
+);
+use("Master");
+startHandler();
+</pre>
+</div>
+
+</body>
+</html>
+<script>
+window.onload = function () {
+    H("Master", 4,
+            I("LeftSide", "50%"),
+            I("RightSide", "50%")
+    );
+    use("Master");
+    startHandler();
+}
+</script>

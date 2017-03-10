@@ -1,0 +1,74 @@
+<h1>Function update()  -  (Lief Layout Manager)</h1><!-- -->
+<h2>Syntax (of Typescript Code)</h2>
+<pre class="prettyprint lang-js">
+function update(width: number, height: number, container: Container,
+                 x_offset: number = 0, y_offset: number = 0, include_parents: boolean = false):CoordObject
+</pre>
+    <h2>Interfaces Used (Typescript)</h2>
+<pre class="prettyprint lang-js">
+interface Container {label: string,  direction: boolean, items: Item[],  margin: number,  size?: Position, el?:Element,}
+interface CoordObject { [index: string]: Position}
+interface Position { label?: string, x: number, y: number, width: number, height: number}
+</pre>
+    <h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+update(width, height, container, /*next are for internal use only*/ x_offset = 0, y_offset = 0, include_parents = false)
+</pre>
+    <h2>Parameters</h2>
+
+    <strong>width</strong><br>
+    Width to be use when evaluating the positions of items. (Width of Outer Window) in pixels. (number not string)<br><br>
+    <strong>height</strong><br>
+    Height to be use when evaluating the positions of items. (Height of Outer Window) in pixels. (number not string)<br><br>
+    <strong>container</strong><br>
+    The Outer-most Container to be used for new Width, Height
+    <strong>x_offset</strong>
+    Used in recursion<br><br>
+    <strong>x_offset</strong><br>
+    Used in recursion<br><br>
+    <strong>include_parents</strong><br>
+    If (for some reason) you want the (Imaginary) Container-Items Co-ordinates also.  Since these don't actually exist,
+    this probaby isn't necessary<br><br>
+    <h2>Return value</h2>
+    (Typescript) CoordObject<br><br>
+    <h2>Description</h2>
+    This function takes a Container of Items (Possibly recursive like a directory tree),<br> and evaluates
+    their four corners (x, y, length, width).  This is returned in an Object of values.
+    <h2>Examples</h2>
+<pre class="prettyprint lang-js">
+> var hor=newContainer("Ho",true,[I("Tree","120px"),I("Main","100%")],4);
+> var ver=x.newContainer("Ve",false,[x.I("Tree","120px"),x.I("Main","100%")],4);
+> update(1000,1000,hor);
+{ Tree: { x: 4, y: 4, width: 120, height: 992 },
+  Main: { x: 128, y: 4, width: 868, height: 992 } }
+> x.update(1000,1000,ver);
+{ Tree: { x: 4, y: 4, width: 992, height: 120 },
+  Main: { x: 4, y: 128, width: 992, height: 868 } }
+</pre>
+For a more complicated example, extracting from <a  href="/js_example_1.html">This Example</a>
+<pre class="prettyprint lang-js">
+> update(1920,1080, V("highp4", 4,                                                     /* I want a Vertical Container (name it "highp4") with */
+                        I("HeaderMd","64px"),             /* <- static               *//* A Header, 64px High,                     */
+                        I("Buttons","44px"),              /* <- static               *//* A row of Buttons, 44px High              */
+                        h("TreeWIconAndMain","100%",      /* 100% Adds up            *//* A Horizontal Container (fill ballance of vertical with this)*/
+                                v("TreeWIcon","200px",         /* <- static          *//*    200px wide, with a Vertical Container */
+                                        I("Tree","100%"),            /* 100% Adds up *//*           Tree on top(fill above TreeIcon)*/
+                                        I("TreeIcon","180px")        /* <- static    *//*           TreeIcon under, 180px high.    */
+                                ),
+                                I("Main1","25%"),              /* 25+                *//*     then a text area 25% of Width Left   */
+                                I("Main2","50%"),              /* 50+                *//*     then a text area 50% of Width Left   */
+                                I("Main3","25%")               /* 25=100% Adds up    *//*     then a text area 25% of Width Left   */
+                        ),
+                        I("Footer","150px")               /* <- static               *//* and a footer 150px on the bottom         */
+                ));
+{ HeaderMd: { x: 4, y: 4, width: 1912, height: 64 },
+  Buttons: { x: 4, y: 72, width: 1912, height: 44 },
+  Tree: { x: 4, y: 120, width: 200, height: 618 },
+  TreeIcon: { x: 4, y: 742, width: 200, height: 180 },
+  TreeWIcon: { x: 4, y: 120, width: 200, height: 802 },
+  Main1: { x: 208, y: 120, width: 425, height: 802 },
+  Main2: { x: 637, y: 120, width: 850, height: 802 },
+  Main3: { x: 1491, y: 120, width: 425, height: 802 },
+  TreeWIconAndMain: { x: 4, y: 120, width: 1912, height: 802 },
+  Footer: { x: 4, y: 926, width: 1912, height: 150 } }
+</pre>

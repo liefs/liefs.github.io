@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script>
+    <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example 00 - Bare Bones</title>
+</head>
+<body style="color:white">
+
+<div id="head1" style="background-color: #EEDDAF"></div>
+<div id="head2" style="background-color: #116534"></div>
+<div id="head3" style="background-color: #F1BD95"></div>
+<div id="head4" style="background-color: #44AF47"></div>
+<div id="menu" style="background-color: #A1764C"></div>
+<div id="dropdown" style="background-color: #A1A6AA"></div>
+<div id="article1" style="background-color: #0198CF"></div>
+<div id="article2" style="background-color: #AADFE5"></div>
+<div id="article3" style="background-color: #A8B6E3"></div>
+<div id="pic1" style="background-color: #E5A9CB"></div>
+<div id="pic2" style="background-color: #CD0B86"></div>
+<div id="hideme" style="background-color: white"></div>
+<div id="footer" style="background-color: #182C5E"></div>
+
+</body>
+</html>
+<script>
+    window.onload = function () {
+        marginDefault = 4;
+        V("Master Layout",
+                h("fullhead", "100px",
+                        I("head1", "120px"),
+                        I("head2", "60%"),
+                        I("head3", "100px"),
+                        I("head4", "40%")
+                ),
+                h("menu_drop_arts_pic", "100%",
+                        I("menu", "100px"),
+                        v("drop_arts_pic", "100%",
+                                I("dropdown", "80px"),
+                                h("arts_pics", "100%",
+                                        I("article1", "30%"),
+                                        I("article2", "40%"),
+                                        I("article3", "30%"),
+                                        v("pics", "80px",
+                                                I("pic1", "80px"),
+                                                I("pic2", "80px"),
+                                                I("hideme", "100%")
+                                        )
+
+                                )
+                        )
+                ),
+                I("footer", "100px")
+        );
+        use("Master Layout");
+        startHandler();
+    }
+</script>

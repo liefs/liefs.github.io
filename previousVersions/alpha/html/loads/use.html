@@ -1,0 +1,37 @@
+<h1>Function use() - (Lief Layout Manager)</h1><!-- -->
+<h2>Syntax (of Typescript Code)</h2>
+<pre class="prettyprint lang-js">
+function use(ContainerId:string):void
+</pre>
+<h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+function use(ContainerId)
+</pre>
+<h2>Parameters</h2>
+
+<strong>ContainerId</strong><br>
+This is the Id value of the element.<br><br>
+
+<strong>Return value</strong><br>
+Void
+<h2>Description</h2>
+Liefs Layout system needs a "Current Layout"<br>
+you must use("SomeLayout") before you startHandler();<br>
+You can also "FORCE" a layout with use().<br><br>
+If ManageArray is undefined, use("value") will persist.<br>
+IF ManageArray is defined, use("value") will only persist until<br>
+a resize event occurs.  At that point, the above use("value") is <br>
+ignored, and the ManageArray is evaluated.  To have your use("value") persist<br>
+change ManageArrary to include propper usage of "value"<br>
+
+
+, however as soon as a resize event<br>
+happens, this will be ignored IF ManageArray is defined<br>
+If ManageArray is undefined, use() value will persist.<br>
+<h2>Examples</h2>
+<pre class="prettyprint lang-js">
+
+</pre>
+<h2>Abbreviations</h2>
+<pre class="prettyprint lang-js">
+</pre>

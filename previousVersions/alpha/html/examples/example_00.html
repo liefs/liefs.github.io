@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example 00 - Bare Bones</title>
+</head>
+<body style="color:white">
+
+<div id="Top" style="background-color: red">"Top": Resize Screen To See Effect</div>
+<div id="LeftSide" style="background-color: blue">"LeftSide"</div>
+<div id="RightSide" style="background-color: green">"RightSide": View Source Of Page - Its That Easy</div>
+
+</body>
+</html>
+<script>
+    window.onload = function () {
+        marginDefault=4;
+        V("Master",
+                I("Top", "200px"),
+                h("Bottom", "100%",
+                    I("LeftSide", "30%"),
+                    I("RightSide", "70%")
+                )
+        );
+        use("Master");
+        startHandler();
+    }
+</script>

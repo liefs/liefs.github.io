@@ -1,0 +1,141 @@
+<!DOCTYPE html><!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example 03 - Nesting Items and Containers</title>
+</head>
+<style>div {border-style: solid;border-width: 1px;outline-offset: -15px;}</style>
+<body>
+<div id="TopLeft">TopLeft</div>
+<div id="TopMid">TopMid</div>
+<div id="TopRight">TopRight</div>
+<div id="Top">Top</div>
+<div id="Bottom">Bottom</div>
+
+<div id="Tree">
+    This page is and example of:<br>
+    Nesting Containers and Items<br><br>
+    Resize this page to see effects<br>
+    View Source of this page <span style="color:red">(Ctrl-u)</span> To understand<br><br>
+    Um... This seems too easy...
+</div>
+
+<div id="MainTop">MainTop</div>
+<div id="MainLeft">MainLeft</div>
+
+<div id="MainMid" style="overflow: auto"></div>
+
+<div id="MainRight">MainRight</div>
+<div id="MainBottom">MainBottom</div>
+
+<div id="BottomLeft">BottomLeft</div>
+<div id="BottomRight">BottomRight</div>
+</body>
+</html>
+<script>
+    window.onload = function () {
+        var x='marginDefault=4;\n' +
+                'V("Master",\n' +
+                    '\th("Top", "80px",\n' +
+                        '\t\tI("TopLeft", "100px"),\n' +
+                        '\t\tI("TopMid", "100%"),\n' +
+                        '\t\tI("TopRight", "100px")),\n' +
+                        '\t\th("AllMid", "100%",\n' +
+                            '\t\t\tI("Tree", "150px"),\n' +
+                            '\t\t\tv("Mains", "100%",\n' +
+                                '\t\t\t\tI("MainTop", "100px"),\n' +
+                                '\t\t\t\th("Hmain", "100%",\n' +
+                                    '\t\t\t\t\tI("MainLeft", "15%"),\n' +
+                                    '\t\t\t\t\tI("MainMid", "70%"),\n' +
+                                    '\t\t\t\t\tI("MainRight", "15%")\n' +
+                                '\t\t\t\t),\n' +
+                                '\t\t\t\tI("MainBottom", "100px")\n' +
+                            '\t\t\t)\n' +
+                        '\t\t),\n' +
+                    '\th("Bottoms", "100px",\n' +
+                        '\t\tI("BottomLeft", "50%"),\n' +
+                        '\t\tI("BottomRight", "50%")\n' +
+                    '\t)\n' +
+                ');\n' +
+                'H("Short",\n' +
+                '\tI("Tree","150px"),\n' +
+                '\tI("MainMid","100%")\n' +
+                ');\n' +
+                'var SM=H("ShortMid",\n' +
+                '\tI("Tree","150px"),\n' +
+                '\tv("v3","100%",\n' +
+                '\t\tI("MainTop","80px"),\n' +
+                '\t\tI("MainMid","100%"),\n' +
+                '\t\tI("MainBottom","100px")\n' +
+                '\t)\n' +
+                ');\n' +
+                'V("ShortTall",\n' +
+                    '\tI("Top","80px"),\n' +
+                    '\tnewItem("SMI","100%",SM),\n' +
+                    '\tI("Bottom","100px")\n' +
+                ');\n' +
+                'var MS=H("MedShort",\n' +
+                    '\tI("Tree","150px"),\n' +
+                    '\titems["Hmain"]\n' +
+                ');\n' +
+                'V("MedMed",\n' +
+                    '\tI("MainTop","80px"),\n' +
+                    '\tnewItem("MSI","100%",MS),\n' +
+                    '\tI("MainBottom","100px")\n' +
+                ');\n' +
+                'V("MedTall",\n' +
+                    '\tI("Top","80px"),\n' +
+                    '\th("Hblock", "100%",\n' +
+                        '\t\tI("Tree","150px"),\n' +
+                        '\t\tv("Vblock", "100%",\n' +
+                            '\t\t\tI("MainTop","80px"),\n' +
+                            '\t\t\titems["Hmain"],\n' +
+                            '\t\t\tI("MainBottom","80px")\n' +
+                        '\t\t)\n' +
+                    '\t),\n' +
+                    '\tI("Bottom","100px")\n' +
+                ');\n' +
+                'V("LongMed",\n' +
+                    '\th("Top", "80px",\n' +
+                        '\t\tI("TopLeft", "100px"),\n' +
+                        '\t\tI("TopMid", "100%"),\n' +
+                        '\t\tI("TopRight", "100px")\n' +
+                    '\t),\n' +
+                    '\titems["MSI"],\n' +
+                    '\th("Bottoms", "100px",\n' +
+                        '\t\tI("BottomLeft", "50%"),\n' +
+                        '\t\tI("BottomRight", "50%")\n' +
+                    '\t)\n' +
+                ');\n' +
+
+                'ManageArray = [\n' +
+                '\t["Short", 900, 600],\n' +
+                '\t["ShortMid", 900, 750],\n' +
+                '\t["ShortTall", 900],\n' +
+                '\t["MedShort", undefined, 600],\n' +
+                '\t["MedMed", 1440, 750],\n' +
+                '\t["MedTall", 1440],\n' +
+                '\t["LongMed", undefined, 750],\n' +
+                '\t["Master"]\n' +
+                '];\n' +
+                'use("Master");\n' +
+                'startHandler();';
+        document.getElementById("MainMid").innerHTML = "<span id='cs'></span>Complete JavaCode to define this page:<pre>"+x+"</pre>";
+        eval(x);
+
+        callback = function(){document.getElementById('cs').innerHTML=viewDiv();};
+        callback();
+    };
+function b(v){use(v);resize_callback([winW, winH]);}
+    function viewDiv() { return "Current Container: <span style='color:red;'>"+CurrentContainer.label.slice(1)+"</span> " +
+            "Resize The Screen to Change Layout (Or Press Buttons)<br>" +
+            "<button onclick=\"b('Short')\">Short</button>" +
+            "<button onclick=\"b('ShortMid')\">ShortMid</button>" +
+            "<button onclick=\"b('ShortTall')\">ShortTall</button>" +
+            "<button onclick=\"b('MedShort')\">MedShort</button>" +
+            "<button onclick=\"b('MedMed')\">MedMed</button>" +
+            "<button onclick=\"b('MedTall')\">MedTall</button>" +
+            "<button onclick=\"b('LongMed')\">LongMed</button>" +
+            "<button onclick=\"b('Master')\">Master</button><hr>";}
+</script>

@@ -1,0 +1,128 @@
+<h1>Installation</h1>
+
+At the end of the day, Liefs layout manager is a simple Javascript file.
+<table>
+    <tr>
+        <td>
+            basic.ts<br>
+            basic1.ts<br>
+            basic.js<br>
+            basic.min.js<br>
+            basic1.js<br>
+            basic1.min.js<br>
+        </td>
+        <td>
+            *Source of Liefs Layout Manager (Typescript)<br>
+            identical to *Source, but every export statement has been change to standard statement (Typescript)<br>
+            *Source of Liefs Layout Manager (Javascript) >tsc basic.ts To Create This file<br>
+            *uglifyjs basic.js > basic.min.js - uglified version<br>
+            *export free Liefs Layout Manager (Javascript)<br>
+            *uglifyjs basic1.js > basic1.min.js - uglified version<br>
+        </td>
+    </tr>
+</table>
+*.ts (Typescript), *.js (Javascript)<br><br>
+
+<h2>Instalation</h2>
+
+<h3>Option #1 - Easy - None</h3>
+Officially, You don't have to install anything to make Liefs Layout Manager work for you.<br>
+Just include <span style="color:red">http://liefs.paperplane.io/js/basic1.js</span> in your html file.<br><br>
+<a href="/html/examples/example_00.html">See The Following Code Work As A Page</a><br>
+(View Source After You Click Above Link)
+<pre class="prettyprint">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;script src="http://liefs.paperplane.io/js/basic1.js"&gt;&lt;/script&gt; &lt;!-- this is the REQUIRED CODE for liefs to work! --&gt;
+    &lt;title&gt;Example 00 - Bare Bones&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="color:white"&gt;
+
+&lt;div id="Top" style="background-color: red"&gt;"Top": Resize Screen To See Effect&lt;/div&gt;
+&lt;div id="LeftSide" style="background-color: blue"&gt;"LeftSide"&lt;/div&gt;
+&lt;div id="RightSide" style="background-color: green"&gt;"RightSide": View Source Of Page - Its That Easy&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    window.onload = function () {
+        marginDefault=4;
+        V("Master",
+                I("Top", "200px"),
+                h("Bottom", "100%",
+                        I("LeftSide", "30%"),
+                        I("RightSide", "70%")
+                )
+        );
+        use("Master");
+        startHandler();
+    }
+&lt;/script&gt;
+</pre>
+
+<h3>Option #2 Npm</h3>
+This will add Lief Layout Manager To your Project
+<pre class="prettyprint lang-js">
+npm install liefs-layout-manager --save
+</pre>
+you will find:<br>
+./node_modules/liefs-layout-manager/basic.js<br>
+./node_modules/liefs-layout-manager/basic.min.js<br>
+./node_modules/liefs-layout-manager/basic.ts<br>
+./node_modules/liefs-layout-manager/basic1.js<br>
+./node_modules/liefs-layout-manager/basic1.min.js<br>
+./node_modules/liefs-layout-manager/basic1.ts<br>
+./node_modules/liefs-layout-manager/package.json<br>
+./node_modules/liefs-layout-manager/README.md<br>
+<br>
+Typescript
+<pre class="prettyprint lang-js">
+import {I, H, V, h, v, newItem, newContainer, use,
+    startHandler, ManageArray, update, checkWinWH} from './node_modules/liefs-layout-manager/basic';
+
+marginDefault=4;
+V("Master",
+    I("Top", "200px"),
+    h("Bottom", "100%",
+        I("LeftSide", "30%"),
+        I("RightSide", "70%")
+    )
+);
+use("Master");
+startHandler();
+</pre>
+Javascript
+<pre class="prettyprint lang-js">
+var liefs=require("./node_modules/liefs-layout-manager/basic.js");
+var I=liefs.I,V=liefs.V,H=liefs.H,v=liefs.v,h=liefs.h,newItem=liefs.newItem,newContainer=liefs.newContainer;
+var use=liefs.use,startHandler=liefs.startHandler, ManageArray=liefs.ManageArray, update=liefs.update;
+var checkWinWH=liefs.checkWinWH;
+
+var marginDefault=4;
+V("Master",
+    I("Top", "200px"),
+    h("Bottom", "100%",
+        I("LeftSide", "30%"),
+        I("RightSide", "70%")
+    )
+);
+use("Master");
+startHandler();
+</pre>
+<h3>Option # GitHub</h3>
+This will add Lief Layout Manager To your Project
+<pre class="prettyprint lang-js">
+git clone https://github.com/electriclief/liefs.git
+</pre>
+This will make a new directory called liefs with this file structure:<a href="https://github.com/electriclief/liefs">https://github.com/electriclief/liefs</a>
+<br>Load Typescript and Javascript like above, (For NPM) but use:<br><br>
+./liefs/ts  instead of ./node_modules/liefs-layout-manager for the Typescript files and<br>
+./liefs/js  instead of ./node_modules/liefs-layout-manager for the Javascript files<br><br><br>
+Github installation include this web site, so If you would like to view this web site locally,
+<pre class="prettyprint lang-js">
+npm install -g serve
+serve ./liefs -a localhost
+</pre>
+Then click on "index.html"

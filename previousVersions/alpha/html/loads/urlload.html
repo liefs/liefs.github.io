@@ -1,0 +1,15 @@
+<h2>urlload</h2>
+
+... is a simple routine that looks for attribute "urlload" in a element.<br>
+(Hopefully a div) because it will try to:<br>
+<pre class="prettyprint">
+&lt;div id="doesnTActuallyNeedIdSetAtAll" urlload="somefile.someextension"&gt;
+</pre>
+Will try to:
+<pre class="prettyprint">
+document.getElementById("doesnTActuallyNeedIdSetAtAll").innerHTML = ...insert contents of "somefile.someextension" here...
+</pre>
+This is intended for development purposes to make development of code clear.<br>
+At point of production, I strongly recommend pasting them in. (Remove urlload)<br>
+...as this will dramatically slow down the load of your page...<br>
+<br>...unless of course the content is "pages away" from entry point, then it makes more sense<br>

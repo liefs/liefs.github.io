@@ -1,0 +1,102 @@
+<!-- Note: All elements (Divs) that are to be use by liefs MUST be defined.
+  For example, if you have:
+  <div id="idNotUsed"></div>
+  liefs will ignore this element, and it will sit on top/bottom VISIBLE!!! - Not handled by liefs at all
+  This will look horrible.  Simply having the line:
+  I("idNotUsed","100%"); // Now liefs knows to set this to visible=flase, and hides till you need it.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script>   <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example Dynamic Layout</title>
+</head><style>div{border-style: solid;border-width: 1px}</style>
+<body style="background-color: violet">
+
+<div id="Header"  style="background-color: lightgreen">
+    100px High, Full Width
+</div> <!-- Used On Both Layouts -->
+
+<div id="ListTree" style="background-color: lightcyan">
+    <button onclick='switchTo("Page1");'>Page1</button><br>
+    <button onclick='switchTo("Page2");'>Page2</button><br>
+    <button onclick='switchTo("Page3");'>Page3</button><br>
+    <button onclick='switchTo("Page4");'>Page4</button><br>
+    <button onclick='window.location="/index.html"'>(link) Docs</button><br><br>
+    <button onclick='myUse("Small")'>Force Small</button><br>
+</div> <!-- Used Only on Large Layout -->
+
+<div id="SelectTree" style="background-color: lightcyan">
+    <select style="width:100%;height:100%;background-color:#c6ffb2;font-size: 150%"
+            onchange="onSelectChange(this.value)">
+        <option value="Page1">Page 1</option>
+        <option value="Page2">Page 2</option>
+        <option value="Page3">Page 3</option>
+        <option value="Page4">Page 4</option>
+        <option value="/index.html">(link) Docs</option>
+        <option value="Large">Force Large</option>
+    </select>
+</div> <!-- Used Only On Small Layout -->
+
+<div id="Page1" style="background-color: lightblue">
+    Page 1 Content - Resize Page Width <-- this way --> to switch layouts
+</div> <!-- Default Page -->
+
+<div id="Page2" style="background-color: lightsteelblue">
+    Page 2 Content - Resize Page Width <-- this way --> to switch layouts
+</div>
+
+<div id="Page3" style="background-color: aliceblue">
+    Page 3 Content - Resize Page Width <-- this way --> to switch layouts
+</div>
+
+<div id="Page4" style="background-color: powderblue">
+    Page 4 Content - Resize Page Width <-- this way --> to switch layouts
+</div>
+
+</body>
+</html>
+<script>
+    var currentId;
+    function myUse(size){use(size+"_"+currentId);resize_callback([winW, winH]);}
+    function onSelectChange(value){
+        if (value[0] === '/')                                window.location = value;
+        else if (containers["_Small_"+value] !== undefined)  switchTo(value);
+        else                                                 myUse(value);}
+    function defineLayout(id) {
+        V("Large_" + id,                    // our big layout consists of
+                I("Header", "100px"),       // a header on top with Tree and Page below
+                h("Body", "100%",
+                        I("ListTree", "250px"),  // Tree on the left,
+                        I(id, "100%")            // Body on the right.
+                )
+        );
+        V("Small_" + id,                    // In small, no room for tree on left
+                items['Header'],            // Note: If header changes size, use I("Header", newsize)
+                I("SelectTree", "50px"),     //
+                items[id]                   // Small all three stacked in one column.
+        );
+    }
+    function setPage(id){
+        ManageArray = [             // ManageArray Set, so it governs
+            ["Small_"+id, 800],     // Use "One Big Column" if screen width < 800px
+            ["Large_"+id]           // Otherwise use Large Layout
+        ];
+    }
+    function switchTo(id) {
+        currentId=id;
+        setPage(id);         // see 7 lines up
+        checkWinWH();        // triggers resize event
+    }
+    window.onload = function () {
+        marginDefault=20; //
+        for (var eachPage of ['Page1','Page2','Page3','Page4']) defineLayout(eachPage); // see 26 lines up
+        // by defining all divs in above line, liefs knows to set visibility properly
+        // If you add pages, be sure to add the id to the above "for loop" array
+
+        use("Large_Page1"); //  (will change higher version) needed, then ignored - pick any existing CONTAINER
+        switchTo('Page1');  //   I'm hoping my function name and arguments aren't too confusing here....
+        startHandler();     //   Guess what this does!
+    }
+</script>

@@ -1,0 +1,25 @@
+<h1>Function stopHandler() - (Liefs Layout Manager)</h1><!-- -->
+<h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+function stopHandler()
+</pre>
+<h2>Parameters</h2>
+None<br>
+<h2>Return value</h2><br>
+Void<br><br>
+<h2>Discription</h2>
+This will stop liefs-layout-manager completly.<br>
+All "last used values" remain in DOM - further resize event ignored<br>
+<h2>Example</h2>
+<pre class="prettyprint lang-js">
+    H("Master", 4,
+            I("LeftSide", "50%"),
+            I("RightSide", "50%")
+    );
+    use("Master");
+    startHandler();
+    stopHandler();
+</pre>
+The above code WILL do something.  It will resize all elements defined as items,<br>
+Then ignore resize events, leaving all elements at their positions calculated<br>
+for initial screen size.<br>

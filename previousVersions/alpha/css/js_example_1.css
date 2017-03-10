@@ -1,0 +1,23 @@
+@font-face {font-family: "JungleRock";src: url(/fonts/JFJunRoc.ttf) format("truetype");}/**/
+div {background-size: contain;overflow: auto}
+.buttons {background-color:transparent; border-color:transparent;}
+#Header {background-color: lightgreen;position: fixed;}
+#HeaderSm {background-color: lightgreen;position: fixed;width:100%;text-align:center;}
+#HeaderMd {background-color: lightgreen;position: fixed;width:100%;text-align:center;}
+#TreeIcon {background-color: lavenderblush;position: fixed;}
+#TreeSm {background-color: lightcoral;position: fixed}
+#Tree {background-color: lightcoral;position: fixed;}
+#Buttons {background-color: floralwhite;position: fixed;}
+#Mains {background-color: snow;position: fixed;text-align: center;}
+#Main1 {background-color: lightblue;position: fixed;text-align: center;}
+#Main2 {background-color: lightgray;position: fixed;text-align: center;}
+#Main3 {background-color: azure;position: fixed;text-align: center;}
+#MainNon {position: fixed;text-align: center;}
+#Footer {background-color: lightcyan;position: fixed;}
+#Tab1 {background-color: lightgoldenrodyellow;position: fixed;}
+#Tab2 {background-color: lightgoldenrodyellow;position: fixed;}
+#Tab3 {background-color: lightgoldenrodyellow;position: fixed;}
+#TabRest {background-color: gainsboro;position: fixed;}
+.l{width: 100%;height: 100%;position: absolute;top:0;left:0;z-index:10}
+.r{color:blue;width: 100%;height: 100%;position: absolute;top:0;right:0;z-index:10;text-align: right}
+.c{width: 100%;height: 100%;position: relative}

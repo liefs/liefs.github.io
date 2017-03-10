@@ -1,0 +1,65 @@
+<h1>Liefs Layout Manager - Introduction</h1><!-- -->
+
+This Documentation Page uses liefs-layout-manager<br>
+This Very Page (View Source) Was intended as a demo on how to use this Manager<br>
+As a result, the load of THIS web page appears slow at best.  That is easily solved<br>
+By manually pasting your urlload's to the divs (makes sense when you view-source this page)<br>
+It is done this way so viewing the source of THIS PAGE is more "readable"<br><br>
+<hr>
+These Doc Cover Version 0<br>
+They will remain here, and when Version 1 exists, a link will appear here.(Feb1/2107)<hr>
+Liefs Layout Manager is Javascript Code that manages the locations
+of elements on the page.<br><br>(JQuery NOT Required -> but plays friendly)<br><br>
+It controls the (.left .top .width .length .position .visible) style properties of element.
+By doing so, it is able to accomplish these goals:<br>
+<ol>
+    <li>
+        Define a <strong>Layout</strong> for a page.
+        <ol>
+            <li>
+                Allow Any Number of windows (divs, img, etc...) on a page
+            </li>
+            <li>
+                Allow the dimension of these windows to be defined as either
+                <ol>
+                    <li>
+                        A fixed number of Pixels (ie "120px")
+                    </li>
+                    <li>
+                        A Percentage of the screen (ie "50%")
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li>
+        Create a set of rules: When the screen is <strong>this size</strong>, use <strong>this layout</strong>.
+    </li>
+</ol>
+For example <span style="color:red">THIS VERY PAGE</span> (Ctrl-u to view source)<br>
+Started from this basic template: (But Uses all the <a href="/html/examples/example_dynamic_frills.html">Frills</a>)
+<pre class="prettyprint lang-js" style="font-size: 80%">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;script src="/js/basic1.js"&gt;&lt;/script&gt; &lt;!-- this is the REQUIRED CODE for liefs to work! --&gt;
+&lt;!--&lt;script src="http://liefs.paperplane.io/js/basic1.js"&gt;&lt;/script&gt; or use this --&gt;
+&lt;script&gt;
+V("Container", 4,    // This Page Container is Vertical (Header on top, [menu, Main] on bottom) 4px margins
+        I("header", "40px"),   // This page has a "Header" Item that is 40px High
+        h("menuMain", "100%",  // The Bottom Item is a Horizontal Container (100% of rest) of Vertical Container
+                I("menu", "200px"),  // This new Bottom Part Consists of a menu Item on the left (200px wide)
+                I("welcome", "100%") // And a Content Item to fill what Tree does not. (100% of rest)
+        )
+)
+use("Container"); // set Container for Handler to use
+startHandler();   // Now, watches for screen resize, if so, change style properties of divs
+&lt;/script&gt;
+&lt;body&gt;
+    &lt;div id="header"&gt;{Docs Liefs_Layout-Manager=}&lt;/div&gt;        &lt;!-- Used TrueTypeFont Here standard stuff           --&gt;
+    &lt;div id="menu" urlload="/html/blocks/menu.html"&gt;&lt;/div&gt;     &lt;!-- liefs layout includes urlload in the tags       --&gt;
+    &lt;div id="welcome" urlload="/html/docs/welcome.html"&gt;&lt;/div&gt; &lt;!-- This works recursivly until nothing left to load--&gt;
+&lt;/body&gt;
+&lt;/html&gt;   &lt;!-- urlload is a tool for development - I recommend Manually resolving these at point of production --&gt;
+</pre>

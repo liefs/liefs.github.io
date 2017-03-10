@@ -1,0 +1,46 @@
+<h2>Directive</h2>
+
+This part of the project has been move to its own project.<br>
+(To Be Released with Beta On Feb1/2017)<br><br>
+
+...So No working version of this page ANYWHERE!....<br><br>
+
+It simply makes liefs-layout-manager accessable in html.<br><br>
+<h3>NO JAVASCRIPT REQUIRED WHAT SO EVER</h3>
+
+<h3>Item</h3>
+<pre class="prettyprint">
+&lt;script&gt;
+I("SampleItem","250px");
+&lt;/script&gt;
+&lt;div id="SampleItem"&gt;&lt;/div&gt;
+</pre>
+Becomes:
+<pre class="prettyprint">
+&lt;div id="SampleItem" start="250px"&gt;&lt;/div&gt;
+</pre>
+Note: the "start" attribute indicated to make this div an item.
+<hr><h3>Container</h3>
+<pre class="prettyprint">
+&lt;script&gt;
+V("Container", 4, I("SampleItem","250px"), I("TheRest","100%"));
+use("Container");
+startHandler();
+&lt;/script&gt;
+&lt;div id="SampleItem"&gt;&lt;/div&gt;
+&lt;div id="TheRest"&gt;&lt;/div&gt;
+</pre>
+Becomes
+<pre class="prettyprint">
+&lt;liefs id="Container" margin="4" vertical=true containers="SampleItem|TheRest|SomeOtherContainerWithLiefsTag"&gt;
+&nbsp;&nbsp;&lt;div id="SampleItem" start="250px"&gt;&lt;/div&gt;
+&nbsp;&nbsp;&lt;div id="TheRest" start="50%"&gt;&lt;/div&gt;
+&nbsp;&nbsp;&lt;liefs id="SomeOtherContainerWithLiefsTag" margin="6" containers="you|get|the|itea" start="50%"&gt;
+&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&lt;liefs&gt;
+&lt;/liefs&gt;
+</pre>
+Note: "margin", "containers" "start" and "vertical" attributes.<br><br>
+Note: finding a liefs tag in the html starts (using id of first instance found):<br>
+use("FirstLiefsTagIdInDom");<br>
+starthandler();<br>

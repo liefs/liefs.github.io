@@ -1,0 +1,106 @@
+<!DOCTYPE html><!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://liefs.paperplane.io/js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <title>Example 05 - Dynamic Page Links</title>
+</head>
+<style>
+div {border-style: solid;border-width: 1px;outline-offset: -15px;}
+li {cursor: pointer;text-decoration: underline;}
+#Page1{background-color: beige}
+#Page2{background-color: bisque}
+#Page3{background-color: burlywood}
+#Page4{background-color: #e0ffe1}
+</style>
+<body>
+
+<div id="Header" style="background-color: lightcoral">Header</div>
+
+<div id="ListTree" style="background-color: lightcyan">
+    <ol>
+        <li onclick="mySet('Page1')">Page 1</li>
+        <li onclick="mySet('Page2')">Page 2</li>
+        <li onclick="mySet('Page3')">Page 3</li>
+        <li onclick="mySet('Page4')">Page 4</li>
+    </ol>
+</div>
+
+<div id="SelectTree">
+    <select style="width:100%;height:100%;background-color:lightcyan;font-size: 150%"
+            onchange="mySet(this.value)">
+        <option value="Page1">Page 1</option>
+        <option value="Page2">Page 2</option>
+        <option value="Page3">Page 3</option>
+        <option value="Page4">Page 4</option>
+    </select>
+</div>
+
+<div id="Page1" style="">
+Page 1 Content<br>
+(Resize To See Other Layout)<br>
+And View Source To See How Easy This Is<br><br>Click Page 2</div>
+
+<div id="Page2">Note: The Address In the Address Bar Is CHANGING when you click the pages</div>
+
+<div id="Page3">Note: When you "reload" the page - it remembers which one -> even though there is only this example</div>
+
+<div id="Page4">Hiting Back Goes To Previous Page<br>Did you Notice The Page Title Changing Too?</div>
+
+</body>
+</html>
+<script>
+var thisUrl= window.location.href.slice(getPosition(window.location.href,"/",3));
+function myTitle(id){return "My Title - "+id};
+function createManage(id) {
+    V("Large_" + id, 4,               // our big layout consists of
+            I("Header", "100px"),       // a header on top with Tree and Page below
+            h("Body", "100%",
+                    I("ListTree", "250px"),  // Tree on the left,
+                    I(id, "100%")           // Body on the right.
+            )
+    );
+    V("Small_" + id, 4,               // In small, no room for tree on left
+            items['Header'],            // Note: If header changes size, use I("Header", newsize)
+            I("SelectTree", "50px"),     //
+            items[id]                   // Small all three stacked in one column.
+    );
+}
+function mySet(id){
+    console.log("MySet "+id);
+    ManageArray = [
+        ["Small_"+id, 720],
+        ["Large_"+id]
+    ];
+    checkWinWH();
+    var displayUrl=thisUrl;
+    var temp = thisUrl.indexOf("#");
+    if (temp !== -1){
+        displayUrl = thisUrl.slice(0, thisUrl.indexOf("#") );
+    }
+    document.title = myTitle(id);
+    window.history.pushState({"html":"#"+id,"pageTitle":myTitle(id)},"", displayUrl + "#" +id);
+}
+function getPosition(string, subString, index) {
+    return string.split(subString, index).join(subString).length;
+}
+window.onpopstate = function(e){
+    if(e.state){
+        if (e.state.html[0]="#"){
+            mySet(e.state.html.slice(1));
+            document.title = myTitle(e.state.html.slice(1));
+            checkWinWH();
+        }
+    }
+};
+window.onload = function () {
+    marginDefault=4;
+    for(var id of ['Page1','Page2','Page3','Page4']) createManage(id);
+    use("Large_Page1");
+    mySet('Page1');
+    startHandler();
+    if (thisUrl.indexOf("#") !== -1 )
+        mySet(thisUrl.slice(thisUrl.indexOf("#")+1));
+
+    }
+</script>

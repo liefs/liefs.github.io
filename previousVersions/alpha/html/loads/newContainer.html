@@ -1,0 +1,75 @@
+<div id="Header">{Docs Liefs_Layout-Manager=}</div><!-- -->
+
+<div id="menu"><div id="cmenu"></div>
+</div>
+
+<div id="Main">
+    <h1>Function newContainer() HC() VC() H() V() -  (Lief Layout Manager)</h1>
+    <h2>Syntax (of Typescript Code)</h2>
+<pre class="prettyprint lang-js">
+function newContainer(label: string, true_is_hor: boolean, items: Item[], margin: number = 4): Container
+ </pre>
+    <h2>Interfaces Used (Typescript)</h2>
+<pre class="prettyprint lang-js">
+interface Item {label: string;  start: string,  size: Position,  is_a_container?: Container,  el?:Element}
+
+interface Container {label: string,  direction: boolean, items: Item[],  margin: number,  size?: Position, el?:Element,}
+
+interface Position {label?: string, x: number, y: number, width: number, height: number,}
+</pre>
+    <h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+function newContainer(label, true_is_hor, items, margin)
+</pre>
+    <h2>Parameters</h2>
+
+    <strong>label</strong><br>
+    label is a string name of an Item (element Id value)<br><br>
+    <strong>true_is_hor</strong><br>
+    Is a boolean value.  If its <strong>true</strong> then the container is Horizontal. <strong>false</strong>
+    then it is vertical<br><br>
+    <strong>items</strong><br>
+    is an Array of <a href="/html/docs/newItem.html">Items</a><br><br>
+    <strong>Return value</strong>
+    (Typescript) Container<br><br>
+    <h2>Description</h2>
+    This function simply creates, and returns a Object defined by above interfaces.
+    <h2>Examples</h2>
+<pre class="prettyprint lang-js">
+var a=newContainer("ContainerName",true,[newItem("Tree","120px"),newItem("Main","100%")], 4);
+{ label: 'ContainerName',
+  direction: 4,
+  items:
+   [ { label: 'Tree', start: '120px', size: { x: 0, y: 0, width: 0, height: 0 } },
+     { label: 'Main', start: '100%', size: { x: 0, y: 0, width: 0, height: 0 } } ],
+  margin: 4 }
+</pre>
+    <h2>Abbreviations</h2>
+<pre class="prettyprint lang-js">
+/* Short Form for "create Horizontal Container"  Good to Know - You will never use this one */
+HC(id, margin, arrayOfItems){return newContainer("_"+id, true, arrayOfItems ,margin);}
+
+/* Short Form for "create Vertical Container"    Good to Know - You will never use this one */
+VC(id, margin, arrayOfItems){return newContainer("_"+id, true, arrayOfItems ,margin);}
+</pre>
+
+<pre class="prettyprint lang-js">
+/* rather than listing Items in an [array format] use argument list instead  -> Margin Optional */
+H(id, &lt;optional Margin&gt;, ...arrayOfItems) /* H is short for Horizontal Container */
+V(id, &lt;optional Margin&gt;, ...arrayOfItems) /* H is short for Vertical Container */
+
+/* so this */
+newContainer("ContainerName",true,[newItem("Tree","120px"),newItem("Main","100%")], 4)
+
+/* can be shortened to this */
+H("ContainerName", 4, /* if you want Margins 4 */
+    I("Tree","120px"),
+    I("Main","100%")
+)
+
+/* or even */
+H("ContainerName",  /* if you want Margins Default */
+    I("Tree","120px"),
+    I("Main","100%")
+)
+</pre></div>

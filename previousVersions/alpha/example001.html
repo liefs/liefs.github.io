@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>liefs-layout-manager Test001</title>
+    <script src="index_.js"></script>
+    <style>
+        div {border-style: solid;border-width: 1px;border-radius: 5px;}
+        div[id^="Page"] {font-size: 200%}
+        #Header {background-color: lightgreen;text-align: center;vertical-align: middle;line-height: 90px;font-size: 300%}
+        #ListTree {background-color: lightcyan}
+        select {width: 100%;height: 100%;background-color: lightcyan;font-size: 150%}
+        ul {list-style-type: none;margin: 0;padding: 0;width: 100%;background-color: lightcyan;}
+        li {display: block;color: #000;padding: 8px 16px;text-decoration: none;}
+        li:hover {background-color: #555;color: white;}
+        #Page1 {background-color: lightblue}
+        #Page2 {background-color: lightsteelblue}
+        #Page3 {background-color: aliceblue}
+        #Page4 {background-color: powderblue}
+        .Hdragbar {position: fixed;cursor:col-resize;border-style: none;border-width: medium;border-radius: 0px;}
+        .Vdragbar {position: fixed;cursor:row-resize;border-style: none;border-width: medium;border-radius: 0px;}
+    </style>
+</head>
+<body>
+    <div id="Header">This Is My Giant Title</div>
+    <div id="ListTree">
+        <h2 align="center">My Menu</h2>
+        <ul>
+            <li onclick='Item.setPage("Pages", "Pages");'>Page1</li>
+            <li onclick='Item.setPage("Pages", "Page2");'>Page2</li>
+            <li onclick='Item.setPage("Pages", "Page3");'>Page3</li>
+            <li onclick='Item.setPage("Pages", "Page4");'>Page4</li>
+            <li onclick='window.location="http://liefs.paperplane.io/index.html"'>(link) Docs</li>
+            <li onclick=''>Force Small</li>
+        </ul>
+    </div>
+    <!-- Above Used Only on Large Layout -->
+    <div id="SelectTree">
+        <select onchange="onSelectChange(this.value)"><!-- Select Events are handled in our custom function below on this page-->
+        <option value="Pages">Page 1</option>
+        <option value="Page2">Page 2</option>
+        <option value="Page3">Page 3</option>              <!--Good, ole dependable select. Nothin beats select-->
+        <option value="Page4">Page 4</option>
+        <option value="/index.html">(link) Docs</option>
+        <option value="Large">Force Large</option>
+    </select>
+    </div>
+    <!-- Above Used Only On Small Layout -->
+    <div id="Pages">Page 1 Content - Resize Page Width <-- this way --> to switch layouts<br><br></div>
+    <!-- Above Default Page -->
+    <div id="Page2">Page 2 Content - Resize Page Width <-- this way --> to switch layouts</div>
+    <div id="Page3">Page 3 Content - Resize Page Width <-- this way --> to switch layouts</div>
+    <div id="Page4">Page 4 Content - Resize Page Width <-- this way --> to switch layouts</div>
+</body>
+
+</html>
+<script>
+function onSelectChange(value) {  // our custom Select Change Function.......
+    if (value[0] === '/') window.location = "http://liefs.paperplane.io"+value;// start of / - link
+    else {
+      var pageNames = Item.get("Pages").pages.map(function (item) { return item.label; })
+      if (pageNames.indexOf(value) > -1) Item.setPage("Pages", value);
+    }
+}
+    H("MasterHandler",                                                  // Tell Master Handler, new Instance (Usually Only One)
+        L("SmallLayout",                                                // Layout (Use Container if Condition) --------------//
+            v("Small",                                                  // Arbitrary name of Vertical Item                   //
+                I("Header", "100px", "70px", "150px"),                  // Header, Start 100px, drag from 70px to 150px      //
+                I("SelectTree", "50px"),                                // Select Tree 50px high                             //
+                I("Pages", "100%", I("Page2"), I("Page3"), I("Page4"))  // define Item Pages - with "Pages" as 1st page.     //
+            ),                                                                                                               //
+            (x, y) => {return (x < 1000) ? true : false;}               // I'm using screen size, but ANY condition works ---//
+        ),
+        L("LargeLayout",
+            v("Large",                                                  // Layout (Use Container if Condition) --------------//
+                Item.get("Header"),                                     // If you wish to "remember" strech - to be seperate instance, I("Header", ...)
+                h("Body", "100%",                                       // Arbitrary name ov Horizontal Item
+                    I("ListTree", "200px", "100px", "400px"),           // ListTree, Start 200px, drag from 100px to 400px
+                    Item.get("Pages")                                   // To "Remember Page" and stretch - to be separate instance, I("Pages", ...)
+                )
+            ),
+            (x, y) => { return true; }                                  // Good practice, if makes it to end of list, and none qualify, chooses last anyways
+        )
+    );
+</script>

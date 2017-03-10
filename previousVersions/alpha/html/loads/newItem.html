@@ -1,0 +1,76 @@
+    <h1>Function newItem() - (Lief Layout Manager)</h1><!-- -->
+    <h2>Syntax (of Typescript Code)</h2>
+<pre class="prettyprint lang-js">
+function newItem(label: string, start: string|number, is_a_container: Container = null): Item
+</pre>
+    <h2>Interfaces Used (Typescript)</h2>
+<pre class="prettyprint lang-js">
+interface Item {label: string;  start: string,  size: Position,  is_a_container?: Container,  el?:Element}
+
+interface Container {label: string,  direction: boolean, items: Item[],  margin: number,  size?: Position, el?:Element,}
+
+interface Position {label?: string, x: number, y: number, width: number, height: number,}
+</pre>
+    <h2>Syntax (of Javascript Code)</h2>
+<pre class="prettyprint lang-js">
+function newItem(label, start, /*optional*/ is_a_container)
+</pre>
+    <h2>Parameters</h2>
+
+    <strong>label</strong><br>
+    label is a string name of an Item (element Id value)<br><br>
+    <strong>start</strong><br>
+    Start is either a constant value (in pixels) ie: "120px" or 120,<br>
+    or a percentage of the Container (after constants assigned) ie "50%" or "100%"<br><br>
+    <strong>is_a_container</strong><br>
+    Use this value ONLY if the Item, is also to be used as a <a href="/html/docs/newContainer.html">Container</a>. If
+    so,
+    the container goes here<br><br>
+    <strong>Return value</strong><br>
+    (Typescript) Item<br>
+    <h2>Description</h2>
+    This function simply creates, and returns a Object defined by above interfaces.
+    <h2>Examples</h2>
+<pre class="prettyprint lang-js">
+var w=newItem("Tree", 120);
+{ label: 'Tree',
+  start: '120px',
+  size: { x: 0, y: 0, width: 0, height: 0 } }
+
+var x=newItem("Main", "120px");
+{ label: 'Main',
+  start: '120px',
+  size: { x: 0, y: 0, width: 0, height: 0 } }
+
+var y=newItem("Header", "100%");
+{ label: 'Header',
+  start: '100%',
+  size: { x: 0, y: 0, width: 0, height: 0 } }
+
+var z=newItem("Middle","100%", newContainer("ContainerName",true,[w,x,y], 4)); /* see <a
+        href="/html/docs/newContainer.html">Container</a> Docs */
+</pre>
+    <h2>Abbreviations</h2>
+<pre class="prettyprint lang-js">
+/*  'newItem' has been shortened down to 'I' so ... */
+var x=newItem("Tree","200px");  /* and */
+var x=I("Tree","200px");        /* are equvilent */
+
+/* Rather than making a container, then an Item wrapper, you can combine them like this */
+h(id, start, &lt;optional margins&gt;,...arrayOfItems) /* Item with (Create Horizontal Container) */
+v(id, start, &lt;optional margins&gt;,...arrayOfItems) /* Item with (Create Vertical Container) */
+
+/* So instead of writing this */
+var hCont = newContainer("_HorCont", true , [I("Tree","120px"),I("Main","100%")], 4);
+var hItem = newItem("HorCont", "100%", hCont);
+
+/* It can be shortened to this &lt;They are IDENTICAL&gt; */
+var hCont = h("HorCont","100%", 4,  /* to use Margin 4 */
+    I("Tree","120px"),
+    I("Main","100%")
+)
+var hCont = h("HorCont","100%",     /* Use Default Margin */
+    I("Tree","120px"),
+    I("Main","100%")
+)
+</pre>

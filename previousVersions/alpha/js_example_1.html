@@ -1,0 +1,213 @@
+<!DOCTYPE html><!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/basic1.js"></script> <!-- this is the REQUIRED CODE for liefs to work! -->
+    <script src="/js/csi.min.js"></script>       <!-- this lets me import the tree from menu.html -->
+    <link rel="stylesheet" type="text/css" href="/css/js_example_1.css">
+    <title>Javascript Example 01</title>
+</head>
+<body>
+
+<div id="Header"><div id="fHeader" class="r"></div><div id="cHeader" class="l"></div></div>
+<div id="HeaderMd"><div id="fHeaderMd" class="r"></div><div id="cHeaderMd" class="l"></div></div>
+<div id="HeaderSm"><div id="fHeaderSm" class="r"></div><div id="cHeaderSm" class="l"></div></div>
+
+<div id="Buttons">
+    <button onclick="use('min');resize_callback([winW, winH]);" class="buttons" title="min" id="min">
+        <img src="/images/min.png" height="32"/></button>
+    <button onclick="use('minHigh');resize_callback([winW, winH]);" class="buttons" title="minHigh" id="minHigh">
+        <img src="/images/minHigh.png" height="32"/></button>
+    <button onclick="use('lowp2');resize_callback([winW, winH]);" class="buttons" title="lowp2" id="lowp2">
+        <img src="/images/lowp2.png" height="32"/></button>
+    <button onclick="use('highp2');resize_callback([winW, winH]);" class="buttons" title="highp2" id="highp2">
+        <img src="/images/highp2.png" height="32"/></button>
+    <button onclick="use('lowp3');resize_callback([winW, winH]);" class="buttons" title="lowp3" id="lowp3">
+        <img src="/images/lowp3.png" height="32"/></button>
+    <button onclick="use('highp3');resize_callback([winW, winH]);" class="buttons" title="highp3" id="highp3">
+        <img src="/images/highp3.png" height="32"/></button>
+    <button onclick="use('lowp4');resize_callback([winW, winH]);" class="buttons" title="lowp4" id="lowp4">
+        <img src="/images/lowp4.png" height="32"/></button>
+    <button onclick="use('highp4');resize_callback([winW, winH]);" class="buttons" title="highp4" id="highp4">
+        <img src="/images/highp4.png" height="32"/></button>
+</div>
+
+<div id="TreeIcon" style="overflow: hidden"><div id="fTreeIcon" class="r"></div>
+    <img src="/images/liefslogo256.png" style="width: 100%;height: 100%"></div>
+
+<div id="TreeSm"><div id="fTreeSm" class="r"></div><div id="cTreeSm" class="l"></div></div>
+<div id="Tree"><div id="fTree" class="r"></div><div id="cTree" class="l"></div></div>
+
+<div id="Tab1" class="c"><img src="/images/liefslogo64.png" class="l" /><div id="fTab1" class="r"></div></div>
+<div id="Tab2"><img src="/images/liefslogo64.png" class="l" /><div id="fTab2" class="r"></div></div>
+<div id="Tab3"><img src="/images/liefslogo64.png" class="l" /><div id="fTab3" class="r"></div></div>
+<div id="TabRest"><div id="fTabRest" class="r"></div><div id="cTabRest" class="l"></div></div>
+
+<div id="Mains"><div id="fMains" class="r"></div><div id="cMains" class="l"></div></div>
+<div id="Main1"><div id="fMain1" class="r"></div><div id="cMain1" class="l"></div></div>
+<div id="Main2"><div id="fMain2" class="r"></div><div id="cMain2" class="l"></div></div>
+<div id="Main3"><div id="fMain3" class="r"></div><div id="cMain3" class="l"></div></div>
+<div id="MainNon"><div id="fMainNon" class="r"></div><div id="cMainNon" class="l"></div></div>
+
+<div id="Footer"><div id="fFooter" class="r"></div><div id="dFooter" class="l" style="text-align: left"></div></div>
+
+</body>
+</html>
+<script>
+    window.onload = function () {
+        V("min", 4,
+                I("HeaderSm","32px"),
+                I("TreeSm","25px"),
+                I("Buttons","44px"),
+                I("Mains", "100%"),
+                I("Footer","150px")
+        );
+        V("minHigh", 4,
+                I("HeaderMd","64px"),
+                I("TreeSm","25px"),
+                I("Buttons","44px"),
+                I("Mains", "100%"),
+                I("Footer","150px")
+        );
+        V("lowp2", 4,
+                I("HeaderSm","32px"),
+                I("Buttons","44px"),
+                h("TreeAndMain","100%",
+                        I("Tree","200px"),
+                        I("Mains", "100%")
+                ),
+                I("Footer","150px")
+        );
+        V("highp2", 4,
+                I("HeaderMd","64px"),
+                I("Buttons","44px"),
+                h("TreeWIconAndMain","100%",
+                        v("TreeWIcon","200px",
+                                I("Tree","100%"),
+                                I("TreeIcon","180px")
+                        ),
+                        I("Mains", "100%")
+                ),
+                I("Footer","150px")
+        );
+        V("lowp3", 4,
+                I("HeaderSm","32px"),
+                I("Buttons","44px"),
+                h("TreeWIconAndMain","100%",
+                        I("Tree","200px"),
+                        I("Main2", "50%"),
+                        I("MainNon", "50%")
+
+                ),
+                I("Footer","150px")
+        );
+        V("highp3", 4,
+                I("HeaderMd","64px"),
+                I("Buttons","44px"),
+                h("TreeWIconAndMain","100%",
+                        v("TreeWIcon","200px",
+                                I("Tree","100%"),
+                                I("TreeIcon","180px")
+                        ),
+                        I("Main2", "50%"),
+                        I("MainNon", "50%")
+
+                ),
+                I("Footer","150px")
+        );
+        V("lowp4", 4,
+                I("HeaderSm","32px"),
+                I("Buttons","44px"),
+                h("TreeWIconAndMain","100%",
+                        I("Tree","200px"),
+                        I("Main1","25%"),
+                        I("Main2","50%"),
+                        I("Main3","25%")
+                ),
+                I("Footer","150px")
+        );
+        V("highp4", 4,
+                I("HeaderMd","64px"),
+                I("Buttons","44px"),
+                h("TreeWIconAndMain","100%",
+                        v("TreeWIcon","200px",
+                                I("Tree","100%"),
+                                I("TreeIcon","180px")
+                        ),
+                        I("Main1","25%"),
+                        I("Main2","50%"),
+                        I("Main3","25%")
+                ),
+                I("Footer","150px")
+        );
+        V("master", 4,
+                I("Header", "64px"),
+                h("treeMain", "100%", 4,
+                        v("vMain", "100%",
+                                h("Tabs", "64px",
+                                        I("TabRest", "100%"),
+                                        I("Tab1", "64px"),
+                                        I("Tab2", "64px"),
+                                        I("Tab3", "64px")
+                                ),
+                                h("MainGroup","100%",
+                                        I("Main1","25%"),
+                                        I("Main2","50%"),
+                                        I("Main3","25%")
+                                )
+                        ),
+                        v("vTree", "200px",
+                                I("TreeIcon", "200px"),
+                                I("Tree", "100%")
+                        )
+                ),
+                I("Footer", "150px")
+        );
+        ManageArray = [
+            ['min',640 ,680],
+            ['minHigh',640, null],
+
+            ['lowp2', 1024, 660],
+            ['highp2', 1024, null],
+
+            ['lowp3', 1500, 660],
+            ['highp3', 1500, null],
+
+            ['lowp4', 1900, 660],
+            ['highp4', 1900, null],
+
+            ['highp4']
+        ];
+
+        for (var x in items) loadDoc(x, "/html/blocks/" + x + ".html");
+
+        callback = function (cordobj) {
+            var FooterContent;
+            var temp;
+            for (var key in cordobj) {
+                var temp = document.getElementById("f"+key);
+                if (temp)
+                    temp.innerHTML = '<span style="font-size: 80%">' + key+"<br>"+"x:"+cordobj[key]['x']+" y:"+cordobj[key]['y']+"<br>" +
+                            "w:"+cordobj[key]['width']+" h:"+cordobj[key]['height'] + '</span>';
+            }
+            FooterContent="Items: "+JSON.stringify(Object.keys(items)).slice(1,-1)+
+                            "<br>Containers: " + JSON.stringify(Object.keys(containers)).slice(1,-1)+
+                            "<br>Visible:" + JSON.stringify(DivIdsVisible).slice(1,-1)+
+                            "<br>Hidden:" + JSON.stringify(DivIdsInvisible).slice(1,-1) +
+                            "<br>CurrentContainer:"+JSON.stringify(CurrentContainer.label) +
+                    "Current Window Size: "+JSON.stringify(CurrentSize).slice(1,-1);
+
+            document.getElementById("dFooter").innerHTML=FooterContent;
+            for (var id of ['min','minHigh','lowp2','highp2','lowp3','highp3','lowp4','highp4']){
+                temp = document.getElementById(id);
+                if (CurrentContainer.label === "_"+id)
+                    temp.style.backgroundColor = "#00FF00";
+                else
+                    temp.style.backgroundColor = "initial";
+            }
+        };
+
+        use("min");
+        startHandler();
+    }
+</script>

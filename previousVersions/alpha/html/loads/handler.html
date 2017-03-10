@@ -1,0 +1,296 @@
+<h1>Liefs Layout Manager - Handler</h1><!-- -->
+
+This Project is devided into sections:
+<ol>
+    <li>
+        <span class="flink" onclick="switchTo('Core')">Core</span>
+    </li>
+    <li>
+        <strong style="color:red">Handler</strong>
+    </li>
+    <ol>
+        <li onclick="switchTo('use')" class="flink">use()</li>
+        <li onclick="switchTo('checkWinWH')" class="flink">checkWinWH()</li>
+        <li onclick="switchTo('update')" class="flink">startHandler()</li>
+    </ol>
+    <li>
+        <span class="flink" onclick="switchTo('Directive')">Directive</span>
+    </li>
+    <li>
+        <span class="flink" onclick="switchTo('Misc')">Misc</span>
+    </li>
+</ol>
+
+<p>
+    Handler Uses the Power of <span class="flink" onclick="switchTo('Core')">Liefs Layout Manager Core</span>
+    to Apply these values to the Dom.<br><br>
+    Continuing Our Example From <span class="flink" onclick="switchTo('Core')">Core</span>, We already have everything
+    we need to apply this data to our dom.
+</p>
+<pre class="prettyprint">
+> var o=V("Outer", 4, // using 4px margins...
+            I("Red","220px"),
+            h("Inner","100%",
+                I("Blue","200px"),
+                I("Green","100%")
+            )
+        );
+> update(1920,1080, o);
+{ Red: { x: 4, y: 4, width: 1912, height: 220 },
+  Blue: { x: 4, y: 228, width: 200, height: 848 },
+  Green: { x: 208, y: 228, width: 1708, height: 848 },
+  Inner: { x: 4, y: 228, width: 1912, height: 848 } }
+</pre>
+<h2 style="color:red">Manual Layout Management</h2>
+<h2 style="color:red">(var) ManageArray = undefined (never set)</h2>
+We simply have to tell Lief Layout Manager to apply this Layout to the Handler, and use it. (Javascript)
+<pre class="prettyprint">
+V("Outer", 4,      // using 4px margins...  Note 'var something=V(...' is optional
+    I("Red","220px"),
+    h("Inner","100%",
+        I("Blue","200px"),
+        I("Green","100%")
+    )
+);
+use("Outer");   // lets Liefs Layout Manager Know "Only" layout to use
+startHandler(); // Start handler (Watching for resize event) stopHandler(); works.... <- but why would you need to?
+</pre>
+If ManageArray is undefined, then Managing layouts is done "Manually".<br>
+
+Note: Liefs Layout Manager Tracks Last Screen Size with the Varialbes:<br>
+[winW, winH]<br>
+Keeping that in mind,<br>
+Simply trigger a new layout change with:
+<pre class="prettyprint">
+use("NewLayoutIDefinedSomeWhereElse");
+resize_callback([winW, winH]);
+</pre>
+For Example:
+<pre class="prettyprint">
+&lt;button onclick="myLayoutChanger('LayoutName')"&gt;Change to This Layout&lt;/button&gt;
+&lt;button onclick="myLayoutChanger('OtherLayoutName')"&gt;Change to Other Layout&lt;/button&gt;
+
+&lt;script&gt;
+function myLayoutChanger(id){ use(id);resize_callback([winW, winH]); }
+&lt;/script&gt;
+</pre>
+<h2 style="color:red">Automatic Layout Management</h2>
+<h2 style="color:red">ManageArray = [ ["FirstContainer", minx, miny], ... ]</h2>
+Liefs Layout Manager can automatically match the Current Layout Container to rules you define.<br><br>
+The structure of this is in the form of an array.<br><br>
+Each Item in the array, is an array of 3 elements. 1st Name/Id/Label 2nd width, 3rd height<br><br>
+
+
+<table>
+    <tr>
+        <td>
+            <img src="/images/core.png" width="200" height="175">
+        </td>
+        <td>
+            Lets Say that we are making a website for "Tiny Screens"<br>
+            We Like our "Outer" Container Made (see left), but RED just shows ADs, and if<br>
+            our users current screen height is less than 600px, we'd rather just "drop" it from view.<br>
+            Of Course We could just re-define it:
+        </td>
+    </tr>
+
+</table>
+And Just Use This layout:
+<pre class="prettyprint">
+H("Inner","100%",
+    I("Blue","200px"),
+    I("Green","100%")
+);
+</pre>
+But We did that already when we defined "Outer".  This means its already Done.
+So we just need to make our MannageArray:
+<pre class="prettyprint">
+V("Outer", 4,      // using 4px margins...  Note 'var something=V(...' is optional
+    I("Red","220px"),
+    h("Inner","100%",
+        I("Blue","200px"),
+        I("Green","100%")
+    )
+);
+ManageArray = [                // ManageArray is defined now - so after any resize-event, uses this
+    ["Inner", undefined, 600], // First Valid check wins: Is (width:undefined means any valid) and (height<600)
+    ["Outer"]                   // If above check failed, check this.  since always valid, default if no others fit.
+];
+use("Outer");
+startHandler();
+</pre>
+We like 2 layouts... lets go for more.<br>
+Management has deceided that if the screen width is greater than 1440px,<br> they can handle an add pane on right (300px)<br>
+<pre class="prettyprint">
+// First Define a Layout for Screens < 1440px Width
+var outer = v("Outer", "100%",      // using small v - so Item Return, Not Container - No margins!
+                I("Red","220px"),
+                h("Inner","100%",
+                    I("Blue","200px"),
+                    I("Green","100%")
+                )
+            );
+// Then Define Layout for Screens => 1440px Width - So Add Ad Item
+H("OuterAndAdds", 4,
+
+    outer,                    // variable definitions work fine                            Could do It This Way OR:
+//  items['Outer'],           // 'items' and 'containers' objects remembering definitions. Could do It This Way.
+
+    I("AddPane","300px")            // So This Layout, is above layout, with 300px Ad-Item Added.
+);
+ManageArray = [                // ManageArray is defined now - so after any resize-event, uses this
+    ["Inner", undefined, 600], // First Valid check wins: Is (width:undefined means any valid) and (height<600)
+    ["Outer", 1440],           // If Above fail, and width < 1440px, use this layout
+    ["OuterAndAdds"]           // If above check failed, check this.  since always valid, default if no others fit.
+];
+use("OuterAndAdds");
+startHandler();
+
+</pre>
+<h2 style="color:red">Automatic Layout Management - Dynamic Change of ManageArray</h2>
+
+We want Manage Array to have two basic layouts:
+<pre class="prettyprint">
+V("Large", 4,                   // our big layout consists of
+    I("Header", "200px"),       // a header on top with Tree and Page below
+    h("Body", "100%",
+        I("ListTree","250px"),  // Tree on the left,
+        I("PageHere","100%"),   // Body on the right.
+    )
+);
+V("Small", 4,                   // In small, no room for tree on left
+    items['Header'],            // Note: If header changes size, use I("Header", newsize)
+    I("SelectTree","50px"),     //
+    items['PageHere']           // Small all three stacked in one column.
+);
+</pre>
+Lets make a function to swap out the "Page Here" part, and add some handlers, and url linkers!
+This EXACT Code can be viewed as a working example <a href="/html/examples/example_dynamic_layout.html">Here</a>
+<pre class="prettyprint">&lt;!-- Note: All elements (Divs) that are to be use by liefs MUST be defined.
+  For example, if you have:
+  &lt;div id="idNotUsed"&gt;&lt;/div&gt;
+  liefs will ignore this element, and it will sit on top/bottom VISIBLE!!! - Not handled by liefs at all
+  This will look horrible.  Simply having the line:
+  I("idNotUsed","100%"); // Now liefs knows to set this to visible=flase, and hides till you need it.
+--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;script src="/js/basic1.js"&gt;&lt;/script&gt;   &lt;!-- this is the REQUIRED CODE for liefs to work! --&gt;
+    &lt;title&gt;Example Dynamic Layout&lt;/title&gt;
+&lt;/head&gt;&lt;style&gt;div{border-style: solid;border-width: 1px}&lt;/style&gt;
+&lt;body style="background-color: violet"&gt;
+
+&lt;div id="Header"  style="background-color: lightgreen"&gt;
+    100px High, Full Width
+&lt;/div&gt; &lt;!-- Used On Both Layouts --&gt;
+
+&lt;div id="ListTree" style="background-color: lightcyan"&gt;
+    &lt;button onclick='switchTo("Page1");'&gt;Page1&lt;/button&gt;&lt;br&gt;
+    &lt;button onclick='switchTo("Page2");'&gt;Page2&lt;/button&gt;&lt;br&gt;
+    &lt;button onclick='switchTo("Page3");'&gt;Page3&lt;/button&gt;&lt;br&gt;
+    &lt;button onclick='switchTo("Page4");'&gt;Page4&lt;/button&gt;&lt;br&gt;
+    &lt;button onclick='window.location="/index.html"'&gt;(link) Docs&lt;/button&gt;&lt;br&gt;&lt;br&gt;
+    &lt;button onclick='myUse("Small")'&gt;Force Small&lt;/button&gt;&lt;br&gt;
+&lt;/div&gt; &lt;!-- Used Only on Large Layout --&gt;
+
+&lt;div id="SelectTree" style="background-color: lightcyan"&gt;
+    &lt;select style="width:100%;height:100%;background-color:#c6ffb2;font-size: 150%"
+            onchange="onSelectChange(this.value)"&gt;
+        &lt;option value="Page1"&gt;Page 1&lt;/option&gt;
+        &lt;option value="Page2"&gt;Page 2&lt;/option&gt;
+        &lt;option value="Page3"&gt;Page 3&lt;/option&gt;
+        &lt;option value="Page4"&gt;Page 4&lt;/option&gt;
+        &lt;option value="/index.html"&gt;(link) Docs&lt;/option&gt;
+        &lt;option value="Large"&gt;Force Large&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt; &lt;!-- Used Only On Small Layout --&gt;
+
+&lt;div id="Page1" style="background-color: lightblue"&gt;
+    Page 1 Content - Resize Page Width &lt;-- this way --&gt; to switch layouts
+&lt;/div&gt; &lt;!-- Default Page --&gt;
+
+&lt;div id="Page2" style="background-color: lightsteelblue"&gt;
+    Page 2 Content - Resize Page Width &lt;-- this way --&gt; to switch layouts
+&lt;/div&gt;
+
+&lt;div id="Page3" style="background-color: aliceblue"&gt;
+    Page 3 Content - Resize Page Width &lt;-- this way --&gt; to switch layouts
+&lt;/div&gt;
+
+&lt;div id="Page4" style="background-color: powderblue"&gt;
+    Page 4 Content - Resize Page Width &lt;-- this way --&gt; to switch layouts
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var currentId;
+    function myUse(size){use(size+"_"+currentId);resize_callback([winW, winH]);}
+    function onSelectChange(value){
+        if (value[0] === '/')                                window.location = value;
+        else if (containers["_Small_"+value] !== undefined)  switchTo(value);
+        else                                                 myUse(value);}
+    function defineLayout(id) {
+        V("Large_" + id,                    // our big layout consists of
+                I("Header", "100px"),       // a header on top with Tree and Page below
+                h("Body", "100%",
+                        I("ListTree", "250px"),  // Tree on the left,
+                        I(id, "100%")            // Body on the right.
+                )
+        );
+        V("Small_" + id,                    // In small, no room for tree on left
+                items['Header'],            // Note: If header changes size, use I("Header", newsize)
+                I("SelectTree", "50px"),     //
+                items[id]                   // Small all three stacked in one column.
+        );
+    }
+    function setPage(id){
+        ManageArray = [             // ManageArray Set, so it governs
+            ["Small_"+id, 800],     // Use "One Big Column" if screen width &lt; 800px
+            ["Large_"+id]           // Otherwise use Large Layout
+        ];
+    }
+    function switchTo(id) {
+        currentId=id;
+        setPage(id);         // see 7 lines up
+        checkWinWH();        // triggers resize event
+    }
+    window.onload = function () {
+        marginDefault=20; //
+        for (var eachPage of ['Page1','Page2','Page3','Page4']) defineLayout(eachPage); // see 26 lines up
+        // by defining all divs in above line, liefs knows to set visibility properly
+        // If you add pages, be sure to add the id to the above "for loop" array
+
+        use("Large_Page1"); //  (will change higher version) needed, then ignored - pick any existing CONTAINER
+        switchTo('Page1');  //   I'm hoping my function name and arguments aren't too confusing here....
+        startHandler();     //   Guess what this does!
+    }
+&lt;/script&gt;
+</pre>
+Lookin Good: Now lets add some finishing touches:<br>
+Lets Make it so the browser thinks all the pages are different too:<br>
+<ol>
+    <li>Have the Page Title Change When You Click Pages</li>
+    <li>If you Bookmark a page, or reload a page, DONT jump to the first one, use the url to remember</li>
+    <li>Let Add Page propper usage of back button</li>
+</ol>
+<a href="/html/examples/example_dynamic_frills.html">Fancy Version With All The Frills</a>
+<br><br>...Just thinking out loud, but this link sure sounds like a good "start point" for making your layout.....<br>
+Hm... If I just...
+<ol>
+    <li>open notepad,</li>
+    <li>Copy the (view source) of the <a href="/html/examples/example_dynamic_frills.html">above link</a>
+        So... click link, (Ctrl-u) to view page (Ctrl-a) to select all (Ctrl-C) to copy ... ok ya...</li>
+    <li>Switch back to notepad and Paste (Ctrl-v)</li>
+    <li>(In Notepad)-><ol>
+        <li> From MenuBar on Top, File-></li>
+        <li> Save As-></li>
+        <li> Switch 'Save As Type' from (*.txt) to All Files</li>
+        <li> Filename: index.html (or *anything*.html) **remember the path at top of save window**</li></ol>
+        <li> Now in an explorer window (open ad folder, and move to above **remember**)</li>
+    <li> And Drag this *anything*.html and Drop in the url of your browser (?Chrome?)</li>
+</ol>
+Yup Im up and running. Now re-style at <a href="enjoycss.com">enjoycss.com</a>,<br>
+Now I can just edit this *anything*.html -> and I made a website in under a minute.<br>

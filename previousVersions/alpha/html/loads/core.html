@@ -1,0 +1,62 @@
+<h1>Liefs Layout Manager - Core</h1><!-- -->
+
+This Project is devided into sections:
+<ol>
+    <li>
+        <strong style="color:red">Core</strong>
+        <ol>
+            <li onclick="switchTo('newItem')" class="flink">newItem()</li>
+            <li onclick="switchTo('newContainer')" class="flink">newContainer()</li>
+            <li onclick="switchTo('update')" class="flink">update()</li>
+        </ol>
+    </li>
+    <li>
+        <span class="flink" onclick="switchTo('Handler')">Handler</span>
+    </li>
+    <li>
+        <span class="flink" onclick="switchTo('Directive')">Directive</span>
+    </li>
+    <li>
+        <span class="flink" onclick="switchTo('Misc')">Misc</span>
+    </li>
+</ol>
+
+<p>
+    Core is the "evaluating" part of the project.  It is pure logic. It doesn't even know the dom exists.
+    Simply put, this is a fancy evaluating function transforming input into output.<br><br>
+    The Input is the form of <span onclick="switchTo('newItem')" class="flink">Items</span>
+    and <span onclick="switchTo('newContainer')" class="flink">Containers.</span><br><br>
+    Every Page Layout must have at least One Outer
+    <span onclick="switchTo('newContainer')" class="flink">Container</span>, with at least one
+    <span onclick="switchTo('newItem')" class="flink">Item</span> in it.
+</p>
+<table width="100%">
+    <tr width="856px">
+        <td align="left">
+            <img src="/images/core.png" />
+        </td>
+        <td width="100%">
+Lets Say we want:<br>Blue to be a fixed width of 200px,<br>and Green to fill the rest of the width.<br><br>
+Red to be a fixed height of 220px,<br>and Blue and Green to fill the rest of the height.<br><br>
+First load/install the javascript code for Liefs Layout Manager.<br>
+Then Define the Layout (Javascript):<br>
+<pre class="prettyprint">
+> var o=V("Outer", 4, // using 4px margins...
+            I("Red","220px"),
+            h("Inner","100%",
+                I("Blue","200px"),
+                I("Green","100%")
+            )
+        );
+</pre>
+And use Core to Evaluate where the Co-Ordinates of the windows are:
+<pre class="prettyprint">
+> update(1920,1080, o);
+{ Red: { x: 4, y: 4, width: 1912, height: 220 },
+  Blue: { x: 4, y: 228, width: 200, height: 848 },
+  Green: { x: 208, y: 228, width: 1708, height: 848 },
+  Inner: { x: 4, y: 228, width: 1912, height: 848 } }
+</pre>
+        </td>
+    </tr>
+</table>
