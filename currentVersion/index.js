@@ -36,8 +36,7 @@ function load_menu_to_ts(){
   ts.Menu_Video = "";
   ts.Menu_description = "";
   ts.Menu_Intro = "";
-  ts.Menu_Welcome = "";
-  ts.Menu_Example01 = "";
+  ts.Menu_Examples = "";
 }
 function mystartup() {
     console.log("initActions ");
@@ -174,7 +173,7 @@ function mystartup() {
         tempEl.style.width = "1px";
         tempEl.style.height = "1px";
         tempEl.style.position = "fixed";
-        tempEl.style.overflow = "auto";
+        tempEl.style.overflowY = "auto";
         tempEl.id = tsKeys[i];
 //      console.log(tsKeys[i] + " - " + tempEl.id);
         document.body.appendChild(tempEl);
@@ -194,7 +193,7 @@ function mystartup() {
 //  Group Common Items in to 'One Item'
 
 //  Create 'Page' Item with 3 pages "console", "jsonTree", and "legend"
-    var BottomPageItemBlock = I("console", "150px", "120px", "500px", I("jsonTree"), I("legend"));
+    var BottomPageItemBlock = I("console", "150px", "120px", "500px", I("jsonTree"), I("tips"));
 
 //  Create Navigation Item
     var pageNavBlock = h("pageNavBlock", "20px",
@@ -253,7 +252,7 @@ function mystartup() {
         I("BToff", "60px"),
         I("BTconsole", "60px"),
         I("BTdisplay", "60px"),
-        I("BTlegend", "60px")
+        I("BTtips", "60px")
     );
     var XsmallButtonsItemBlock1 = h("XsmallButtonsItemBlock1", "20px",
         I("SLauto", "40px"),
@@ -268,7 +267,7 @@ function mystartup() {
         I("BToff", "60px"),
         I("BTconsole", "60px"),
         I("BTdisplay", "60px"),
-        I("BTlegend", "60px"),
+        I("BTtips", "60px"),
         I("SLspacer2", "100%")
     );
 
@@ -286,7 +285,7 @@ function mystartup() {
         TitleItemBlock, // 60px
         PagesItemBlock, // 100%
         LayoutButtonsItemBlock,
-        I("legend", "100px", "40px", "500px")
+        I("tips", "100px", "40px", "500px")
     );
 
     var VSectionOfMediumLayoutCWBottomItemBlock = v("VSectionOfMediumLayoutCWBottomItemBlock", "100%",
@@ -433,7 +432,6 @@ function mystartup() {
 
     Handler.callback = mycallback;
     setTimeout(function () {
-//        if (window.location.href.indexOf("#") === -1) Item.setPage("Menu_Intro", "Item_description");
         Handler.resizeEvent();
     }, 10);
 

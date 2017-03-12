@@ -77,7 +77,7 @@ function showMy(name) {
     var m = {
         "console": "bc",
         "jsonTree": "bd",
-        "legend": "bl"
+        "tips": "bl"
     };
     if (name === "") {
         extraState = false;
@@ -174,7 +174,31 @@ function CurrentPage() {
 }
 
 function updateHeader() {
-    document.getElementById("PageHeader").innerHTML = CurrentMenu() + " " + CurrentPage();
+    var headerEl = document.getElementById("PageHeader");
+    var out = "";
+    var cMenu = CurrentMenu();
+    var cPage = CurrentPage();
+    if (cPage === "description") {
+      out += '<span style="color: fusha">Menu Topic Description For: </span>';
+      out += '<span style="color: Green">' + cMenu + '</span>';
+    }
+    else {
+      switch(cMenu) {
+          case "Menu":
+              out += '<span style="color: green">Main Menu:</span> Topic:' + cPage;
+              break;
+          case "Functions":
+              out += '<span style="color: green">Functions Added To Global Sapce: Function: ' + cPage + '()';
+              break;
+          case "Directive":
+              out += 'Directive is an expansion <span style="color: red">not created yet...</span> moves Javascript to html';
+              break;
+          default:
+              out += "Javascript: &gt; " + cMenu + "." + cPage;
+      }
+  }
+
+    headerEl.innerHTML = out;
 }
 
 function updateDisplay() {

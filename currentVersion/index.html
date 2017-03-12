@@ -17,6 +17,7 @@
     <style>.mybg {  }</style>
 </head>
 <style type="text/css">
+// div {overflow-x: visible; auto;overflow-y: auto;overflow-wrap: break-word;}
     .myButton {}
     pre {background-color: rgba(220,220,220, 0.4);}
 .bdy { width: 100%; height: 100%; margin: 0; padding: 0;}
@@ -87,16 +88,60 @@
   </div>
   <div id="Menu_description">wowowo</div>
   <div id="Menu_Intro">
-    Lief's Layout Manager has two main functions.
-    <ol>
-      <li>Control the positioin of Elements (Usually &lt;div&gt;'s) On the screen, using a hiarchy of Items.</li>
-      <li>Control which Items will be displayed under which conditions.</li>
-    </ol>
-    This process is best understood by
-    <span class="fakeclick" onclick='Item.setPage("Menu_Intro","Menu_Example01")'>example</span>
+    <span style="font-size: 125%;">
+      Lief's Layout Manager is JavaScript code that organizes content on your screen/display<br><br>
+      Lief's Layout Manager has two main functions.
+      <ol>
+        <li>Control the positioin of Elements (Usually &lt;div&gt;'s) On the screen, using a hiarchy of Items.</li>
+        <li>Control which Items will be displayed under which conditions.</li>
+      </ol>
+      This process is best understood by
+      <span class="fakeclick" onclick='Item.setPage("Menu_Intro","Menu_Examples")'>examples</span>
+      and a few short
+      <span class="fakeclick" onclick='Item.setPage("Menu_Intro","Menu_Video")'>videos</span>
+      (playlist) <br /><br  />
+      Once you have loaded liefs-layout-manager, you have access to the following Objects:<br />
+      <pre>
+&lt;script src="liefs-layout-manager.V?.?.?.min.js"&gt;&lt;/script&gt;
+// Check npm for latest version</pre>
+<span class="fakeclick" onclick='Item.setPage("Menu_Intro", "Item_description")'>Item</span>
+<pre>
+> Item
+// Liefs's Layout Manager Item Class
+// Element/(Group of Elements)
+</pre>
+<span class="fakeclick" onclick='Item.setPage("Menu_Intro", "Dragbar_description")'>Dragbar</span>
+<pre>
+> Dragbar
+// Liefs's Layout Manager Dragbar Class
+// Optional Dragbar for above
+</pre>
+<span class="fakeclick"  onclick='Item.setPage("Menu_Intro", "Container_description")'>Container</span>
+<pre>
+> Container
+// Liefs's Layout Manager Container Class
+// Used to Group Item (s)
+</pre>
+<span class="fakeclick"  onclick='Item.setPage("Menu_Intro", "Layout_description")'>Layout</span>
+<pre>
+> Layout
+// Liefs's Layout Manager Layout Class
+// Root Item, with Conditional Function for usage
+</pre>
+<span class="fakeclick"  onclick='Item.setPage("Menu_Intro", "Handler_description")'>Handler</span>
+<pre>
+> Handler
+// Liefs's Layout Manager Handler Class
+// Chooses Layout by Conditional Function
+</pre><pre>
+> Item.get("someIdName");
+// ...Would be found on this site as "Item" "get"
+</pre>
+
+      <br />
+    </span>
   </div>
-  <div id="Menu_Welcome">wowowo</div>
-  <div id="Menu_Example01">
+  <div id="Menu_Examples">
     <h3>Be Sure To VIEW SOURCE the Examples!</h3>
     Examples:<br>
     <a href="examples.html">All 5 examples bundled in one file</a><br>
@@ -111,7 +156,8 @@
 
 <!--  <div id="Menu_Intro" style="overflow-y: auto; left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Menu_Intro</div> -->
   <div id="PageHeader" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Page Header</div>
-  <div id="legend" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">legend</div>
+  <div id="tips" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">tips</div>
+  <div id="tips01" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">tips01</div>  
 
   <div id="display" style="overflow-y: auto;left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Display</div>
 
@@ -127,7 +173,7 @@
   <div id="BToff" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;" onclick="extraState=false;Handler.resizeEvent();"> <span id="bo" title="Remove Bottom 'window'" class="nav">Off</span></div>
   <div id="BTconsole" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bc" title="Show 'console' in bottom 'window'" onclick="extraState=true; Item.setPage('console','console');Handler.resizeEvent();" class="nav">Console</span></div>
   <div id="BTdisplay" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bd" title="Show 'display' in bottom 'window'" onclick="extraState=true; Item.setPage('console','jsonTree');Handler.resizeEvent();" class="nav">Display</span></div>
-  <div id="BTlegend" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bl" title="Show 'legend' in bottom 'window'" onclick="extraState=true; Item.setPage('console','legend');Handler.resizeEvent();" class="nav">Legend</span></div>
+  <div id="BTtips" class="myCenter" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span id="bl" title="Show 'tips' in bottom 'window'" onclick="extraState=true; Item.setPage('console','tips');Handler.resizeEvent();" class="nav">Tips</span></div>
 
   <div id="selectBack" style="cursor:pointer;left:0px;top:0px;width:0px;height:0px;visibility:hidden;"><span title="Back Page">
       <img src="arr_ani_yl3.gif" style="width:100%;height:100%;" class="nav">
