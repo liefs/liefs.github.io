@@ -102,7 +102,7 @@ function mystartup() {
         }
 
 
-        console.log("added " + menuKeys[i]);
+//        console.log("added " + menuKeys[i]);
 
 
         menuPageItemList.push(I(newEl.id));
@@ -168,7 +168,7 @@ function mystartup() {
         if (document.getElementById(tsKeys[i])) tempEl = document.getElementById(tsKeys[i]);
         else tempEl = htmlToElement(ts[tsKeys[i]]);
 
-        if (!tempEl.style.visibility) { console.log( tsKeys[i] ); }
+//        if (!tempEl.style.visibility) { console.log( tsKeys[i] ); }
 
         tempEl.style.visibility = "hidden";
         tempEl.style.x = "1px";
@@ -188,6 +188,7 @@ function mystartup() {
 //    console.log("out");
 // Set Defaults
     Container.marginDefault = 6;
+    Handler.verbose = false;
 // Define Page Items
 //    I("jsonTree"); // ------------------------------------------------------------------------- fix later
     I("loading");
@@ -431,6 +432,8 @@ function mystartup() {
 //  Ok - All Definitions Are Done, Now Lets start up our Handler
 
 //    Item.setPage("Pages",)
+
+
     H("MasterHandler", AutoHandlerLayouts); // Start Handler with Auto.... but could change later.
 
     Handler.callback = mycallback;
