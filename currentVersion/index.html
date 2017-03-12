@@ -205,7 +205,45 @@
 
 <!--  <div id="Menu_Intro" style="overflow-y: auto; left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Menu_Intro</div> -->
   <div id="PageHeader" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Page Header</div>
-  <div id="tips" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">tips</div>
+  <div id="tips" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;overflow:auto;">
+<pre>> Handler.verbose = false;  // This turn off feeback on Console.</pre>
+<pre>> Handler.delayUntilStart = 200;  // This milli-second start delay can be changed</pre>
+<pre>
+> Handler.callback = function() { /* Do Something after Lief's does a refresh */ };
+</pre>
+<pre>> Handler.handlers[0];  // gives you access to (Main - usually only) Handler instance</pre>
+<pre>> Handler.resizeEvent();  // Manually Trigger a Lief's layout Manager Page Refresh</pre>
+<pre>> Handler.resizecallbackthrottle = 1000;  // Manually force delay between refreshs (Default 0)</pre>
+
+<pre>> Item.selector = function () { return {"#" + this.label}}   // Selectors Do not HAVE to be id</pre>
+
+<pre>> Handler.handlers[0].label;              // there is a label attribute for all Lief's Objects</pre>
+<pre>> Handler.activeContainer.label;          // there is a label attribute for all Lief's Objects</pre>
+
+<pre>> Container.marginDefault = 8;            // Sets Default Margin size (Default = 4(px))</pre>
+<pre>> Container.of( Item.get("SomeExistingItem") ); // Find Current Parent of Item (Changes with Layout)</pre>
+<pre>> Handler.activeContainer.update(1920, 1080); Handler.activeContainer.lastupdate;
+// Force test screen size to see position results</pre>
+<pre>> Handler.activeContainer.lastupdate;     // Returns Object Key=Item name, Value = Current Co-ordinates of Item</pre>
+
+<pre>> Handler.handlers[0].label;              // there is a label attribute for all Lief's Objects</pre>
+<pre>> Handler.activeContainer.label;          // there is a label attribute for all Lief's Objects</pre>
+<pre>> Item.get("SomeDefinedItem").label;      // there is a label attribute for all Lief's Objects</pre>
+
+<pre>> Handler.handlers[0].iterator();         // there is an iterator function for all Lief's Objects</pre>
+<pre>> Handler.activelayout.iterator();        // there is an iterator function for all Lief's Objects</pre>
+<pre>> Handler.activeContainer.iterator();     // there is an iterator function for all Lief's Objects</pre>
+<pre>> Item.get("SomeDefinedItem").iterator(); // there is an iterator function for all Lief's Objects</pre>
+
+<pre>> Handler.handlers[0].toString();         // there is a toString() for all Liefs's Objects</pre>
+<pre>> Handler.activeContainer.toString();     // there is a toString() for all Liefs's Objects</pre>
+<pre>> Item.get("SomeDefinedItem).toString();  // there is a toString() for all Liefs's Objects</pre>
+<pre>> Item.keys();                            // Returns Array of all Item Labels</pre>
+<pre>> Item.get("ItemDefinedWithPages").currentPage; // find Array index here</pre>
+
+<pre>> Item.get("SomeDefinedItem")      // Items can be poined to by label</pre>
+<pre>> Container.get("SomeDefinedItem") // Containers can be poined to by label</pre>
+  </div>
   <div id="tips01" style="left:0px;top:0px;width:0px;height:0px;visibility:hidden;">tips01</div>
 
   <div id="display" style="overflow-y: auto;left:0px;top:0px;width:0px;height:0px;visibility:hidden;">Display</div>
