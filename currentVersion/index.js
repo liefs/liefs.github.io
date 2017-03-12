@@ -168,9 +168,7 @@ function mystartup() {
         if (document.getElementById(tsKeys[i])) tempEl = document.getElementById(tsKeys[i]);
         else tempEl = htmlToElement(ts[tsKeys[i]]);
 
-        if (!tempEl.style.visibility) {
-          console.log( tsKeys[i] );
-        }
+        if (!tempEl.style.visibility) { console.log( tsKeys[i] ); }
 
         tempEl.style.visibility = "hidden";
         tempEl.style.x = "1px";
