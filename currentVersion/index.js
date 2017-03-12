@@ -21,7 +21,7 @@ var sunInButton = true;
 // waiting() called at the bottom of this page to start things off
 
 function waiting() {
-    if ((handle_command) && (L) && (document.body)) {
+    if ((handle_command) && (L) && (document.body) && (ts.Functions_vpx)) {
         Handler.delayUntilStart = 0;
         setTimeout(function () {
             mystartup();
