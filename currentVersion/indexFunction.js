@@ -10,7 +10,17 @@ function mycallback() {
         itemt = Item.get( sok[i] );
         if (itemt.el) itemt.el.style.backgroundColor = (sunInButton) ? "white" : "";
       }
-    }
+
+    var chatbutton = document.getElementsByClassName("mylivechat_inline");
+    // if (chatbutton.length > 0) {
+    //   var el = chatbutton[0];
+    //   var c = Handler.handlers[0].activeContainer.lastUpdate.Menu_Intro;
+    //   var ss = screenSize();
+    //   var x = ss.x - (c.width + c.x);
+    //   var y = ss.y - (c.height + c.y);
+    //   el.style.right = px(x);
+    //   el.style.bottom = px(y);
+    // }
 
     var bc = document.getElementById('bc');
     var bd = document.getElementById('bd');
