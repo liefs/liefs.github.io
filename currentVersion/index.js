@@ -37,6 +37,7 @@ function load_menu_to_ts(){
   ts.Menu_description = "";
   ts.Menu_Intro = "";
   ts.Menu_Examples = "";
+  ts.Menu_Installation = "";
 }
 function mystartup() {
     console.log("initActions ");
